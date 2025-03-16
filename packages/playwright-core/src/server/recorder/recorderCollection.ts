@@ -61,6 +61,7 @@ export class RecorderCollection extends EventEmitter {
   }
 
   private async _addAction(actionInContext: actions.ActionInContext, callback?: () => Promise<void>) {
+    console.log('recorder _addAction', actionInContext);
     if (!this._enabled)
       return;
     if (actionInContext.action.name === 'openPage' || actionInContext.action.name === 'closePage') {

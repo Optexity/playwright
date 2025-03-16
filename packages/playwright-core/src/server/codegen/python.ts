@@ -43,6 +43,7 @@ export class PythonLanguageGenerator implements LanguageGenerator {
   }
 
   generateAction(actionInContext: actions.ActionInContext): string {
+    // console.log("Inside generateAction python", actionInContext);
     const action = actionInContext.action;
     if (this._isPyTest && (action.name === 'openPage' || action.name === 'closePage'))
       return '';

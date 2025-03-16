@@ -33,6 +33,7 @@ import type { Dialog } from '../dialog';
 import type * as channels from '@protocol/channels';
 import type * as actions from '@recorder/actions';
 import type { Source } from '@recorder/recorderTypes';
+import fs from 'fs';
 
 type BindingSource = { frame: Frame, page: Page };
 
@@ -79,6 +80,7 @@ export class ContextRecorder extends EventEmitter {
     this._collection = new RecorderCollection(this._pageAliases);
     this._collection.on('change', (actions: actions.ActionInContext[]) => {
       this._recorderSources = [];
+      console.log('Inside on Change in contextRecorder.ts: ' + actions.map(a => a.action.name).join(', '));
       for (const languageGenerator of this._orderedLanguages) {
         const { header, footer, actionTexts, text } = generateCode(actions, languageGenerator, languageGeneratorOptions);
         const source: Source = {
@@ -183,6 +185,7 @@ export class ContextRecorder extends EventEmitter {
     if (page.opener()) {
       this._onPopup(page.opener()!, page);
     } else {
+      console.log('Inside _onPage in contextRecorder.ts: ' + page.mainFrame().url());
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
         action: {
@@ -231,21 +234,29 @@ export class ContextRecorder extends EventEmitter {
       frame: frameDescription,
       action,
       description: undefined,
-      startTime: monotonicTime()
+      startTime: monotonicTime(),
+      // uuid:uuid
     };
     await this._delegate.rewriteActionInContext?.(this._pageAliases, actionInContext);
     return actionInContext;
   }
 
   private async _performAction(frame: Frame, action: actions.PerformOnRecordAction) {
+    console.log('Inside _performAction in contextRecorder.ts: ' + action.name);
+    // uuid
+    // frame.url()
+    fs.writeFileSync('/tmp/frame'+action.name+'.html', await frame.content());
+    // page.screenshot(randomUUID.jpeg)
     await this._collection.performAction(await this._createActionInContext(frame, action));
   }
 
   private async _recordAction(frame: Frame, action: actions.Action) {
+    console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
     this._collection.addRecordedAction(await this._createActionInContext(frame, action));
   }
 
   private _onFrameNavigated(frame: Frame, page: Page) {
+    console.log('Inside _onFrameNavigated in contextRecorder.ts: ' + frame.url());
     const pageAlias = this._pageAliases.get(page);
     this._collection.signal(pageAlias!, frame, { name: 'navigation', url: frame.url() });
   }
