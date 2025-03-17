@@ -685,6 +685,7 @@ class TextAssertionTool implements RecorderTool {
   }
 
   private _generateAction(): actions.AssertAction | null {
+    // console.log('Generating action for element', this._hoverHighlight?.elements[0], 'with kind', this._kind);
     this._textCache.clear();
     const target = this._hoverHighlight?.elements[0];
     if (!target)
