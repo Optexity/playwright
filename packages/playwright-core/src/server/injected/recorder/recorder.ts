@@ -386,7 +386,7 @@ class RecordActionTool implements RecorderTool {
     const target = this._recorder.deepEventTarget(event);
 
     if (target.nodeName === 'INPUT' && (target as HTMLInputElement).type.toLowerCase() === 'file') {
-      this._recorder.recordAction({
+      this._performAction({
         name: 'setInputFiles',
         selector: this._activeModel!.selector,
         signals: [],
@@ -396,7 +396,7 @@ class RecordActionTool implements RecorderTool {
     }
 
     if (isRangeInput(target)) {
-      this._recorder.recordAction({
+      this._performAction({
         name: 'fill',
         // must use hoveredModel instead of activeModel for it to work in webkit
         selector: this._hoveredModel!.selector,
@@ -413,14 +413,14 @@ class RecordActionTool implements RecorderTool {
       }
 
       // Non-navigating actions are simply recorded by Playwright.
-      if (this._consumedDueWrongTarget(event))
-        return;
-      this._recorder.recordAction({
+      this._performAction({
         name: 'fill',
         selector: this._activeModel!.selector,
         signals: [],
         text: target.isContentEditable ? target.innerText : (target as HTMLInputElement).value,
       });
+      if (this._consumedDueWrongTarget(event))
+        return;
     }
 
     if (target.nodeName === 'SELECT') {
