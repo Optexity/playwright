@@ -22,6 +22,8 @@ import type { Language, LanguageGenerator, LanguageGeneratorOptions } from './ty
 import type { BrowserContextOptions } from '../../../types/types';
 import type * as actions from '@recorder/actions';
 
+import fs from 'fs';
+
 export class PythonLanguageGenerator implements LanguageGenerator {
   id: string;
   groupName = 'Python';
@@ -81,7 +83,14 @@ export class PythonLanguageGenerator implements LanguageGenerator {
       download${signals.download.downloadAlias} = ${this._awaitPrefix}download${signals.download.downloadAlias}_info.value`;
     }
 
+    code = code + `# ${actionInContext.uuid}`;
     formatter.add(code);
+    if(actionInContext.action.url && actionInContext.uuid && actionInContext.action.name) {
+      console.log('Inside generateAction python: ' + actionInContext.action.url + ' ' + actionInContext.action.name + ' ' + actionInContext.uuid);
+    }
+    if (actionInContext.content && actionInContext.uuid) {
+      fs.writeFileSync('playwright_recorder_output/' + actionInContext.uuid + '.html', actionInContext.content);
+    }
 
     return formatter.format();
   }

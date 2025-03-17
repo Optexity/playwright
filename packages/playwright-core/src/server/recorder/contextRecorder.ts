@@ -35,6 +35,10 @@ import type * as actions from '@recorder/actions';
 import type { Source } from '@recorder/recorderTypes';
 import fs from 'fs';
 
+var _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+var _length = 0;
+var _content = '';
+
 type BindingSource = { frame: Frame, page: Page };
 
 export interface ContextRecorderDelegate {
@@ -169,7 +173,9 @@ export class ContextRecorder extends EventEmitter {
           name: 'closePage',
           signals: [],
         },
-        startTime: monotonicTime()
+        startTime: monotonicTime(),
+        uuid: _uuid,
+        content: _content
       });
       this._pageAliases.delete(page);
     });
@@ -193,7 +199,9 @@ export class ContextRecorder extends EventEmitter {
           url: page.mainFrame().url(),
           signals: [],
         },
-        startTime: monotonicTime()
+        startTime: monotonicTime(),
+        uuid: _uuid,
+        content: _content
       });
     }
   }
@@ -235,45 +243,58 @@ export class ContextRecorder extends EventEmitter {
       action,
       description: undefined,
       startTime: monotonicTime(),
-      // uuid:uuid
+      uuid: _uuid,
+      content: _content
     };
     await this._delegate.rewriteActionInContext?.(this._pageAliases, actionInContext);
     return actionInContext;
   }
 
   private async _performAction(frame: Frame, action: actions.PerformOnRecordAction) {
-    console.log('Inside _performAction in contextRecorder.ts: ' + action.name);
-    // uuid
-    // frame.url()
+    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    _content = await frame.content();
+    // action.url = frame.url();
+    // console.log('Inside _performAction in contextRecorder.ts: ' + action.name);
     fs.writeFileSync('/tmp/frame'+action.name+'.html', await frame.content());
     // page.screenshot(randomUUID.jpeg)
     await this._collection.performAction(await this._createActionInContext(frame, action));
   }
 
   private async _recordAction(frame: Frame, action: actions.Action) {
-    console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
+    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    _content = await frame.content();
+    // action.url = frame.url();
+    // console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
     this._collection.addRecordedAction(await this._createActionInContext(frame, action));
   }
 
-  private _onFrameNavigated(frame: Frame, page: Page) {
+  private async _onFrameNavigated(frame: Frame, page: Page) {
+    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    _content = await frame.content();
     console.log('Inside _onFrameNavigated in contextRecorder.ts: ' + frame.url());
     const pageAlias = this._pageAliases.get(page);
     this._collection.signal(pageAlias!, frame, { name: 'navigation', url: frame.url() });
   }
 
-  private _onPopup(page: Page, popup: Page) {
+  private async _onPopup(page: Page, popup: Page) {
+    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    _content = await page.mainFrame().content();
     const pageAlias = this._pageAliases.get(page)!;
     const popupAlias = this._pageAliases.get(popup)!;
     this._collection.signal(pageAlias, page.mainFrame(), { name: 'popup', popupAlias });
   }
 
-  private _onDownload(page: Page) {
+  private async _onDownload(page: Page) {
+    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    _content = await page.mainFrame().content();
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDownloadOrdinal;
     this._collection.signal(pageAlias, page.mainFrame(), { name: 'download', downloadAlias: this._lastDownloadOrdinal ? String(this._lastDownloadOrdinal) : '' });
   }
 
-  private _onDialog(page: Page) {
+  private async _onDialog(page: Page) {
+    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    _content = await page.mainFrame().content();
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDialogOrdinal;
     this._collection.signal(pageAlias, page.mainFrame(), { name: 'dialog', dialogAlias: this._lastDialogOrdinal ? String(this._lastDialogOrdinal) : '' });
