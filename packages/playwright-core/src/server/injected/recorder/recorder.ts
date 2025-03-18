@@ -396,7 +396,9 @@ class RecordActionTool implements RecorderTool {
     }
 
     if (isRangeInput(target)) {
-      this._recorder.recordAction({
+      // if (this._actionInProgress(event))
+      //   return;
+      this._performAction({
         name: 'fill',
         // must use hoveredModel instead of activeModel for it to work in webkit
         selector: this._hoveredModel!.selector,
@@ -413,14 +415,16 @@ class RecordActionTool implements RecorderTool {
       }
 
       // Non-navigating actions are simply recorded by Playwright.
-      if (this._consumedDueWrongTarget(event))
-        return;
-      this._recorder.recordAction({
+      // if (this._actionInProgress(event))
+      //   return;
+      this._performAction({
         name: 'fill',
         selector: this._activeModel!.selector,
         signals: [],
         text: target.isContentEditable ? target.innerText : (target as HTMLInputElement).value,
       });
+      if (this._consumedDueWrongTarget(event))
+        return;
     }
 
     if (target.nodeName === 'SELECT') {
@@ -510,6 +514,7 @@ class RecordActionTool implements RecorderTool {
   }
 
   private _actionInProgress(event: Event): boolean {
+    // Maybe this function can prevent infinite loop
     // If Playwright is performing action for us, bail.
     const isKeyEvent = event instanceof KeyboardEvent;
     const isMouseOrPointerEvent = event instanceof MouseEvent || event instanceof PointerEvent;
@@ -518,6 +523,8 @@ class RecordActionTool implements RecorderTool {
         return true;
       if (isMouseOrPointerEvent && (action.name === 'click' || action.name === 'check' || action.name === 'uncheck'))
         return true;
+      // if (isKeyEvent && action.name === 'fill' && event.key === action.text)
+      //   return true;
     }
 
     // Consume event if action is not being executed.
@@ -685,6 +692,7 @@ class TextAssertionTool implements RecorderTool {
   }
 
   private _generateAction(): actions.AssertAction | null {
+    // console.log('Generating action for element', this._hoverHighlight?.elements[0], 'with kind', this._kind);
     this._textCache.clear();
     const target = this._hoverHighlight?.elements[0];
     if (!target)

@@ -1,4 +1,6 @@
 node_modules/
+generated_code.py
+playwright_recorder_output/
 /test-results/
 /tests/coverage-report
 .local-browsers/
