@@ -76,7 +76,7 @@ export class RecorderCollection extends EventEmitter {
     actionInContext.endTime = monotonicTime();
   }
 
-  signal(pageAlias: string, frame: Frame, signal: Signal) {
+  signal(pageAlias: string, frame: Frame, signal: Signal, content: string) {
     if (!this._enabled)
       return;
 
@@ -94,6 +94,7 @@ export class RecorderCollection extends EventEmitter {
         generateGoto = true;
 
       if (generateGoto) {
+        const uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         this.addRecordedAction({
           frame: {
             pageAlias,
@@ -106,6 +107,8 @@ export class RecorderCollection extends EventEmitter {
           },
           startTime: timestamp,
           endTime: timestamp,
+          uuid: uuid,
+          content: content,
         });
       }
       return;

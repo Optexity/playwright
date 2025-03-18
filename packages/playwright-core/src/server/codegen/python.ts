@@ -84,10 +84,12 @@ export class PythonLanguageGenerator implements LanguageGenerator {
     }
 
     code = code + `# ${actionInContext.uuid}`;
+    if (actionInContext.shouldMerge)
+      code = code + " # merge_with_previous";
     formatter.add(code);
-    if(actionInContext.uuid && actionInContext.action.name) {
-      console.log('Inside generateAction python: ' + actionInContext.action.name + ' ' + actionInContext.uuid);
-    }
+    // if(actionInContext.uuid && actionInContext.action.name) {
+    //   console.log('Inside generateAction python: ' + actionInContext.action.name + ' ' + actionInContext.uuid);
+    // }
     if (actionInContext.content && actionInContext.uuid) {
       fs.writeFileSync('playwright_recorder_output/' + actionInContext.uuid + '.html', actionInContext.content);
     }

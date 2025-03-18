@@ -18,7 +18,7 @@ import { EventEmitter } from 'events';
 
 import { RecorderCollection } from './recorderCollection';
 import * as recorderSource from '../../generated/pollingRecorderSource';
-import { eventsHelper, monotonicTime, quoteCSSAttributeValue  } from '../../utils';
+import { eventsHelper, monotonicTime, quoteCSSAttributeValue } from '../../utils';
 import { raceAgainstDeadline } from '../../utils/isomorphic/timeoutRunner';
 import { BrowserContext } from '../browserContext';
 import { languageSet } from '../codegen/languages';
@@ -34,10 +34,6 @@ import type * as channels from '@protocol/channels';
 import type * as actions from '@recorder/actions';
 import type { Source } from '@recorder/recorderTypes';
 import fs from 'fs';
-
-var _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-var _length = 0;
-var _content = '';
 
 type BindingSource = { frame: Frame, page: Page };
 
@@ -146,11 +142,11 @@ export class ContextRecorder extends EventEmitter {
     // Input actions that potentially lead to navigation are intercepted on the page and are
     // performed by the Playwright.
     await this._context.exposeBinding('__pw_recorderPerformAction', false,
-        (source: BindingSource, action: actions.PerformOnRecordAction) => this._performAction(source.frame, action));
+      (source: BindingSource, action: actions.PerformOnRecordAction) => this._performAction(source.frame, action));
 
     // Other non-essential actions are simply being recorded.
     await this._context.exposeBinding('__pw_recorderRecordAction', false,
-        (source: BindingSource, action: actions.Action) => this._recordAction(source.frame, action));
+      (source: BindingSource, action: actions.Action) => this._recordAction(source.frame, action));
 
     await this._context.extendInjectedScript(recorderSource.source);
   }
@@ -166,7 +162,9 @@ export class ContextRecorder extends EventEmitter {
   private async _onPage(page: Page) {
     // First page is called page, others are called popup1, popup2, etc.
     const frame = page.mainFrame();
+    // const content = await frame.content()
     page.on('close', () => {
+      const _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
         action: {
@@ -175,7 +173,7 @@ export class ContextRecorder extends EventEmitter {
         },
         startTime: monotonicTime(),
         uuid: _uuid,
-        content: _content
+        // content: content,
       });
       this._pageAliases.delete(page);
     });
@@ -191,17 +189,18 @@ export class ContextRecorder extends EventEmitter {
     if (page.opener()) {
       this._onPopup(page.opener()!, page);
     } else {
-      console.log('Inside _onPage in contextRecorder.ts: ' + page.mainFrame().url());
+      const _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      // console.log('Inside _onPage in contextRecorder.ts: ' + frame.url());
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
         action: {
           name: 'openPage',
-          url: page.mainFrame().url(),
+          url: frame.url(),
           signals: [],
         },
         startTime: monotonicTime(),
         uuid: _uuid,
-        content: _content
+        // content: content,
       });
     }
   }
@@ -237,67 +236,73 @@ export class ContextRecorder extends EventEmitter {
   }
 
   private async _createActionInContext(frame: Frame, action: actions.Action): Promise<actions.ActionInContext> {
+    const  _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     const frameDescription = await this._describeFrame(frame);
+    const content = await frame.content();
     const actionInContext: actions.ActionInContext = {
       frame: frameDescription,
       action,
       description: undefined,
       startTime: monotonicTime(),
       uuid: _uuid,
-      content: _content
+      content: content,
     };
     await this._delegate.rewriteActionInContext?.(this._pageAliases, actionInContext);
     return actionInContext;
   }
 
   private async _performAction(frame: Frame, action: actions.PerformOnRecordAction) {
-    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    _content = await frame.content();
     // action.url = frame.url();
     // console.log('Inside _performAction in contextRecorder.ts: ' + action.name);
-    fs.writeFileSync('/tmp/frame'+action.name+'.html', await frame.content());
+    // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await frame.content());
     // page.screenshot(randomUUID.jpeg)
     await this._collection.performAction(await this._createActionInContext(frame, action));
   }
 
   private async _recordAction(frame: Frame, action: actions.Action) {
-    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    _content = await frame.content();
     // action.url = frame.url();
-    // console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
+    console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
+    // fs.writeFileSync('playwright_recorder_output/' + _uuid2 + ".html", await frame.content());
     this._collection.addRecordedAction(await this._createActionInContext(frame, action));
   }
 
   private async _onFrameNavigated(frame: Frame, page: Page) {
-    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    _content = await frame.content();
-    console.log('Inside _onFrameNavigated in contextRecorder.ts: ' + frame.url());
+    // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await frame.content());
+    // console.log('Inside _onFrameNavigated in contextRecorder.ts: ' + frame.url());
+    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page);
-    this._collection.signal(pageAlias!, frame, { name: 'navigation', url: frame.url() });
+    this._collection.signal(pageAlias!, frame, { name: 'navigation', url: frame.url() }, content);
   }
 
   private async _onPopup(page: Page, popup: Page) {
-    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    _content = await page.mainFrame().content();
+    // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
+    const frame= page.mainFrame();
+    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page)!;
     const popupAlias = this._pageAliases.get(popup)!;
-    this._collection.signal(pageAlias, page.mainFrame(), { name: 'popup', popupAlias });
+    this._collection.signal(pageAlias, frame, { name: 'popup', popupAlias }, content);
   }
 
   private async _onDownload(page: Page) {
-    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    _content = await page.mainFrame().content();
+    // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
+    const frame= page.mainFrame();
+    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDownloadOrdinal;
-    this._collection.signal(pageAlias, page.mainFrame(), { name: 'download', downloadAlias: this._lastDownloadOrdinal ? String(this._lastDownloadOrdinal) : '' });
+    this._collection.signal(pageAlias, frame, { name: 'download', downloadAlias: this._lastDownloadOrdinal ? String(this._lastDownloadOrdinal) : '' }, content);
   }
 
   private async _onDialog(page: Page) {
-    _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    _content = await page.mainFrame().content();
+    // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
+    const frame= page.mainFrame();
+    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDialogOrdinal;
-    this._collection.signal(pageAlias, page.mainFrame(), { name: 'dialog', dialogAlias: this._lastDialogOrdinal ? String(this._lastDialogOrdinal) : '' });
+    this._collection.signal(pageAlias, frame, { name: 'dialog', dialogAlias: this._lastDialogOrdinal ? String(this._lastDialogOrdinal) : '' }, content);
   }
 }
 

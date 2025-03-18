@@ -122,7 +122,7 @@ export type AssertSnapshotAction = ActionWithSelector & {
 export type Action = ClickAction | CheckAction | ClosesPageAction | OpenPageAction | UncheckAction | FillAction | NavigateAction | PressAction | SelectAction | SetInputFilesAction | AssertTextAction | AssertValueAction | AssertCheckedAction | AssertVisibleAction | AssertSnapshotAction;
 export type AssertAction = AssertCheckedAction | AssertValueAction | AssertTextAction | AssertVisibleAction | AssertSnapshotAction;
 // export type PerformOnRecordAction = ClickAction | CheckAction | UncheckAction | PressAction | SelectAction;
-export type PerformOnRecordAction = ClickAction | CheckAction | UncheckAction | PressAction | SelectAction | FillAction | NavigateAction| ClosesPageAction | OpenPageAction | SetInputFilesAction;
+export type PerformOnRecordAction = ClickAction | CheckAction | UncheckAction | PressAction | SelectAction | FillAction;
 
 // Signals.
 
@@ -163,5 +163,6 @@ export type ActionInContext = {
   startTime: number;
   endTime?: number;
   uuid?: string;
+  shouldMerge?: boolean;
   content?: string;
 };

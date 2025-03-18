@@ -386,7 +386,7 @@ class RecordActionTool implements RecorderTool {
     const target = this._recorder.deepEventTarget(event);
 
     if (target.nodeName === 'INPUT' && (target as HTMLInputElement).type.toLowerCase() === 'file') {
-      this._performAction({
+      this._recorder.recordAction({
         name: 'setInputFiles',
         selector: this._activeModel!.selector,
         signals: [],
@@ -396,6 +396,8 @@ class RecordActionTool implements RecorderTool {
     }
 
     if (isRangeInput(target)) {
+      // if (this._actionInProgress(event))
+      //   return;
       this._performAction({
         name: 'fill',
         // must use hoveredModel instead of activeModel for it to work in webkit
@@ -413,6 +415,8 @@ class RecordActionTool implements RecorderTool {
       }
 
       // Non-navigating actions are simply recorded by Playwright.
+      // if (this._actionInProgress(event))
+      //   return;
       this._performAction({
         name: 'fill',
         selector: this._activeModel!.selector,
@@ -510,6 +514,7 @@ class RecordActionTool implements RecorderTool {
   }
 
   private _actionInProgress(event: Event): boolean {
+    // Maybe this function can prevent infinite loop
     // If Playwright is performing action for us, bail.
     const isKeyEvent = event instanceof KeyboardEvent;
     const isMouseOrPointerEvent = event instanceof MouseEvent || event instanceof PointerEvent;
@@ -518,6 +523,8 @@ class RecordActionTool implements RecorderTool {
         return true;
       if (isMouseOrPointerEvent && (action.name === 'click' || action.name === 'check' || action.name === 'uncheck'))
         return true;
+      // if (isKeyEvent && action.name === 'fill' && event.key === action.text)
+      //   return true;
     }
 
     // Consume event if action is not being executed.
