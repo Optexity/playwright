@@ -166,7 +166,8 @@ export class ContextRecorder extends EventEmitter {
     await new Promise(resolve => setTimeout(resolve, 5000));
     const content = await frame.content();
     page.on('close', () => {
-      const _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      const timestamp = new Date().getTime();
+      const  _uuid = timestamp.toString() + Math.random().toString(36).substring(2, 15);
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
         action: {
@@ -191,7 +192,8 @@ export class ContextRecorder extends EventEmitter {
     if (page.opener()) {
       this._onPopup(page.opener()!, page, content);
     } else {
-      const _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      const timestamp = new Date().getTime();
+      const  _uuid = timestamp.toString() + Math.random().toString(36).substring(2, 15);
       // console.log('Inside _onPage in contextRecorder.ts: ' + frame.url());
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
@@ -238,7 +240,8 @@ export class ContextRecorder extends EventEmitter {
   }
 
   private async _createActionInContext(frame: Frame, action: actions.Action): Promise<actions.ActionInContext> {
-    const  _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    const timestamp = new Date().getTime();
+    const  _uuid = timestamp.toString() + Math.random().toString(36).substring(2, 15);
     const frameDescription = await this._describeFrame(frame);
     const content = await frame.content();
     const actionInContext: actions.ActionInContext = {
