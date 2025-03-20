@@ -86,7 +86,7 @@ export class PythonLanguageGenerator implements LanguageGenerator {
     }
 
     const shouldMerge = actionInContext.shouldMerge? actionInContext.shouldMerge : false;
-    code  = code + ` # {"uuid": "${actionInContext.uuid}", "merge_with_previous": "${shouldMerge}"`
+    code  = code + ` # {"uuid": "${actionInContext.uuid}", "merge_with_previous": "${shouldMerge}"}`;
 
     formatter.add(code);
     if(actionInContext.uuid && actionInContext.action.name) {
