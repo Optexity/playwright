@@ -34,6 +34,7 @@ export class PythonLanguageGenerator implements LanguageGenerator {
   private _asyncPrefix: '' | 'async ';
   private _isAsync: boolean;
   private _isPyTest: boolean;
+  private _contentDir: string;
 
   constructor(isAsync: boolean, isPyTest: boolean) {
     this.id = isPyTest ? 'python-pytest' : (isAsync ? 'python-async' : 'python');
@@ -42,6 +43,7 @@ export class PythonLanguageGenerator implements LanguageGenerator {
     this._isPyTest = isPyTest;
     this._awaitPrefix = isAsync ? 'await ' : '';
     this._asyncPrefix = isAsync ? 'async ' : '';
+    this._contentDir = 'playwright_recorder_output';
   }
 
   generateAction(actionInContext: actions.ActionInContext): string {
@@ -83,15 +85,18 @@ export class PythonLanguageGenerator implements LanguageGenerator {
       download${signals.download.downloadAlias} = ${this._awaitPrefix}download${signals.download.downloadAlias}_info.value`;
     }
 
-    code = code + `# ${actionInContext.uuid}`;
-    if (actionInContext.shouldMerge)
-      code = code + " # merge_with_previous";
+    const shouldMerge = actionInContext.shouldMerge? actionInContext.shouldMerge : false;
+    code  = code + ` # {"uuid": "${actionInContext.uuid}", "merge_with_previous": "${shouldMerge}"`
+
     formatter.add(code);
-    // if(actionInContext.uuid && actionInContext.action.name) {
-    //   console.log('Inside generateAction python: ' + actionInContext.action.name + ' ' + actionInContext.uuid);
-    // }
-    if (actionInContext.content && actionInContext.uuid) {
-      fs.writeFileSync('playwright_recorder_output/' + actionInContext.uuid + '.html', actionInContext.content);
+    if(actionInContext.uuid && actionInContext.action.name) {
+      console.log('Inside generateAction python: ' + actionInContext.action.name + ' ' + actionInContext.uuid);
+    }
+
+    if (actionInContext.content && actionInContext.uuid && !actionInContext.shouldMerge) {
+      if (!fs.existsSync(this._contentDir + '/' + actionInContext.uuid + '.html')) {
+        fs.writeFileSync(this._contentDir + '/' + actionInContext.uuid + '.html', actionInContext.content);
+      }
     }
 
     return formatter.format();
@@ -149,6 +154,7 @@ export class PythonLanguageGenerator implements LanguageGenerator {
   }
 
   generateHeader(options: LanguageGeneratorOptions): string {
+    this._contentDir = options.contentDir || 'playwright_recorder_output';
     const formatter = new PythonFormatter();
     const recordHar = options.contextOptions.recordHar;
     if (this._isPyTest) {

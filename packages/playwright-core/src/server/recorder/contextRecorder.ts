@@ -33,7 +33,6 @@ import type { Dialog } from '../dialog';
 import type * as channels from '@protocol/channels';
 import type * as actions from '@recorder/actions';
 import type { Source } from '@recorder/recorderTypes';
-import fs from 'fs';
 
 type BindingSource = { frame: Frame, page: Page };
 
@@ -66,6 +65,7 @@ export class ContextRecorder extends EventEmitter {
     this._delegate = delegate;
     this._recorderSources = [];
     const language = params.language || context.attribution.playwright.options.sdkLanguage;
+    const contentDir = params.contentDir || 'playwright_recorder_output';
     this.setOutput(language, params.outputFile);
 
     // Make a copy of options to modify them later.
@@ -75,6 +75,7 @@ export class ContextRecorder extends EventEmitter {
       contextOptions: { ...params.contextOptions },
       deviceName: params.device,
       saveStorage: params.saveStorage,
+      contentDir: contentDir,
     };
 
     this._collection = new RecorderCollection(this._pageAliases);
@@ -137,7 +138,7 @@ export class ContextRecorder extends EventEmitter {
     this._context.on(BrowserContext.Events.Page, (page: Page) => this._onPage(page));
     for (const page of this._context.pages())
       this._onPage(page);
-    this._context.on(BrowserContext.Events.Dialog, (dialog: Dialog) => this._onDialog(dialog.page()));
+    this._context.on(BrowserContext.Events.Dialog, (dialog: Dialog) => this._onDialog(dialog.page(), ''));
 
     // Input actions that potentially lead to navigation are intercepted on the page and are
     // performed by the Playwright.
@@ -162,7 +163,8 @@ export class ContextRecorder extends EventEmitter {
   private async _onPage(page: Page) {
     // First page is called page, others are called popup1, popup2, etc.
     const frame = page.mainFrame();
-    // const content = await frame.content()
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    const content = await frame.content();
     page.on('close', () => {
       const _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
       this._collection.addRecordedAction({
@@ -179,15 +181,15 @@ export class ContextRecorder extends EventEmitter {
     });
     frame.on(Frame.Events.InternalNavigation, event => {
       if (event.isPublic)
-        this._onFrameNavigated(frame, page);
+        this._onFrameNavigated(frame, page, content);
     });
-    page.on(Page.Events.Download, () => this._onDownload(page));
+    page.on(Page.Events.Download, () => this._onDownload(page, content));
     const suffix = this._pageAliases.size ? String(++this._lastPopupOrdinal) : '';
     const pageAlias = 'page' + suffix;
     this._pageAliases.set(page, pageAlias);
 
     if (page.opener()) {
-      this._onPopup(page.opener()!, page);
+      this._onPopup(page.opener()!, page, content);
     } else {
       const _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
       // console.log('Inside _onPage in contextRecorder.ts: ' + frame.url());
@@ -209,7 +211,7 @@ export class ContextRecorder extends EventEmitter {
     this._collection.restart();
     if (this._params.mode === 'recording') {
       for (const page of this._context.pages())
-        this._onFrameNavigated(page.mainFrame(), page);
+        this._onFrameNavigated(page.mainFrame(), page, '');
     }
   }
 
@@ -266,40 +268,36 @@ export class ContextRecorder extends EventEmitter {
     this._collection.addRecordedAction(await this._createActionInContext(frame, action));
   }
 
-  private async _onFrameNavigated(frame: Frame, page: Page) {
+  private _onFrameNavigated(frame: Frame, page: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await frame.content());
     // console.log('Inside _onFrameNavigated in contextRecorder.ts: ' + frame.url());
-    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page);
     this._collection.signal(pageAlias!, frame, { name: 'navigation', url: frame.url() }, content);
   }
 
-  private async _onPopup(page: Page, popup: Page) {
+  private _onPopup(page: Page, popup: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
     const frame= page.mainFrame();
-    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page)!;
     const popupAlias = this._pageAliases.get(popup)!;
     this._collection.signal(pageAlias, frame, { name: 'popup', popupAlias }, content);
   }
 
-  private async _onDownload(page: Page) {
+  private _onDownload(page: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
     const frame= page.mainFrame();
-    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDownloadOrdinal;
     this._collection.signal(pageAlias, frame, { name: 'download', downloadAlias: this._lastDownloadOrdinal ? String(this._lastDownloadOrdinal) : '' }, content);
   }
 
-  private async _onDialog(page: Page) {
+  private _onDialog(page: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
     const frame= page.mainFrame();
-    const content = await frame.content()
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDialogOrdinal;
     this._collection.signal(pageAlias, frame, { name: 'dialog', dialogAlias: this._lastDialogOrdinal ? String(this._lastDialogOrdinal) : '' }, content);

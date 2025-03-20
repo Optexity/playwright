@@ -1276,6 +1276,7 @@ BrowserContext:
         outputFile: string?
         handleSIGINT: boolean?
         omitCallTracking: boolean?
+        contentDir: string?
 
     newCDPSession:
       parameters:

@@ -1841,6 +1841,7 @@ export type BrowserContextEnableRecorderParams = {
   outputFile?: string,
   handleSIGINT?: boolean,
   omitCallTracking?: boolean,
+  contentDir?: string,
 };
 export type BrowserContextEnableRecorderOptions = {
   language?: string,
@@ -1854,6 +1855,7 @@ export type BrowserContextEnableRecorderOptions = {
   outputFile?: string,
   handleSIGINT?: boolean,
   omitCallTracking?: boolean,
+  contentDir?: string,
 };
 export type BrowserContextEnableRecorderResult = void;
 export type BrowserContextNewCDPSessionParams = {
