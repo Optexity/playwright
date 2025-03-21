@@ -31,11 +31,16 @@ export type ActionName =
   'assertValue' |
   'assertChecked' |
   'assertVisible' |
-  'assertSnapshot';
+  'assertSnapshot' |
+  'completeRecording';
 
 export type ActionBase = {
   name: ActionName,
   signals: Signal[],
+};
+
+export type CompleteRecordingAction = ActionBase & {
+  name: 'completeRecording',
 };
 
 export type ActionWithSelector = ActionBase & {
@@ -119,7 +124,7 @@ export type AssertSnapshotAction = ActionWithSelector & {
   snapshot: string,
 };
 
-export type Action = ClickAction | CheckAction | ClosesPageAction | OpenPageAction | UncheckAction | FillAction | NavigateAction | PressAction | SelectAction | SetInputFilesAction | AssertTextAction | AssertValueAction | AssertCheckedAction | AssertVisibleAction | AssertSnapshotAction;
+export type Action = ClickAction | CheckAction | ClosesPageAction | OpenPageAction | UncheckAction | FillAction | NavigateAction | PressAction | SelectAction | SetInputFilesAction | AssertTextAction | AssertValueAction | AssertCheckedAction | AssertVisibleAction | AssertSnapshotAction | CompleteRecordingAction;
 export type AssertAction = AssertCheckedAction | AssertValueAction | AssertTextAction | AssertVisibleAction | AssertSnapshotAction;
 // export type PerformOnRecordAction = ClickAction | CheckAction | UncheckAction | PressAction | SelectAction;
 export type PerformOnRecordAction = ClickAction | CheckAction | UncheckAction | PressAction | SelectAction | FillAction;

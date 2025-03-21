@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import fs from 'fs';
+
 import { sanitizeDeviceOptions, toClickOptionsForSourceCode, toKeyboardModifiers, toSignalMap } from './language';
 import { asLocator, escapeWithQuotes, toSnakeCase } from '../../utils';
 import { deviceDescriptors } from '../deviceDescriptors';
@@ -22,7 +24,6 @@ import type { Language, LanguageGenerator, LanguageGeneratorOptions } from './ty
 import type { BrowserContextOptions } from '../../../types/types';
 import type * as actions from '@recorder/actions';
 
-import fs from 'fs';
 
 export class PythonLanguageGenerator implements LanguageGenerator {
   id: string;
@@ -55,48 +56,51 @@ export class PythonLanguageGenerator implements LanguageGenerator {
     const pageAlias = actionInContext.frame.pageAlias;
     const formatter = new PythonFormatter(4);
 
-    if (action.name === 'openPage') {
-      formatter.add(`${pageAlias} = ${this._awaitPrefix}context.new_page()`);
-      if (action.url && action.url !== 'about:blank' && action.url !== 'chrome://newtab/')
-        formatter.add(`${this._awaitPrefix}${pageAlias}.goto(${quote(action.url)})`);
-      return formatter.format();
-    }
-
-    const locators = actionInContext.frame.framePath.map(selector => `.${this._asLocator(selector)}.content_frame`);
-    const subject = `${pageAlias}${locators.join('')}`;
-    const signals = toSignalMap(action);
-
-    if (signals.dialog)
-      formatter.add(`  ${pageAlias}.once("dialog", lambda dialog: dialog.dismiss())`);
-
-    let code = `${this._awaitPrefix}${this._generateActionCall(subject, actionInContext)}`;
-
-    if (signals.popup) {
-      code = `${this._asyncPrefix}with ${pageAlias}.expect_popup() as ${signals.popup.popupAlias}_info {
-        ${code}
+    if (action.name === 'completeRecording') {
+      formatter.add(` # {"uuid": "${actionInContext.uuid}", "recording_complete": "true"}`);
+    } else {
+      if (action.name === 'openPage') {
+        formatter.add(`${pageAlias} = ${this._awaitPrefix}context.new_page()`);
+        if (action.url && action.url !== 'about:blank' && action.url !== 'chrome://newtab/')
+          formatter.add(`${this._awaitPrefix}${pageAlias}.goto(${quote(action.url)})`);
+        return formatter.format();
       }
-      ${signals.popup.popupAlias} = ${this._awaitPrefix}${signals.popup.popupAlias}_info.value`;
-    }
 
-    if (signals.download) {
-      code = `${this._asyncPrefix}with ${pageAlias}.expect_download() as download${signals.download.downloadAlias}_info {
-        ${code}
+      const locators = actionInContext.frame.framePath.map(selector => `.${this._asLocator(selector)}.content_frame`);
+      const subject = `${pageAlias}${locators.join('')}`;
+      const signals = toSignalMap(action);
+
+      if (signals.dialog)
+        formatter.add(`  ${pageAlias}.once("dialog", lambda dialog: dialog.dismiss())`);
+
+      let code = `${this._awaitPrefix}${this._generateActionCall(subject, actionInContext)}`;
+
+      if (signals.popup) {
+        code = `${this._asyncPrefix}with ${pageAlias}.expect_popup() as ${signals.popup.popupAlias}_info {
+          ${code}
+        }
+        ${signals.popup.popupAlias} = ${this._awaitPrefix}${signals.popup.popupAlias}_info.value`;
       }
-      download${signals.download.downloadAlias} = ${this._awaitPrefix}download${signals.download.downloadAlias}_info.value`;
-    }
 
-    const shouldMerge = actionInContext.shouldMerge? actionInContext.shouldMerge : false;
-    code  = code + ` # {"uuid": "${actionInContext.uuid}", "merge_with_previous": "${shouldMerge}"}`;
+      if (signals.download) {
+        code = `${this._asyncPrefix}with ${pageAlias}.expect_download() as download${signals.download.downloadAlias}_info {
+          ${code}
+        }
+        download${signals.download.downloadAlias} = ${this._awaitPrefix}download${signals.download.downloadAlias}_info.value`;
+      }
 
-    formatter.add(code);
-    if(actionInContext.uuid && actionInContext.action.name) {
-      console.log('Inside generateAction python: ' + actionInContext.action.name + ' ' + actionInContext.uuid);
+      const shouldMerge = actionInContext.shouldMerge ? actionInContext.shouldMerge : false;
+      code = code + ` # {"uuid": "${actionInContext.uuid}", "merge_with_previous": "${shouldMerge}"}`;
+
+      formatter.add(code);
+      // if (actionInContext.uuid && actionInContext.action.name) {
+      //   console.log('Inside generateAction python: ' + actionInContext.action.name + ' ' + actionInContext.uuid);
+      // }
     }
 
     if (actionInContext.content && actionInContext.uuid && !actionInContext.shouldMerge) {
-      if (!fs.existsSync(this._contentDir + '/' + actionInContext.uuid + '.html')) {
+      if (!fs.existsSync(this._contentDir + '/' + actionInContext.uuid + '.html'))
         fs.writeFileSync(this._contentDir + '/' + actionInContext.uuid + '.html', actionInContext.content);
-      }
     }
 
     return formatter.format();
@@ -300,7 +304,7 @@ class PythonFormatter {
         return;
       }
 
-      line = spaces  + line;
+      line = spaces + line;
       if (line.endsWith('{')) {
         spaces += this._baseIndent;
         line = line.substring(0, line.length - 1).trimEnd() + ':';

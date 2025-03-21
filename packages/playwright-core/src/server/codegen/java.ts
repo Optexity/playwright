@@ -51,7 +51,8 @@ export class JavaLanguageGenerator implements LanguageGenerator {
     const pageAlias = actionInContext.frame.pageAlias;
     const offset = this._mode === 'junit' ? 4 : 6;
     const formatter = new JavaScriptFormatter(offset);
-
+    if (action.name === 'completeRecording')
+      return '';
     if (this._mode !== 'library' && (action.name === 'openPage' || action.name === 'closePage'))
       return '';
 

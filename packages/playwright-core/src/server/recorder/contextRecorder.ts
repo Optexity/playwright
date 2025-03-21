@@ -81,7 +81,7 @@ export class ContextRecorder extends EventEmitter {
     this._collection = new RecorderCollection(this._pageAliases);
     this._collection.on('change', (actions: actions.ActionInContext[]) => {
       this._recorderSources = [];
-      console.log('Inside on Change in contextRecorder.ts: ' + actions.map(a => a.action.name).join(', '));
+      // console.log('Inside on Change in contextRecorder.ts: ' + actions.map(a => a.action.name).join(', '));
       for (const languageGenerator of this._orderedLanguages) {
         const { header, footer, actionTexts, text } = generateCode(actions, languageGenerator, languageGeneratorOptions);
         const source: Source = {
@@ -167,7 +167,7 @@ export class ContextRecorder extends EventEmitter {
     const content = await frame.content();
     page.on('close', () => {
       const timestamp = new Date().getTime();
-      const  _uuid = timestamp.toString() + Math.random().toString(36).substring(2, 15);
+      const _uuid = timestamp.toString() + '_' + Math.random().toString(36).substring(2, 15);
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
         action: {
@@ -193,7 +193,7 @@ export class ContextRecorder extends EventEmitter {
       this._onPopup(page.opener()!, page, content);
     } else {
       const timestamp = new Date().getTime();
-      const  _uuid = timestamp.toString() + Math.random().toString(36).substring(2, 15);
+      const _uuid = timestamp.toString() + '_' + Math.random().toString(36).substring(2, 15);
       // console.log('Inside _onPage in contextRecorder.ts: ' + frame.url());
       this._collection.addRecordedAction({
         frame: this._describeMainFrame(page),
@@ -241,7 +241,7 @@ export class ContextRecorder extends EventEmitter {
 
   private async _createActionInContext(frame: Frame, action: actions.Action): Promise<actions.ActionInContext> {
     const timestamp = new Date().getTime();
-    const  _uuid = timestamp.toString() + Math.random().toString(36).substring(2, 15);
+    const _uuid = timestamp.toString() + '_' + Math.random().toString(36).substring(2, 15);
     const frameDescription = await this._describeFrame(frame);
     const content = await frame.content();
     const actionInContext: actions.ActionInContext = {
@@ -266,7 +266,7 @@ export class ContextRecorder extends EventEmitter {
 
   private async _recordAction(frame: Frame, action: actions.Action) {
     // action.url = frame.url();
-    console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
+    // console.log('Inside _recordAction in contextRecorder.ts: ' + action.name);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid2 + ".html", await frame.content());
     this._collection.addRecordedAction(await this._createActionInContext(frame, action));
   }
@@ -282,7 +282,7 @@ export class ContextRecorder extends EventEmitter {
   private _onPopup(page: Page, popup: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
-    const frame= page.mainFrame();
+    const frame = page.mainFrame();
     const pageAlias = this._pageAliases.get(page)!;
     const popupAlias = this._pageAliases.get(popup)!;
     this._collection.signal(pageAlias, frame, { name: 'popup', popupAlias }, content);
@@ -291,7 +291,7 @@ export class ContextRecorder extends EventEmitter {
   private _onDownload(page: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
-    const frame= page.mainFrame();
+    const frame = page.mainFrame();
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDownloadOrdinal;
     this._collection.signal(pageAlias, frame, { name: 'download', downloadAlias: this._lastDownloadOrdinal ? String(this._lastDownloadOrdinal) : '' }, content);
@@ -300,7 +300,7 @@ export class ContextRecorder extends EventEmitter {
   private _onDialog(page: Page, content: string) {
     // _uuid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     // fs.writeFileSync('playwright_recorder_output/' + _uuid + ".html", await page.mainFrame().content());
-    const frame= page.mainFrame();
+    const frame = page.mainFrame();
     const pageAlias = this._pageAliases.get(page)!;
     ++this._lastDialogOrdinal;
     this._collection.signal(pageAlias, frame, { name: 'dialog', dialogAlias: this._lastDialogOrdinal ? String(this._lastDialogOrdinal) : '' }, content);
