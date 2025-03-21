@@ -1,0 +1,903 @@
+<!DOCTYPE html><html lang="en-us" class="  lang-en" style="--global-nav-height: 44px; --uicomponents-global-nav-height: 44px; --global-nav-vertical-nav-width: 64px; --global-nav-toolbar-zIndex: 1091; --copilot-sidebar-width: 0px;"><head><style data-hubspot-styled-components=""></style><style data-hubspot-styled-components=""></style><style data-hubspot-styled-components=""></style><style data-hubspot-styled-components="active" data-styled-version="5.0.1"></style><style data-hubspot-styled-components="active" data-styled-version="5.0.1"></style><script async="" src="//static.hsappstatic.net/growth-dynamic-ui/ex/js/start.js"></script><script async="" src="//static.hsappstatic.net/unified-navigation-ui/static-1.24159/bundles/project.js"></script><script type="text/javascript" async="" src="https://app-na2.hubspot.com/unified-nav/loader.js"></script><script>window.__hsiplt = () => {}</script><script>window.__hssessrt = true</script><script>const IPLTEvents={TrackingStarted:"s",TrackingFinished:"f",PerformanceResourceTiming:"p",PerformanceNavigationTiming:"n",ScriptLoaded:"l",ScriptErrored:"e",BeforeScriptTag:"b",ScriptLoadTimeout:"t",DocumentReady:"c",MaxLogOverflow:"o",HitTimeBoundary:"h",VisibilityChangeHidden:"d",VisibilityChangeVisible:"v",SessionLink:"k"},ReportReasons={AlwaysSent:"a",SlowLoading:"s",VisibilityStateChanged:"v",LogsFlushed:"f",LogLimitReached:"l"};(()=>{const e=5e3,t=6e4,n=3e5,o=50,i=5e3,r=window.__hssessrt;let s,a=r,c=!0,d=[],u=0,l=null,p=null;const g=()=>{s&&s.disconnect();p&&clearTimeout(p);l&&clearTimeout(l);document.removeEventListener("visibilitychange",O);a=!1;c=!1},f=(e,t=!1)=>{if(!c||R()>=n+1e4||u>=i)g();else{M(e);u+=d.length;d=[];t&&g()}},m=e=>{if(!c||d.length+u>=i-1)g();else{d.push(e);if(d.length+u!==i-2)d.length>=o&&f(ReportReasons.LogsFlushed);else{d.push([IPLTEvents.MaxLogOverflow,R()]);d.push([IPLTEvents.TrackingFinished,R()]);f(ReportReasons.LogLimitReached,!0)}}},h=["name","responseStatus","fetchStart","responseEnd","serverTiming","startTime","initiatorType","nextHopProtocol","redirectStart","redirectEnd","domainLookupStart","domainLookupEnd","connectStart","connectEnd","secureConnectionStart","requestStart","responseStart","transferSize","encodedBodySize","decodedBodySize","renderBlockingStatus"],T=[...h,"unloadEventStart","unloadEventEnd","type","redirectCount"];function v(){try{return!!localStorage.getItem("log-page-load-id")}catch(e){}return!1}function w(){try{return"10000000-1000-4000-8000-100000000000".replace(/[018]/g,(e=>{const t=0|(crypto&&crypto.getRandomValues?15&crypto.getRandomValues(new Uint8Array(1))[0]:16*Math.random());return("0"===e?t:3&t|8).toString(16)}))}catch(e){return null}}let L;try{L=crypto.randomUUID()}catch(e){L=w()}v()&&console.log("HubSpot Page Load ID:",L);window.hubspot||(window.hubspot={});window.hubspot.sessionId=L;try{var S;const e=window.top;e&&window!==e&&null!==(S=e.hubspot)&&void 0!==S&&S.sessionId&&m([IPLTEvents.SessionLink,e.hubspot.sessionId])}catch(e){}function y(e,t,n){m([e,...t.map((e=>{if("serverTiming"===e)return E(n);const t=n[e];return null===t?null:"number"==typeof t?Math.round(t):t}))])}function R(){return Math.round(performance.now())}function E({serverTiming:e}){return e?e.map((e=>[e.name,e.description,e.duration])):[]}const b=new Map,I=e=>r?!(e.name&&e.name.endsWith("api/cartographer/v1/ipl")):"script"===e.initiatorType;try{s=new PerformanceObserver((e=>e.getEntries().filter(I).forEach((e=>y(IPLTEvents.PerformanceResourceTiming,h,e)))));s.observe({type:"resource",buffered:!0})}catch(e){console.error(e)}const P=performance.getEntriesByType("navigation")[0];P&&y(IPLTEvents.PerformanceNavigationTiming,T,P);function k(e){m([e,R()])}k(IPLTEvents.TrackingStarted);let B=1;function V(){return/qa.com$/.test(window.location.host)}function C(){const e=/^\/(?:[A-Za-z0-9-_]*)\/(\d+)(?:\/|$)/.exec(window.location.pathname);return e?parseInt(e[1],10):void 0}function F(e){const t=JSON.stringify(e),n=`https://app.${V()?"hubspotqa":"hubspot"}.com/api/cartographer/v1/ipl`;if(navigator&&"function"==typeof navigator.sendBeacon)try{navigator.sendBeacon(n,t)}catch(e){}}function M(e){if(l){clearTimeout(l);l=null}if(0===d.length&&0===b.size)return;F({v:0,r:e,t:R(),n:B++,cru:L,pto:performance.timeOrigin,dn:Date.now(),u:window.location.href,l:d,pid:C(),p:[...b.entries()].map((([e,t])=>[e,t.firstSeen]))})}function z(e){l||(l=window.setTimeout((()=>f(e)),1e3))}function H(){return r?Math.min(t,n-R()):null}function A(){if(!a)return;const e=H();if(null!==e)if(e<=0){k(IPLTEvents.HitTimeBoundary);k(IPLTEvents.TrackingFinished);f(ReportReasons.LogLimitReached,!0)}else{z(ReportReasons.LogsFlushed);p=setTimeout(A,e)}else console.error("scheduled a post-load report while sessionResourceTracking was disabled")}function D(){if("loading"===document.readyState||b.size>0){z(ReportReasons.SlowLoading);p=setTimeout(D,e)}else{const e=H();if(e&&e>0){f(ReportReasons.AlwaysSent);p=setTimeout(A,e)}else{k(IPLTEvents.TrackingFinished);f(ReportReasons.AlwaysSent,!0)}}}function O(){if("hidden"===document.visibilityState){k(IPLTEvents.VisibilityChangeHidden);f(ReportReasons.VisibilityStateChanged)}else k(IPLTEvents.VisibilityChangeVisible)}document.addEventListener("visibilitychange",O);let U=!1;function _(){if("complete"===document.readyState&&!U){U=!0;k(IPLTEvents.DocumentReady)}}document.addEventListener("readystatechange",_);const x=5e3-R();x>0?setTimeout(D,x):D();function q(...e){const t=R(),[n,o]=e;if(n===IPLTEvents.BeforeScriptTag){const n=new URL(e[2],window.location.href).href;m([IPLTEvents.BeforeScriptTag,n,t]);b.set(n,{firstSeen:t,timeout:window.setTimeout((()=>{m([IPLTEvents.ScriptLoadTimeout,n,t,R()]);z(ReportReasons.SlowLoading)}),5e3)});return}const i=b.get(o.src);clearTimeout(i.timeout);b.delete(o.src);m([n,new URL(o.src,window.location.href).href,i.firstSeen,t]);t-i.firstSeen>5e3&&z(ReportReasons.SlowLoading)}window.__hsiplt=q})();</script><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><link rel="preconnect" href="https://static.hsappstatic.net" crossorigin="anonymous"><meta content="width=device-width, initial-scale=1" name="viewport"><meta content="notranslate" name="google"><script>window.performance.mark("start_quick_fetch_script");!function(){const e="api-verify",t="[quick-fetch] Early request not found";let r={};function n(e){const t=`; ${e}`.split(";"),r="csrf.app";if(t.length)for(let e=0;e<t.length;e++){const n=t[e].split("=");if(2===n.length&&n[0].trim()===r)return n[1]}return null}function o(e,t){return e&&Object.prototype.hasOwnProperty.call(e,t)}function s(e){const t=/^\/(?:[A-Za-z0-9-_]*)\/(\d+)(?:\/|$)/.exec(e||document.location.pathname);return t&&t[1]||void 0}function a(e){return e?"static"===e?"dev":e.replace("static-",""):"unknown"}function i(e){return window.__workerEarlyRequests&&window.__workerEarlyRequests[e]?`${e}-cloudflare`:e}function c(){try{return!!localStorage.getItem("HTTP_FAILURE_INJECTION")}catch(e){return!1}}function u(e){return o(r,e)?r[e]:null}function l(e){o(r,e)&&delete r[e];o(window.__workerEarlyRequests,e)&&delete window.__workerEarlyRequests[e]}function p(){r={}}function d(e,n,s=!1){const a=i(e),c=`mark_${a}_request`,u=`mark_${a}_success`;if(window.performance.getEntriesByName(c,"mark").length&&window.performance.getEntriesByName(u,"mark").length&&0===window.performance.getEntriesByName(`mark_${a}_success`).length){window.performance.mark(`mark_${a}_success`);window.performance.measure(`measure_${a}_time`,c,u)}if(!o(r,e)||s&&!o(window.__workerEarlyRequests,e))console.error(t,e,n);else{r[e].finished=!0;r[e].data=n;r[e].whenFinishedCallbacks.forEach((e=>{e(n)}))}}function w(e,n,s,a=!1){if(!o(r,e)||a&&!o(window.__workerEarlyRequests,e))console.error(t,e,n,s);else{r[e].error=!0;r[e].errorStatus=n;r[e].onErrorCallbacks.forEach((e=>{e(s,n)}))}}function h(e,t){return{finished:!1,error:!1,errorStatus:"",whenFinishedCallbacks:t.whenFinished?[t.whenFinished]:[],onErrorCallbacks:t.onError?[t.onError]:[],whenFinished(e){this.finished?e(this.data):this.whenFinishedCallbacks.push(e)},onError(e){this.error?e(this.request,this.errorStatus):this.onErrorCallbacks.push(e)},request:e}}function f(e,t,r){const n=h(new XMLHttpRequest,t);e.then((({responseBody:e})=>{d(r,e,!0)})).catch((e=>{w(r,e.message||"Unknown error",n.request,!0)}));return n}function m(e,t){const u=i(e);if(c())return;if(window.__workerEarlyRequests&&window.__workerEarlyRequests[e]){window.performance.mark(`mark_${u}_request`);r[e]=f(window.__workerEarlyRequests[e].promise,t,e);return}if(o(r,e))return;window.performance.mark(`mark_${u}_request`);const l=new XMLHttpRequest,p=new URL(t.url),m=new URLSearchParams(p.search),{_currentProject:_,_currentProjectVersion:k}=window.quickFetch;m.append("hs_static_app",_);m.append("hs_static_app_version",a(k));if(!t.noPortalId&&!m.has("portalId")){const e=s();e&&m.append("portalId",e)}t.timeout&&!m.has("clienttimeout")&&m.append("clienttimeout",`${t.timeout}`);const q=`${p.origin}${p.pathname}?${m.toString()}`;l.open(t.type?t.type:"GET",q,!0);l.withCredentials=!Object.prototype.hasOwnProperty.call(t,"withCredentials")||!!t.withCredentials;null!=t.timeout&&(l.timeout=t.timeout);l.addEventListener("load",(()=>{let r;if(200<=l.status&&l.status<400){r=l.responseText;if("json"===t.dataType)try{r=JSON.parse(r)}catch(t){w(e,"Parsing error. Response is not valid JSON",l);return}d(e,r)}else w(e,`Network request failed. Status: ${l.status}`,l)}));l.addEventListener("error",(()=>{w(e,"Network request failed",l)}));l.addEventListener("timeout",(()=>{w(e,"timeout",l)}));const y=n(window.document.cookie);null===y||t.url.includes("/login-verify/hub-user-info")?y||console.error("No CSRF Cookie found."):l.setRequestHeader("X-HubSpot-CSRF-hubspotapi",y);l.setRequestHeader("Accept","application/json, text/javascript, */*; q=0.01");t.extraHeaders&&t.extraHeaders.length&&t.extraHeaders.forEach((e=>{l.setRequestHeader(e.header,e.value)}));t.contentType&&l.setRequestHeader("Content-type",t.contentType);r[e]=h(l,t);switch(t.type){case"GET":case void 0:l.send();break;case"PUT":case"PATCH":case"POST":t.contentType||l.setRequestHeader("Content-type","application/json");l.send(t.data);break;default:console.error(`Unsupported quick-fetch method "${t.type}", skipping quick-fetch for \${ajaxOptions.url}`);return}}function _(e){let t;const r=/^(api|local|app)-(.*)\.hubspot(documents)?(qa)?\.com/,n=r.test(window.location.hostname),o=/\.hubspot(documents)?qa\.com/.test(window.location.hostname);void 0===e&&(e=!0);if(n){const n=r.exec(window.location.hostname)[2];t=e?`app-${n}`:`api-${n}`}else t=e?"app":"api";return e?`https://${t}.hubspot${o?"qa":""}.com/api`:`https://${t}.hubspot${o?"qa":""}.com`}function k(e,t){let r=_(t);try{const t=JSON.parse(localStorage.getItem("LOCAL_API_OVERRIDES"));for(let n=0;n<t.length;n++)e.includes(t[n])&&(r=r.replace(/https:\/\/(app|api)/,"https://local").replace("/api",""))}catch(e){}return r+e}function q(){try{return window.top!==window&&window.top.quickFetch&&"function"==typeof window.top.quickFetch.getRequestStateByName}catch(e){return!1}}function y(t={}){if(q()){const t=window.top.quickFetch.getRequestStateByName(e);if(t){r[e]=Object.assign({},t,{fromParentContext:!0});return}}const n=k("/login-verify/hub-user-info?early=true"),o=Object.assign({url:n,dataType:"json",timeout:3e3},t);m(e,o)}function E(t){const r=u(e);r&&r.whenFinished(t)}window.quickFetch={afterAuth:E,clearAllRequests:p,getApiUrl:k,getPortalId:s,getRequestStateByName:u,makeEarlyRequest:m,makeLoginVerifyRequest:y,removeEarlyRequest:l,getCookie:n};window.performance.mark("end_quick_fetch_script");window.performance.measure("measure_quick_fetch_script","start_quick_fetch_script","end_quick_fetch_script")}();
+        window.quickFetch._currentProject = 'setup-guide-ui';
+        window.quickFetch._currentProjectVersion = 'static-1.44846';
+        
+        window.quickFetch.makeLoginVerifyRequest();
+         </script><script>(function() {
+        var staticDomainPrefix='//static.hsappstatic.net';!function(){var o,t;void 0===window.hubspot&&(window.hubspot={}),void 0===window.hubspot.polyfills&&(window.hubspot.polyfills={}),window.hubspot.polyfills.__CONDITIONAL=!0,o={"intersection-observer":function(){return"IntersectionObserver"in window&&"IntersectionObserverEntry"in window&&"intersectionRatio"in window.IntersectionObserverEntry.prototype&&"isIntersecting"in window.IntersectionObserverEntry.prototype},"resize-observer":function(){return"ResizeObserver"in window},"es.array.flat":function(){return Array.prototype.flat},"es.array.flat-map":function(){return Array.prototype.flatMap},"es.object.from-entries":function(){return Object.fromEntries},"es.symbol":function(){return String(Symbol())&&Object.getOwnPropertySymbols&&Object.getOwnPropertySymbols("qwe")&&Symbol.for&&Symbol.keyFor&&"[null]"===JSON.stringify([Symbol()])&&"{}"===JSON.stringify({a:Symbol()})&&"{}"===JSON.stringify(Object(Symbol()))&&Symbol.prototype[Symbol.toPrimitive]&&Symbol.prototype[Symbol.toStringTag]},"es.promise":function(){function o(){}var t=new Promise(function(t){t(1)}),n=(t.constructor={})[Symbol.species]=function(t){t(o,o)};return t.then(o)instanceof n&&"function"==typeof PromiseRejectionEvent},"es.promise.finally":function(){return Promise.prototype.finally.call({then:function(){return this}},function(){})}},(t=Object.keys(o).find(t=>{try{return!o[t]()}catch(t){return!0}}))?(window.hubspot.polyfills.__REASON=t,(t=document.createElement("script")).src=staticDomainPrefix+"/HeadJS/static-2.509/js/polyfills/core.js",t.crossOrigin="anonymous",document.write(t.outerHTML)):window.hubspot.polyfills.__INSTALLED=!1}();
+      })();</script><script>__hsiplt('b',document.currentScript,"//static.hsappstatic.net/head-dlb/static-1.2317/bundle.production.js")</script><script src="//static.hsappstatic.net/head-dlb/static-1.2317/bundle.production.js" type="text/javascript" crossorigin="anonymous" onload="__hsiplt('l',this)" onerror="__hsiplt('e',this)" data-hsiplt=""></script><script>__hsiplt('b',document.currentScript,"//static.hsappstatic.net/apollo-dlb/static-3.41/bundle.production.js")</script><script src="//static.hsappstatic.net/apollo-dlb/static-3.41/bundle.production.js" type="text/javascript" crossorigin="anonymous" onload="__hsiplt('l',this)" onerror="__hsiplt('e',this)" data-hsiplt=""></script><script>__hsiplt('b',document.currentScript,"//static.hsappstatic.net/setup-guide-ui/static-1.44845/bundles/earlyRequester.js")</script><script src="//static.hsappstatic.net/setup-guide-ui/static-1.44845/bundles/earlyRequester.js" type="text/javascript" crossorigin="anonymous" onload="__hsiplt('l',this)" onerror="__hsiplt('e',this)" data-hsiplt=""></script><script>window.hubspot=window.hubspot||{},window.hubspot["__hub-http-labs"]=window.hubspot["__hub-http-labs"]||{},window.hubspot["__hub-http-labs"].HUBONEDOMAIN=!0;</script><link href="//static.hsappstatic.net/setup-guide-ui/static-1.44819/sass/project.css" rel="stylesheet" type="text/css"><script>
+        hns('hubspot.bender', {
+          staticDomain: '//static.hsappstatic.net' || window.location.host,
+          staticDomainPrefix: '//static.hsappstatic.net' || ('//' + window.location.host),
+
+          currentProject: 'setup-guide-ui',
+          currentProjectVersion: 'static-1.44846',
+
+          depVersions: {
+  "setup-guide-ui": "static-1.44846",
+  "apollo-dlb": "static-3.41",
+  "data-fetching-client": "static-1.6485",
+  "demographics-client": "static-1.2671",
+  "emoji-mart": "static-3.4",
+  "enviro": "static-4.270",
+  "foundations-components": "static-1.3809",
+  "framework-data-table": "static-2.5610",
+  "getting-started-shared-tasks": "static-1.6749",
+  "growth-invite-components": "static-1.4632",
+  "growth-onboarding-reliability": "static-1.2368",
+  "growth-pro-utils-lib-client-types": "static-1.1471",
+  "head-dlb": "static-1.2317",
+  "history": "static-4.15",
+  "hs-promise-utils": "static-1.2702",
+  "hs-test-utils": "static-1.5267",
+  "hubspot-dlb": "static-1.1772",
+  "HubStyleTokens": "static-2.8807",
+  "I18n": "static-7-dc-modernize-data-imports.11",
+  "jasmine-runner": "static-1.3626",
+  "js-cookie": "static-1.18",
+  "laboratory-lib": "static-3.4305",
+  "lodash": "static-1.3",
+  "onboarding-scopes": "static-1.3686",
+  "onboarding-settings-client": "static-1.2003",
+  "onboarding-tours": "static-1.11424",
+  "onboarding-utils": "static-1.2492",
+  "purchase-motions-components": "static-1.1734",
+  "quartz": "static-1.3789",
+  "raven": "static-3.2923",
+  "react-dnd": "static-2.33",
+  "react-dnd-html5-backend": "static-2.10",
+  "react-redux": "static-7.16",
+  "react-rhumb": "static-1.13681",
+  "react-router-dom": "static-5.26",
+  "react-table": "static-2.4",
+  "redux-mock-store": "static-1.8",
+  "redux-thunk": "static-2.17",
+  "self-service-api": "static-1.7378",
+  "settings-ui-lib": "static-1.9659",
+  "setup-guide-api": "static-1.43872",
+  "setup-guide-components": "static-1.44854",
+  "signup-constants": "static-1.13480",
+  "superstore": "static-1.2041",
+  "tinymce": "static-6.5",
+  "trial-components-library": "static-1.8556",
+  "ui-addon-draggable": "static-1.4350",
+  "ui-addon-integrations-directory-panel": "static-1.1347",
+  "ui-addon-react-router-dom": "static-1.6853",
+  "ui-addon-upgrades": "static-9.13922",
+  "ui-coaching-tips": "static-1.16863",
+  "usage-tracker": "static-1.4749",
+  "usage-tracker-core": "static-1.4599",
+  "webpack-env": "static-1.41",
+  "wootric-nps": "static-1.4304",
+  "cms-onboarding-lib": "static-1.28220",
+  "ContentComponents": "static-2.61598",
+  "ContentUtils": "static-1.58638",
+  "copilot-toolkit": "static-1.2042",
+  "cssUtils": "static-1.319",
+  "feedback-loader": "static-1.23870",
+  "foundations-assets": "static-1.2072",
+  "foundations-theming": "static-1.1180",
+  "frontend-preferences-client": "static-1.5033",
+  "growth-data-modal": "static-1.2248",
+  "growth-in-app-sidepanel-nav": "static-1.5890",
+  "growth-pro-utils-lib": "static-1.2671",
+  "hub-http": "static-1.2732",
+  "hubspot-url-utils": "static-1.1402",
+  "immutable": "static-2.19",
+  "InboxConnectUtils": "static-4.7971",
+  "marketplace-ui-common": "static-1.10045",
+  "metrics-js": "static-1.6084",
+  "onboarding-tours-guide-config": "static-1.33224",
+  "PortalIdParser": "static-2.249",
+  "prefetcher": "static-1.3057",
+  "project-storage": "static-1.1901",
+  "quartz-core": "static-1.3008",
+  "quick-fetch": "static-1.1826",
+  "react": "static-7.133",
+  "redux": "static-4.16",
+  "sales-clients-common": "static-1.40230",
+  "setup-guide-config": "static-1.25106",
+  "SharedI18nStrings": "static-1.160",
+  "styled-components": "static-2.40",
+  "ui-addon-i18n": "static-1.8070",
+  "ui-addon-iframeable": "static-1.6332",
+  "ui-addon-video-player": "static-1.6115",
+  "ui-universal-auth": "static-1.5754",
+  "UIComponents": "static-3.5757",
+  "usage-tracker-container": "static-1.4739",
+  "usage-tracker-session-replay": "static-1.2435",
+  "user-context": "static-1.2362",
+  "user-context-app-client": "static-1.2079",
+  "apollo-stack-hubspot": "static-3.43",
+  "hs-promise-rejection-tracking": "static-1.2642",
+  "raven-hubspot": "static-1.3230",
+  "classnames": "static-2.10",
+  "hoist-non-react-statics": "static-3.9",
+  "react-dom": "static-7.85",
+  "bend-plugin-trellis-migration": "static-1.866",
+  "moment": "static-3.26",
+  "bend-plugin-quartz": "static-1.66",
+  "quartz-webpack": "static-1.13",
+  "graphql": "static-1.49",
+  "floating-ui": "static-1.18",
+  "framer-motion": "static-1.28",
+  "hs-story-utils": "static-1.6209",
+  "react-aria": "static-1.30",
+  "react-select-plus": "static-1.65",
+  "react-utils": "static-2.3007",
+  "react-virtualized": "static-2.65",
+  "tanstack-table": "static-1.10",
+  "ui-fonts": "static-1.327",
+  "ui-images": "static-2.758",
+  "atom": "static-1.2707",
+  "crm-links": "static-1.3191",
+  "customer-data-associations": "static-1.4529",
+  "customer-data-objects": "static-1.4837",
+  "customer-data-objects-ui-components": "static-1.9957",
+  "customer-data-properties": "static-1.40537",
+  "customer-data-property-utils": "static-1.5055",
+  "customer-data-reference-ui-components": "static-1.10044",
+  "customer-data-ui-utilities": "static-1.7019",
+  "hs-lodash": "static-4.9",
+  "hubspot-apollo-client": "static-1.2011",
+  "HubStyle": "static-2.9117",
+  "icons": "static-2.585",
+  "immer": "static-1.33",
+  "PatternValidationJS": "static-1.437",
+  "property-translator": "static-1.2882",
+  "react-immutable-proptypes": "static-2.8",
+  "react-input-autosize": "static-2.17",
+  "redux-toolkit": "static-1.7",
+  "reference-resolvers": "static-1.5557",
+  "reference-resolvers-lite": "static-1.5110",
+  "reporting-data": "static-1.57131",
+  "reselect": "static-2.16",
+  "sanitize": "static-1.6",
+  "sanitize-text": "static-1.5474",
+  "testing-library": "static-1.111",
+  "transmute": "static-2.29",
+  "ui-addon-avatars": "static-2.6814",
+  "rpc-client-utils": "static-1.1928",
+  "HeadJS": "static-2.509",
+  "hs-test-utils-bend-plugin": "static-1.378",
+  "hub-http-janus": "static-1.576",
+  "hub-http-rxjs": "static-1.541",
+  "msw": "static-1.39",
+  "i18n-data": "static-1.186",
+  "moment-timezone": "static-5.17",
+  "jasmine": "static-4.1595",
+  "hubspotter-http": "static-1.2351",
+  "ts-schema": "static-1.1775",
+  "growth-onboarding-confetti": "static-1.445",
+  "ui-shepherd-react": "static-3.7077",
+  "ui-shepherd-tracker": "static-1.4458",
+  "merchandise-lib": "static-1.204",
+  "feature-store-service-types": "static-1.2154",
+  "growth-monetization-service-types": "static-1.2161",
+  "purchase-motions-api": "static-1.1736",
+  "trials-service-types": "static-1.1562",
+  "upgrade-management-service-types": "static-1.2145",
+  "browserslist-config-hubspot": "static-1.141",
+  "quartz-core-utils": "static-1.656",
+  "StyleGuideUI": "static-3.428",
+  "flux-actions": "static-1.246",
+  "react-colorpicker": "static-2.7452",
+  "redux-observable": "static-1.11",
+  "ReduxMessenger": "static-2.7890",
+  "rxjs": "static-5.10",
+  "underscore": "static-1.8",
+  "ExtensionInstallHelpers": "static-1.502",
+  "marketplace-embed": "static-1.11640",
+  "marketplace-ui-client-types": "static-1.7449",
+  "ui-addon-scriptloader": "static-1.9546",
+  "salesImages": "static-1.488",
+  "react-flip-move": "static-1.38",
+  "ContentData": "static-1.58716",
+  "SafeStorage": "static-1.1814",
+  "ai-components-ui-library": "static-1.3172",
+  "blueimp-md5": "static-1.8",
+  "cms-field-types": "static-1.2070",
+  "codemirror": "static-5.60",
+  "content-embed-lib": "static-1.4087",
+  "data-token-picker": "static-1.11666",
+  "data-token-views": "static-1.11650",
+  "ExportDialog": "static-6.7401",
+  "file-manager-components": "static-1.14114",
+  "FileManagerCore": "static-1.29615",
+  "FileManagerLib": "static-1.29758",
+  "forms-utils-lib": "static-1.7816",
+  "growth-payments-core": "static-1.17130",
+  "integrations-error-boundary-lib": "static-1.5009",
+  "integrations-lib": "static-1.7596",
+  "media-bridge-lib": "static-1.14284",
+  "payment-link-components": "static-1.13600",
+  "payments-embed-points-lib": "static-1.5891",
+  "products-ui-components": "static-1.31481",
+  "react-beautiful-dnd": "static-1.13",
+  "react-codemirror": "static-1.7795",
+  "react-dnd-compat": "static-1.1654",
+  "react-tinymce": "static-1.46044",
+  "rich-text-lib": "static-1.15207",
+  "simple-menus-core": "static-1.11415",
+  "simple-menus-lib": "static-1.12933",
+  "tinymce-config": "static-2.45171",
+  "tinymce-data": "static-1.31253",
+  "tinymce-plugins": "static-1.48284",
+  "tinymce-themes": "static-1.47138",
+  "ui-addon-emoji-picker": "static-1.7154",
+  "ui-memberships-settings-lib": "static-1.22474",
+  "video-data-lib": "static-1.24849",
+  "videoconference-integration-components": "static-1.3114",
+  "content-icons-ui": "static-1.1806",
+  "chatspot-client-types": "static-1.6285",
+  "chatspot-core": "static-1.10867",
+  "sassPrefix": "static-1.120",
+  "foundations-theming-base": "static-1.165",
+  "hub-http-shared-msw-handlers": "static-1.5033",
+  "hub-http-contrib": "static-1.551",
+  "ui-addon-sales-email": "static-1.2518",
+  "immutable-less": "static-1.1923",
+  "nav-meta": "static-1.22929",
+  "react-window": "static-1.13",
+  "dispatcher": "static-1.104",
+  "general-store": "static-6.20",
+  "hubspotter-http-shared-msw-handlers": "static-1.5031",
+  "mobile-manifest-mixins": "static-1.280",
+  "platform-navigation-bootstrap": "static-1.8959",
+  "csstype": "static-1.8",
+  "content-assistance-lib": "static-1.4287",
+  "amplitude-session-replay-browser": "static-1.6",
+  "getting-started-shared-tasks-store": "static-1.5867",
+  "framework-data-schema-resolvers": "static-1.3804",
+  "conditional-properties-service-client": "static-1.1840",
+  "crm-message-bus": "static-1.30758",
+  "external-options-client-types": "static-1.1774",
+  "inbound-db-properties-service-client": "static-1.1805",
+  "object-builder-ui-client": "static-1.35498",
+  "pipeline-validation-client-types": "static-1.1733",
+  "ui-addon-form-validation": "static-1.8256",
+  "react-immutable-render-mixin": "static-1.9",
+  "apollo-link-hub-http": "static-2.2012",
+  "fast-json-stable-stringify": "static-1.4",
+  "inbound-db-meta-service-client": "static-1.1454",
+  "reporting-client-types": "static-1.1036",
+  "autolinker": "static-3.11",
+  "eligibility-engine-service-types": "static-1.843",
+  "marketplace-ui-apps-core": "static-1.8583",
+  "trellis-ecosystem": "static-1.2444",
+  "analytics_js": "static-1.2133",
+  "diff-match-patch": "static-1.7",
+  "cropperjs": "static-1.10",
+  "FileManagerImages": "static-1.27265",
+  "urlinator": "static-1.1909",
+  "commerce-analytics-service-client": "static-1.1327",
+  "native-integrations-shared-strings": "static-1.5052",
+  "commerce-tours-lib": "static-1.1015",
+  "sales-checkout-service-client": "static-1.1339",
+  "payments-enrollment-embed-lib": "static-1.13187",
+  "commerce-billing-lib": "static-1.10410",
+  "commerce-shared-components-lib": "static-1.11159",
+  "crm_components": "static-3.81658",
+  "crm_data": "static-4.81658",
+  "customer-data-filters-ui": "static-1.29072",
+  "customer-data-tracking": "static-1.4119",
+  "property-description-translator": "static-1.1352",
+  "browser-eslint": "static-2.9",
+  "react-transition-group": "static-1.7",
+  "seamless-immutable": "static-7.6",
+  "interframe": "static-3.1858",
+  "layout-dnd-components": "static-1.8725",
+  "layout-dnd-utils": "static-1.7700",
+  "NamespacedHubStyle": "static-2.7041",
+  "platform-infra-nav-components": "static-1.5454",
+  "crm-pipelines-api-client-types": "static-1.1667",
+  "framework-builder-read-service-client": "static-1.1756",
+  "framework-data-schema-quick-fetch": "static-1.3708",
+  "persist-promise": "static-1.1090",
+  "developer-experience-shared-components": "static-1.7022",
+  "ui-extensibility-client-types": "static-1.1767",
+  "trellis-story-utils": "static-1.1767",
+  "onboarding-tours-client": "static-1.1830",
+  "ecosystem-marketplace-core": "static-1.14181",
+  "growth-onboarding-feedback-components": "static-1.3700",
+  "stripe-embedded-components": "static-1.3055",
+  "commerce-tools-ui-lib": "static-1.2510",
+  "subscriptions-iframe-lib": "static-1.17162",
+  "conversations-skeleton-state": "static-1.4651",
+  "crm_universal": "static-1.18879",
+  "customer-data-content": "static-1.21877",
+  "crm_schema": "static-3.81693",
+  "customer-data-email": "static-1.13668",
+  "customer-data-filters-ui-msw-helpers": "static-1.11502",
+  "FormUrlGenerator": "static-2.2081",
+  "ui-addon-teams": "static-1.17686",
+  "layout-data-lib": "static-1.6025",
+  "apps-service-types": "static-1.1942",
+  "oauth-service-types": "static-1.1739",
+  "marketplace-ui-assets-core": "static-1.9989",
+  "marketplace-ui-reviews": "static-1.10007",
+  "marketplace-ui-solutions-core": "static-1.10020",
+  "signup-ui-url-generator": "static-2.5201",
+  "stripe-connect-js": "static-1.30",
+  "customer-data-rte": "static-1.25315",
+  "cv-backend-services": "static-1.792",
+  "hubspot-prosemirror": "static-1.9569",
+  "payments-post-enroll-local-storage-lib": "static-1.2311",
+  "prosemirror": "static-1.13",
+  "qrcode-generator": "static-1.35",
+  "invoices-ui-lib": "static-1.44808",
+  "SalesContentIndexUI": "static-3.4695",
+  "sequences-lib": "static-1.3546",
+  "timezone-utils": "static-2.2730",
+  "ui-gdpr-components": "static-1.7460",
+  "draft-content-plugins": "static-1.20611",
+  "draft-convert": "static-2.31",
+  "draft-extend": "static-2.46",
+  "draft-js": "static-5.37",
+  "draft-plugins": "static-2.17034",
+  "knowledge-content-types": "static-1.6697",
+  "commerce-products-lib": "static-1.957",
+  "FireAlarmUi": "static-1.2553",
+  "ui-asset-management-lib": "static-1.7012",
+  "sequences-client-types-lib": "static-1.3402",
+  "permission-components": "static-1.2594"
+},
+          depPathPrefixes: {
+  "setup-guide-ui": "/setup-guide-ui/static-1.44846",
+  "apollo-dlb": "/apollo-dlb/static-3.41",
+  "data-fetching-client": "/data-fetching-client/static-1.6485",
+  "demographics-client": "/demographics-client/static-1.2671",
+  "emoji-mart": "/emoji-mart/static-3.4",
+  "enviro": "/enviro/static-4.270",
+  "foundations-components": "/foundations-components/static-1.3809",
+  "framework-data-table": "/framework-data-table/static-2.5610",
+  "getting-started-shared-tasks": "/getting-started-shared-tasks/static-1.6749",
+  "growth-invite-components": "/growth-invite-components/static-1.4632",
+  "growth-onboarding-reliability": "/growth-onboarding-reliability/static-1.2368",
+  "growth-pro-utils-lib-client-types": "/growth-pro-utils-lib-client-types/static-1.1471",
+  "head-dlb": "/head-dlb/static-1.2317",
+  "history": "/history/static-4.15",
+  "hs-promise-utils": "/hs-promise-utils/static-1.2702",
+  "hs-test-utils": "/hs-test-utils/static-1.5267",
+  "hubspot-dlb": "/hubspot-dlb/static-1.1772",
+  "HubStyleTokens": "/HubStyleTokens/static-2.8807",
+  "I18n": "/I18n/static-7-dc-modernize-data-imports.11",
+  "jasmine-runner": "/jasmine-runner/static-1.3626",
+  "js-cookie": "/js-cookie/static-1.18",
+  "laboratory-lib": "/laboratory-lib/static-3.4305",
+  "lodash": "/lodash/static-1.3",
+  "onboarding-scopes": "/onboarding-scopes/static-1.3686",
+  "onboarding-settings-client": "/onboarding-settings-client/static-1.2003",
+  "onboarding-tours": "/onboarding-tours/static-1.11424",
+  "onboarding-utils": "/onboarding-utils/static-1.2492",
+  "purchase-motions-components": "/purchase-motions-components/static-1.1734",
+  "quartz": "/quartz/static-1.3789",
+  "raven": "/raven/static-3.2923",
+  "react-dnd": "/react-dnd/static-2.33",
+  "react-dnd-html5-backend": "/react-dnd-html5-backend/static-2.10",
+  "react-redux": "/react-redux/static-7.16",
+  "react-rhumb": "/react-rhumb/static-1.13681",
+  "react-router-dom": "/react-router-dom/static-5.26",
+  "react-table": "/react-table/static-2.4",
+  "redux-mock-store": "/redux-mock-store/static-1.8",
+  "redux-thunk": "/redux-thunk/static-2.17",
+  "self-service-api": "/self-service-api/static-1.7378",
+  "settings-ui-lib": "/settings-ui-lib/static-1.9659",
+  "setup-guide-api": "/setup-guide-api/static-1.43872",
+  "setup-guide-components": "/setup-guide-components/static-1.44854",
+  "signup-constants": "/signup-constants/static-1.13480",
+  "superstore": "/superstore/static-1.2041",
+  "tinymce": "/tinymce/static-6.5",
+  "trial-components-library": "/trial-components-library/static-1.8556",
+  "ui-addon-draggable": "/ui-addon-draggable/static-1.4350",
+  "ui-addon-integrations-directory-panel": "/ui-addon-integrations-directory-panel/static-1.1347",
+  "ui-addon-react-router-dom": "/ui-addon-react-router-dom/static-1.6853",
+  "ui-addon-upgrades": "/ui-addon-upgrades/static-9.13922",
+  "ui-coaching-tips": "/ui-coaching-tips/static-1.16863",
+  "usage-tracker": "/usage-tracker/static-1.4749",
+  "usage-tracker-core": "/usage-tracker-core/static-1.4599",
+  "webpack-env": "/webpack-env/static-1.41",
+  "wootric-nps": "/wootric-nps/static-1.4304",
+  "cms-onboarding-lib": "/cms-onboarding-lib/static-1.28220",
+  "ContentComponents": "/ContentComponents/static-2.61598",
+  "ContentUtils": "/ContentUtils/static-1.58638",
+  "copilot-toolkit": "/copilot-toolkit/static-1.2042",
+  "cssUtils": "/cssUtils/static-1.319",
+  "feedback-loader": "/feedback-loader/static-1.23870",
+  "foundations-assets": "/foundations-assets/static-1.2072",
+  "foundations-theming": "/foundations-theming/static-1.1180",
+  "frontend-preferences-client": "/frontend-preferences-client/static-1.5033",
+  "growth-data-modal": "/growth-data-modal/static-1.2248",
+  "growth-in-app-sidepanel-nav": "/growth-in-app-sidepanel-nav/static-1.5890",
+  "growth-pro-utils-lib": "/growth-pro-utils-lib/static-1.2671",
+  "hub-http": "/hub-http/static-1.2732",
+  "hubspot-url-utils": "/hubspot-url-utils/static-1.1402",
+  "immutable": "/immutable/static-2.19",
+  "InboxConnectUtils": "/InboxConnectUtils/static-4.7971",
+  "marketplace-ui-common": "/marketplace-ui-common/static-1.10045",
+  "metrics-js": "/metrics-js/static-1.6084",
+  "onboarding-tours-guide-config": "/onboarding-tours-guide-config/static-1.33224",
+  "PortalIdParser": "/PortalIdParser/static-2.249",
+  "prefetcher": "/prefetcher/static-1.3057",
+  "project-storage": "/project-storage/static-1.1901",
+  "quartz-core": "/quartz-core/static-1.3008",
+  "quick-fetch": "/quick-fetch/static-1.1826",
+  "react": "/react/static-7.133",
+  "redux": "/redux/static-4.16",
+  "sales-clients-common": "/sales-clients-common/static-1.40230",
+  "setup-guide-config": "/setup-guide-config/static-1.25106",
+  "SharedI18nStrings": "/SharedI18nStrings/static-1.160",
+  "styled-components": "/styled-components/static-2.40",
+  "ui-addon-i18n": "/ui-addon-i18n/static-1.8070",
+  "ui-addon-iframeable": "/ui-addon-iframeable/static-1.6332",
+  "ui-addon-video-player": "/ui-addon-video-player/static-1.6115",
+  "ui-universal-auth": "/ui-universal-auth/static-1.5754",
+  "UIComponents": "/UIComponents/static-3.5757",
+  "usage-tracker-container": "/usage-tracker-container/static-1.4739",
+  "usage-tracker-session-replay": "/usage-tracker-session-replay/static-1.2435",
+  "user-context": "/user-context/static-1.2362",
+  "user-context-app-client": "/user-context-app-client/static-1.2079",
+  "apollo-stack-hubspot": "/apollo-stack-hubspot/static-3.43",
+  "hs-promise-rejection-tracking": "/hs-promise-rejection-tracking/static-1.2642",
+  "raven-hubspot": "/raven-hubspot/static-1.3230",
+  "classnames": "/classnames/static-2.10",
+  "hoist-non-react-statics": "/hoist-non-react-statics/static-3.9",
+  "react-dom": "/react-dom/static-7.85",
+  "bend-plugin-trellis-migration": "/bend-plugin-trellis-migration/static-1.866",
+  "moment": "/moment/static-3.26",
+  "bend-plugin-quartz": "/bend-plugin-quartz/static-1.66",
+  "quartz-webpack": "/quartz-webpack/static-1.13",
+  "graphql": "/graphql/static-1.49",
+  "floating-ui": "/floating-ui/static-1.18",
+  "framer-motion": "/framer-motion/static-1.28",
+  "hs-story-utils": "/hs-story-utils/static-1.6209",
+  "react-aria": "/react-aria/static-1.30",
+  "react-select-plus": "/react-select-plus/static-1.65",
+  "react-utils": "/react-utils/static-2.3007",
+  "react-virtualized": "/react-virtualized/static-2.65",
+  "tanstack-table": "/tanstack-table/static-1.10",
+  "ui-fonts": "/ui-fonts/static-1.327",
+  "ui-images": "/ui-images/static-2.758",
+  "atom": "/atom/static-1.2707",
+  "crm-links": "/crm-links/static-1.3191",
+  "customer-data-associations": "/customer-data-associations/static-1.4529",
+  "customer-data-objects": "/customer-data-objects/static-1.4837",
+  "customer-data-objects-ui-components": "/customer-data-objects-ui-components/static-1.9957",
+  "customer-data-properties": "/customer-data-properties/static-1.40537",
+  "customer-data-property-utils": "/customer-data-property-utils/static-1.5055",
+  "customer-data-reference-ui-components": "/customer-data-reference-ui-components/static-1.10044",
+  "customer-data-ui-utilities": "/customer-data-ui-utilities/static-1.7019",
+  "hs-lodash": "/hs-lodash/static-4.9",
+  "hubspot-apollo-client": "/hubspot-apollo-client/static-1.2011",
+  "HubStyle": "/HubStyle/static-2.9117",
+  "icons": "/icons/static-2.585",
+  "immer": "/immer/static-1.33",
+  "PatternValidationJS": "/PatternValidationJS/static-1.437",
+  "property-translator": "/property-translator/static-1.2882",
+  "react-immutable-proptypes": "/react-immutable-proptypes/static-2.8",
+  "react-input-autosize": "/react-input-autosize/static-2.17",
+  "redux-toolkit": "/redux-toolkit/static-1.7",
+  "reference-resolvers": "/reference-resolvers/static-1.5557",
+  "reference-resolvers-lite": "/reference-resolvers-lite/static-1.5110",
+  "reporting-data": "/reporting-data/static-1.57131",
+  "reselect": "/reselect/static-2.16",
+  "sanitize": "/sanitize/static-1.6",
+  "sanitize-text": "/sanitize-text/static-1.5474",
+  "testing-library": "/testing-library/static-1.111",
+  "transmute": "/transmute/static-2.29",
+  "ui-addon-avatars": "/ui-addon-avatars/static-2.6814",
+  "rpc-client-utils": "/rpc-client-utils/static-1.1928",
+  "HeadJS": "/HeadJS/static-2.509",
+  "hs-test-utils-bend-plugin": "/hs-test-utils-bend-plugin/static-1.378",
+  "hub-http-janus": "/hub-http-janus/static-1.576",
+  "hub-http-rxjs": "/hub-http-rxjs/static-1.541",
+  "msw": "/msw/static-1.39",
+  "i18n-data": "/i18n-data/static-1.186",
+  "moment-timezone": "/moment-timezone/static-5.17",
+  "jasmine": "/jasmine/static-4.1595",
+  "hubspotter-http": "/hubspotter-http/static-1.2351",
+  "ts-schema": "/ts-schema/static-1.1775",
+  "growth-onboarding-confetti": "/growth-onboarding-confetti/static-1.445",
+  "ui-shepherd-react": "/ui-shepherd-react/static-3.7077",
+  "ui-shepherd-tracker": "/ui-shepherd-tracker/static-1.4458",
+  "merchandise-lib": "/merchandise-lib/static-1.204",
+  "feature-store-service-types": "/feature-store-service-types/static-1.2154",
+  "growth-monetization-service-types": "/growth-monetization-service-types/static-1.2161",
+  "purchase-motions-api": "/purchase-motions-api/static-1.1736",
+  "trials-service-types": "/trials-service-types/static-1.1562",
+  "upgrade-management-service-types": "/upgrade-management-service-types/static-1.2145",
+  "browserslist-config-hubspot": "/browserslist-config-hubspot/static-1.141",
+  "quartz-core-utils": "/quartz-core-utils/static-1.656",
+  "StyleGuideUI": "/StyleGuideUI/static-3.428",
+  "flux-actions": "/flux-actions/static-1.246",
+  "react-colorpicker": "/react-colorpicker/static-2.7452",
+  "redux-observable": "/redux-observable/static-1.11",
+  "ReduxMessenger": "/ReduxMessenger/static-2.7890",
+  "rxjs": "/rxjs/static-5.10",
+  "underscore": "/underscore/static-1.8",
+  "ExtensionInstallHelpers": "/ExtensionInstallHelpers/static-1.502",
+  "marketplace-embed": "/marketplace-embed/static-1.11640",
+  "marketplace-ui-client-types": "/marketplace-ui-client-types/static-1.7449",
+  "ui-addon-scriptloader": "/ui-addon-scriptloader/static-1.9546",
+  "salesImages": "/salesImages/static-1.488",
+  "react-flip-move": "/react-flip-move/static-1.38",
+  "ContentData": "/ContentData/static-1.58716",
+  "SafeStorage": "/SafeStorage/static-1.1814",
+  "ai-components-ui-library": "/ai-components-ui-library/static-1.3172",
+  "blueimp-md5": "/blueimp-md5/static-1.8",
+  "cms-field-types": "/cms-field-types/static-1.2070",
+  "codemirror": "/codemirror/static-5.60",
+  "content-embed-lib": "/content-embed-lib/static-1.4087",
+  "data-token-picker": "/data-token-picker/static-1.11666",
+  "data-token-views": "/data-token-views/static-1.11650",
+  "ExportDialog": "/ExportDialog/static-6.7401",
+  "file-manager-components": "/file-manager-components/static-1.14114",
+  "FileManagerCore": "/FileManagerCore/static-1.29615",
+  "FileManagerLib": "/FileManagerLib/static-1.29758",
+  "forms-utils-lib": "/forms-utils-lib/static-1.7816",
+  "growth-payments-core": "/growth-payments-core/static-1.17130",
+  "integrations-error-boundary-lib": "/integrations-error-boundary-lib/static-1.5009",
+  "integrations-lib": "/integrations-lib/static-1.7596",
+  "media-bridge-lib": "/media-bridge-lib/static-1.14284",
+  "payment-link-components": "/payment-link-components/static-1.13600",
+  "payments-embed-points-lib": "/payments-embed-points-lib/static-1.5891",
+  "products-ui-components": "/products-ui-components/static-1.31481",
+  "react-beautiful-dnd": "/react-beautiful-dnd/static-1.13",
+  "react-codemirror": "/react-codemirror/static-1.7795",
+  "react-dnd-compat": "/react-dnd-compat/static-1.1654",
+  "react-tinymce": "/react-tinymce/static-1.46044",
+  "rich-text-lib": "/rich-text-lib/static-1.15207",
+  "simple-menus-core": "/simple-menus-core/static-1.11415",
+  "simple-menus-lib": "/simple-menus-lib/static-1.12933",
+  "tinymce-config": "/tinymce-config/static-2.45171",
+  "tinymce-data": "/tinymce-data/static-1.31253",
+  "tinymce-plugins": "/tinymce-plugins/static-1.48284",
+  "tinymce-themes": "/tinymce-themes/static-1.47138",
+  "ui-addon-emoji-picker": "/ui-addon-emoji-picker/static-1.7154",
+  "ui-memberships-settings-lib": "/ui-memberships-settings-lib/static-1.22474",
+  "video-data-lib": "/video-data-lib/static-1.24849",
+  "videoconference-integration-components": "/videoconference-integration-components/static-1.3114",
+  "content-icons-ui": "/content-icons-ui/static-1.1806",
+  "chatspot-client-types": "/chatspot-client-types/static-1.6285",
+  "chatspot-core": "/chatspot-core/static-1.10867",
+  "sassPrefix": "/sassPrefix/static-1.120",
+  "foundations-theming-base": "/foundations-theming-base/static-1.165",
+  "hub-http-shared-msw-handlers": "/hub-http-shared-msw-handlers/static-1.5033",
+  "hub-http-contrib": "/hub-http-contrib/static-1.551",
+  "ui-addon-sales-email": "/ui-addon-sales-email/static-1.2518",
+  "immutable-less": "/immutable-less/static-1.1923",
+  "nav-meta": "/nav-meta/static-1.22929",
+  "react-window": "/react-window/static-1.13",
+  "dispatcher": "/dispatcher/static-1.104",
+  "general-store": "/general-store/static-6.20",
+  "hubspotter-http-shared-msw-handlers": "/hubspotter-http-shared-msw-handlers/static-1.5031",
+  "mobile-manifest-mixins": "/mobile-manifest-mixins/static-1.280",
+  "platform-navigation-bootstrap": "/platform-navigation-bootstrap/static-1.8959",
+  "csstype": "/csstype/static-1.8",
+  "content-assistance-lib": "/content-assistance-lib/static-1.4287",
+  "amplitude-session-replay-browser": "/amplitude-session-replay-browser/static-1.6",
+  "getting-started-shared-tasks-store": "/getting-started-shared-tasks-store/static-1.5867",
+  "framework-data-schema-resolvers": "/framework-data-schema-resolvers/static-1.3804",
+  "conditional-properties-service-client": "/conditional-properties-service-client/static-1.1840",
+  "crm-message-bus": "/crm-message-bus/static-1.30758",
+  "external-options-client-types": "/external-options-client-types/static-1.1774",
+  "inbound-db-properties-service-client": "/inbound-db-properties-service-client/static-1.1805",
+  "object-builder-ui-client": "/object-builder-ui-client/static-1.35498",
+  "pipeline-validation-client-types": "/pipeline-validation-client-types/static-1.1733",
+  "ui-addon-form-validation": "/ui-addon-form-validation/static-1.8256",
+  "react-immutable-render-mixin": "/react-immutable-render-mixin/static-1.9",
+  "apollo-link-hub-http": "/apollo-link-hub-http/static-2.2012",
+  "fast-json-stable-stringify": "/fast-json-stable-stringify/static-1.4",
+  "inbound-db-meta-service-client": "/inbound-db-meta-service-client/static-1.1454",
+  "reporting-client-types": "/reporting-client-types/static-1.1036",
+  "autolinker": "/autolinker/static-3.11",
+  "eligibility-engine-service-types": "/eligibility-engine-service-types/static-1.843",
+  "marketplace-ui-apps-core": "/marketplace-ui-apps-core/static-1.8583",
+  "trellis-ecosystem": "/trellis-ecosystem/static-1.2444",
+  "analytics_js": "/analytics_js/static-1.2133",
+  "diff-match-patch": "/diff-match-patch/static-1.7",
+  "cropperjs": "/cropperjs/static-1.10",
+  "FileManagerImages": "/FileManagerImages/static-1.27265",
+  "urlinator": "/urlinator/static-1.1909",
+  "commerce-analytics-service-client": "/commerce-analytics-service-client/static-1.1327",
+  "native-integrations-shared-strings": "/native-integrations-shared-strings/static-1.5052",
+  "commerce-tours-lib": "/commerce-tours-lib/static-1.1015",
+  "sales-checkout-service-client": "/sales-checkout-service-client/static-1.1339",
+  "payments-enrollment-embed-lib": "/payments-enrollment-embed-lib/static-1.13187",
+  "commerce-billing-lib": "/commerce-billing-lib/static-1.10410",
+  "commerce-shared-components-lib": "/commerce-shared-components-lib/static-1.11159",
+  "crm_components": "/crm_components/static-3.81658",
+  "crm_data": "/crm_data/static-4.81658",
+  "customer-data-filters-ui": "/customer-data-filters-ui/static-1.29072",
+  "customer-data-tracking": "/customer-data-tracking/static-1.4119",
+  "property-description-translator": "/property-description-translator/static-1.1352",
+  "browser-eslint": "/browser-eslint/static-2.9",
+  "react-transition-group": "/react-transition-group/static-1.7",
+  "seamless-immutable": "/seamless-immutable/static-7.6",
+  "interframe": "/interframe/static-3.1858",
+  "layout-dnd-components": "/layout-dnd-components/static-1.8725",
+  "layout-dnd-utils": "/layout-dnd-utils/static-1.7700",
+  "NamespacedHubStyle": "/NamespacedHubStyle/static-2.7041",
+  "platform-infra-nav-components": "/platform-infra-nav-components/static-1.5454",
+  "crm-pipelines-api-client-types": "/crm-pipelines-api-client-types/static-1.1667",
+  "framework-builder-read-service-client": "/framework-builder-read-service-client/static-1.1756",
+  "framework-data-schema-quick-fetch": "/framework-data-schema-quick-fetch/static-1.3708",
+  "persist-promise": "/persist-promise/static-1.1090",
+  "developer-experience-shared-components": "/developer-experience-shared-components/static-1.7022",
+  "ui-extensibility-client-types": "/ui-extensibility-client-types/static-1.1767",
+  "trellis-story-utils": "/trellis-story-utils/static-1.1767",
+  "onboarding-tours-client": "/onboarding-tours-client/static-1.1830",
+  "ecosystem-marketplace-core": "/ecosystem-marketplace-core/static-1.14181",
+  "growth-onboarding-feedback-components": "/growth-onboarding-feedback-components/static-1.3700",
+  "stripe-embedded-components": "/stripe-embedded-components/static-1.3055",
+  "commerce-tools-ui-lib": "/commerce-tools-ui-lib/static-1.2510",
+  "subscriptions-iframe-lib": "/subscriptions-iframe-lib/static-1.17162",
+  "conversations-skeleton-state": "/conversations-skeleton-state/static-1.4651",
+  "crm_universal": "/crm_universal/static-1.18879",
+  "customer-data-content": "/customer-data-content/static-1.21877",
+  "crm_schema": "/crm_schema/static-3.81693",
+  "customer-data-email": "/customer-data-email/static-1.13668",
+  "customer-data-filters-ui-msw-helpers": "/customer-data-filters-ui-msw-helpers/static-1.11502",
+  "FormUrlGenerator": "/FormUrlGenerator/static-2.2081",
+  "ui-addon-teams": "/ui-addon-teams/static-1.17686",
+  "layout-data-lib": "/layout-data-lib/static-1.6025",
+  "apps-service-types": "/apps-service-types/static-1.1942",
+  "oauth-service-types": "/oauth-service-types/static-1.1739",
+  "marketplace-ui-assets-core": "/marketplace-ui-assets-core/static-1.9989",
+  "marketplace-ui-reviews": "/marketplace-ui-reviews/static-1.10007",
+  "marketplace-ui-solutions-core": "/marketplace-ui-solutions-core/static-1.10020",
+  "signup-ui-url-generator": "/signup-ui-url-generator/static-2.5201",
+  "stripe-connect-js": "/stripe-connect-js/static-1.30",
+  "customer-data-rte": "/customer-data-rte/static-1.25315",
+  "cv-backend-services": "/cv-backend-services/static-1.792",
+  "hubspot-prosemirror": "/hubspot-prosemirror/static-1.9569",
+  "payments-post-enroll-local-storage-lib": "/payments-post-enroll-local-storage-lib/static-1.2311",
+  "prosemirror": "/prosemirror/static-1.13",
+  "qrcode-generator": "/qrcode-generator/static-1.35",
+  "invoices-ui-lib": "/invoices-ui-lib/static-1.44808",
+  "SalesContentIndexUI": "/SalesContentIndexUI/static-3.4695",
+  "sequences-lib": "/sequences-lib/static-1.3546",
+  "timezone-utils": "/timezone-utils/static-2.2730",
+  "ui-gdpr-components": "/ui-gdpr-components/static-1.7460",
+  "draft-content-plugins": "/draft-content-plugins/static-1.20611",
+  "draft-convert": "/draft-convert/static-2.31",
+  "draft-extend": "/draft-extend/static-2.46",
+  "draft-js": "/draft-js/static-5.37",
+  "draft-plugins": "/draft-plugins/static-2.17034",
+  "knowledge-content-types": "/knowledge-content-types/static-1.6697",
+  "commerce-products-lib": "/commerce-products-lib/static-1.957",
+  "FireAlarmUi": "/FireAlarmUi/static-1.2553",
+  "ui-asset-management-lib": "/ui-asset-management-lib/static-1.7012",
+  "sequences-client-types-lib": "/sequences-client-types-lib/static-1.3402",
+  "permission-components": "/permission-components/static-1.2594"
+},
+          templateBasename: "index.html.tsx"
+        });</script><script>(function() {
+          const config = {options: {ignoreErrors: [/dlb (.*) not loaded/,/error loading split chunk/,/failed with status (0|400|403|404|429)/,/hub-http (0|400|403|404|429)/,/hub-http(.*) - 0/,/hub-http(.*) - 400/,/hub-http(.*) - 403/,/hub-http(.*) - 404/,/hub-http(.*) - 429/,/privateSpecialRepair is not defined/,/Identifier 'originalPrompt' has already been declared/,/Loading chunk/], ignoreUrls: [/unified-nav/]}};
+          function configureLogFetchErrors(o,t){o("https://exceptions.hubspot.com/v2/js",t.options)}
+          hubspot.require(["raven-hubspot/configure"],(r=>{configureLogFetchErrors(r,config)}));
+        })();</script><script>
+            Raven.setShouldSendCallback(function(errorData) {
+              var stack = new Error().stack
+              if (
+                /unified-navigation-ui/.test(stack) ||
+                /TrialModalContainer/.test(stack)
+              ) {
+                return false;
+              }
+              return true;
+            });
+          </script><style>
+        .main-nav { height: 44px; background: #2d3e50; box-shadow: none; }
+        </style><script>
+          (function() {
+            const config = {"filename":"loader","variant":"app"};
+            function configureNavLoader({variant:e,filename:o="loader",showCopilot:t=!0,showZorseWidget:n=!0,enableFireAlarm:a=!0}={}){let r=!1;window.hubspot||(window.hubspot={});t&&(window.hubspot.copilot={showInNav:!0});if(!n){window.hubspot.zorse=window.hubspot.zorse||{};window.hubspot.zorse.supressed=!0}a||(window.hubspot.fireAlarmDisabled=!0);window.hubspot.navigation||(window.hubspot.navigation={});window.hubspot.navigation.onRouteStarted=function(){let e;window.addEventListener("rhumb-route-started",(o=>{e=o.detail}));return function(o){e&&o(e);window.addEventListener("rhumb-route-started",(e=>{o(e.detail)}))}}();try{r=window.localStorage&&"local"===window.localStorage.NAVIGATION_ASSET_ENV}catch(e){console.error(e)}const i=window.location.hostname,l=r?i.replace("app","local"):i.replace("local","app"),d=document.createElement("script");d.type="text/javascript";d.async=!0;d.src=`${document.location.protocol}//${l}/unified-nav/${o}.js`;const s=document.getElementsByTagName("script")[0];s.parentNode&&s.parentNode.insertBefore(d,s);try{const e=window.localStorage&&"true"===window.localStorage.PLACEHOLDER_TRIAL_BANNER,o=window.sessionStorage&&window.sessionStorage.ONBOARDING_TOURS_GUIDE||window.location.search.indexOf("onboarding_referrer_task=")>0;if(e){const e=document.createElement("style");e.id="placeholder-trial-banner-style";document.head.appendChild(e);const t=o?"55px":"50px",n=o?"background-color: #5e6ab8":"background-image: linear-gradient(89deg, #00a4bd 0%, #5e6ab8 100%)";if(e.sheet){e.sheet.insertRule(`#placeholder-trial-banner { height: ${t}; width: 100vw; ${n} }`);e.sheet.insertRule("#trial-banner-block, #onboarding-tours-banner { display: none }")}}}catch(e){console.error(e)}try{if("headless"!==e&&window.localStorage&&"vertical-nav"===window.localStorage.NAVIGATION_PLACEHOLDER_VARIANT){const e="236px",o="64px",t="44px",n="#2d3e50",a="true"===window.localStorage.VERTICAL_NAV_COLLAPSED?o:e,r=document.createElement("style");r.id="placeholder-vertical-nav-style";document.head.appendChild(r);if(r.sheet){r.sheet.insertRule(`.main-nav { height: ${t}; background: ${n}; }`);r.sheet.insertRule(`#placeholder-vertical-nav { position: fixed; top: ${t}; height: calc(100vh - ${t}); width: ${a}; background: ${n}; }`);r.sheet.insertRule(`#placeholder-vertical-nav::after {width: 18px; height: 18px; top: 0; right: -18px; position: absolute; border-top-left-radius: 50%; content: ''; box-shadow: -9px -1px 0 0 ${n}; pointer-events: none; }`);r.sheet.insertRule(`.page, .app { width: calc(100% - ${a}); margin-left: auto; }`)}}}catch(e){console.error(e)}}
+            configureNavLoader(config);
+          })();
+        </script><meta name="author" content="HubSpot, Inc."><link rel="apple-touch-icon" sizes="180x180" href="//static.hsappstatic.net/StyleGuideUI/static-3.428/img/sprocket/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="//static.hsappstatic.net/StyleGuideUI/static-3.428/img/sprocket/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="//static.hsappstatic.net/StyleGuideUI/static-3.428/img/sprocket/favicon-16x16.png"><link rel="mask-icon" href="//static.hsappstatic.net/StyleGuideUI/static-3.428/img/sprocket/safari-pinned-tab.svg" color="#FF7A59"><meta name="msapplication-TileColor" content="#2b5797"><link crossorigin="anonymous" rel="prefetch" as="script" href="//static.hsappstatic.net/setup-guide-ui/static-1.44846/../static-1.44846/InstallTrackingModal.js"><link crossorigin="anonymous" rel="prefetch" as="script" href="//static.hsappstatic.net/setup-guide-ui/static-1.44846/../static-1.44846/InstallExtensionModal.js"><link crossorigin="anonymous" rel="prefetch" as="script" href="//static.hsappstatic.net/setup-guide-ui/static-1.44846/../static-1.44846/MarketplaceModal.js"><link crossorigin="anonymous" rel="prefetch" as="script" href="//static.hsappstatic.net/setup-guide-ui/static-1.44846/../static-1.44845/9905.js"><link crossorigin="anonymous" rel="prefetch" as="script" href="//static.hsappstatic.net/setup-guide-ui/static-1.44846/../static-1.44846/ConnectInboxModalContainer.js"><style id="hs-nav-critical-css" type="text/css"></style><title>User Guide | HubSpot</title><script type="text/javascript" async="" src="//static.hsappstatic.net/wootric-nps/ex/beacon.js"></script><style type="text/css">
+  #hs-feedback-ui {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+    display: none;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    z-index: 2147483647;
+    max-width: 100%;
+  }
+
+  .hubspot.space-sword #hs-feedback-ui {
+    /* TODO: replace the 1211 with z-index token once available from Trellis (issue: https://git.hubteam.com/HubSpot/foundations-theming/issues/233) */
+    z-index: 1211;
+  }
+
+  #hs-feedback-ui.hs-feedback-shown {
+    display: block;
+  }
+
+  #hs-feedback-fetcher {
+    display: none
+  }
+
+  
+  @keyframes feedback-slide-in-hs-feedback-left {
+    from {transform: translate(0, 100%);}
+    to {transform: translate(0, 0);}
+  }
+
+  @keyframes feedback-slide-out-hs-feedback-left {
+    from {transform: translate(0, 0);}
+    to {transform: translate(0, 100%);}
+  }
+
+  #hs-feedback-ui.hs-feedback-left {
+    animation-name: feedback-slide-in-hs-feedback-left;
+  }
+
+  #hs-feedback-ui.hs-feedback-left.hs-feedback-slid-out {
+    animation-name: feedback-slide-out-hs-feedback-left;
+    animation-fill-mode: forwards;
+  }
+
+  
+  @keyframes feedback-slide-in-hs-feedback-right {
+    from {transform: translate(0, 100%);}
+    to {transform: translate(0, 0);}
+  }
+
+  @keyframes feedback-slide-out-hs-feedback-right {
+    from {transform: translate(0, 0);}
+    to {transform: translate(0, 100%);}
+  }
+
+  #hs-feedback-ui.hs-feedback-right {
+    animation-name: feedback-slide-in-hs-feedback-right;
+  }
+
+  #hs-feedback-ui.hs-feedback-right.hs-feedback-slid-out {
+    animation-name: feedback-slide-out-hs-feedback-right;
+    animation-fill-mode: forwards;
+  }
+
+  
+  @keyframes feedback-slide-in-hs-feedback-top {
+    from {transform: translate(0, -100%);}
+    to {transform: translate(0, 0);}
+  }
+
+  @keyframes feedback-slide-out-hs-feedback-top {
+    from {transform: translate(0, 0);}
+    to {transform: translate(0, -100%);}
+  }
+
+  #hs-feedback-ui.hs-feedback-top {
+    animation-name: feedback-slide-in-hs-feedback-top;
+  }
+
+  #hs-feedback-ui.hs-feedback-top.hs-feedback-slid-out {
+    animation-name: feedback-slide-out-hs-feedback-top;
+    animation-fill-mode: forwards;
+  }
+
+
+  #hs-feedback-ui > iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  #hs-feedback-ui:not(.hs-feedback-top) {
+    bottom: 0;
+  }
+
+  #hs-feedback-ui.hs-feedback-left {
+    left: 0;
+  }
+
+  #hs-feedback-ui.hs-feedback-right {
+    right: 0;
+  }
+
+  .zorse #hs-feedback-ui:not(.hs-feedback-top) {
+    bottom: 6px;
+  }
+
+  .zorse #hs-feedback-ui.hs-feedback-right {
+    right: 0;
+  }
+
+  #hs-feedback-ui.hs-feedback-top {
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  #hs-feedback-ui.hs-feedback-nps:not(.hs-feedback-top) {
+    width: 480px;
+  }
+
+  #hs-feedback-ui.hs-feedback-csat:not(.hs-feedback-top) {
+    width: 350px;
+  }
+
+  #hs-feedback-ui.hs-feedback-csat.hs-feedback-extended-width:not(.hs-feedback-top) {
+    width: 550px;
+  }
+
+  @media only screen and (min-width: 544px) {
+    #hs-feedback-ui.hs-feedback-csat:not(.hs-feedback-top):not(.hs-feedback-expanded) {
+      width: 450px;
+    }
+  }
+
+  #hs-feedback-ui.hs-feedback-csat.hs-feedback-extended-width:not(.hs-feedback-top) {
+    width: 550px !important;
+  }
+
+  #hs-feedback-ui.preview.hs-feedback-csat.hs-feedback-callout:not(.hs-feedback-expanded):not(.hs-feedback-top) {
+    width: 450px !important;
+  }
+
+  @media only screen and (max-width: 768px) {
+    #hs-feedback-ui:not(.preview):not(.hs-feedback-callout):not(.hs-feedback-top),
+    #hs-feedback-ui.hs-feedback-expanded:not(.preview):not(.hs-feedback-top) {
+      width: 100% !important;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #hs-feedback-ui.preview:not(.hs-feedback-top),
+    #hs-feedback-ui.hs-feedback-expanded.preview:not(.hs-feedback-top) {
+      width: 100% !important;
+    }
+  }
+
+  #hs-feedback-ui.hs-feedback-shown ~ #tally-widget-container,
+  #hs-feedback-ui.hs-feedback-shown ~ #wootric-modal {
+    display: none !important;
+  }
+
+  /* hide all popups in the same position as us */
+  @media only screen and (min-width: 544px) {
+    #hs-feedback-ui.hs-feedback-right.hs-feedback-shown ~ #hubspot-messages-iframe-container,
+    #hs-feedback-ui.hs-feedback-right.hs-feedback-shown ~ .leadinModal-theme-bottom-right-corner,
+    #hs-feedback-ui.hs-feedback-left.hs-feedback-shown  ~ .leadinModal-theme-bottom-left-corner,
+    #hs-feedback-ui.hs-feedback-top.hs-feedback-shown   ~ .leadinModal-theme-top {
+      display: none !important;
+    }
+  }
+
+  /* hide leadflows when we're tablet-stretched across from them */
+  @media only screen and (min-width: 544px) and (max-width: 970px) {
+    #hs-feedback-ui.hs-feedback-left.hs-feedback-shown  ~ .leadinModal-theme-bottom-right-corner,
+    #hs-feedback-ui.hs-feedback-right.hs-feedback-shown ~ .leadinModal-theme-bottom-left-corner {
+      display: none !important;
+    }
+  }
+
+  /* hide messages when we're tablet-stretched across from them */
+  @media only screen and (max-width: 966px) {
+    #hs-feedback-ui.hs-feedback-left.hs-feedback-shown ~ #hubspot-messages-iframe-container {
+      display: none !important;
+    }
+  }
+
+  @media only screen and (max-width: 544px) {
+
+    /* repeat above rules for small screens when we're set to display on mobile */
+    #hs-feedback-ui.hs-feedback-right.hs-feedback-shown:not(.hs-feedback-no-mobile) ~ #hubspot-messages-iframe-container,
+    #hs-feedback-ui.hs-feedback-left.hs-feedback-shown:not(.hs-feedback-no-mobile)  ~ #hubspot-messages-iframe-container,
+    #hs-feedback-ui.hs-feedback-right.hs-feedback-shown:not(.hs-feedback-no-mobile) ~ .leadinModal-theme-bottom-right-corner,
+    #hs-feedback-ui.hs-feedback-left.hs-feedback-shown:not(.hs-feedback-no-mobile)  ~ .leadinModal-theme-bottom-left-corner,
+    #hs-feedback-ui.hs-feedback-top.hs-feedback-shown:not(.hs-feedback-no-mobile)   ~ .leadinModal-theme-top,
+    #hs-feedback-ui.hs-feedback-left.hs-feedback-shown:not(.hs-feedback-no-mobile)  ~ .leadinModal-theme-bottom-right-corner,
+    #hs-feedback-ui.hs-feedback-right.hs-feedback-shown:not(.hs-feedback-no-mobile) ~ .leadinModal-theme-bottom-left-corner {
+      display: none !important;
+    }
+
+    /* don't display us on small screens if we're set to not display on mobile */
+    #hs-feedback-ui.hs-feedback-no-mobile {
+      display: none;
+    }
+  }
+</style><link type="text/css" rel="stylesheet" href="//static.hsappstatic.net/unified-navigation-ui/static-1.24159/bundles/nav-deferred.css"><script type="text/javascript" async="" src="//static.hsappstatic.net/growth-dynamic-ui/ex/js/bundleLoader.js"></script><link type="text/css" rel="stylesheet" href="//static.hsappstatic.net/wootric-nps/ex/theme.css"></head><x-pw-glass style="position: fixed; inset: 0px; z-index: 2147483646; pointer-events: none; display: flex; background-color: transparent;"></x-pw-glass><body class="hubspot ui-app sticky-global-toolbar hubspot-disable-focus-styles" data-pw-cursor="pointer" style="--global-nav-sticky-nav-before-container-top: 0px; --global-nav-sticky-trial-banner-top: 0px; --global-nav-notifications-banner-iframe-top: 0px; --global-nav-onboarding-tours-banner-top: 0px; --global-nav-sticky-nav-top: 0px;"><div id="hs-feedback-fetcher" title="submit hubspot feedback"><iframe frameborder="0" title="Submit HubSpot product feedback" src="https://app-na2.hubspot.com/feedback-web-fetcher"></iframe></div><div id="growth-dynamic-ui" class="growth-dynamic-namespace" style="display: initial;"><style>:host  { all: initial; color: initial; font-family: initial; }</style><link rel="stylesheet" href="//static.hsappstatic.net/growth-dynamic-ui/ex/sass/project.css"><span id="growth-dynamic-GlobalGrowthPrompt" style=""></span><span id="growth-dynamic-TrialBanner" style=""></span><span id="growth-dynamic-InAppOnboardingPanel" style=""><div data-test-id="in-app-onboarding-launcher"></div></span></div><div id="hs-nav-v4" class="nav-width-flex placeholder-nav"><div id="notificationBannerContainer" data-test-id="notificationBannerContainer"><iframe frameborder="0" id="in-app-notifications-banner-iframe" name="nav-components:notifications-banner" class="RenderNavComponent__StyledIframe-sc-1wcnb1k-0 kZwjHC" scrolling="yes" src="https://app-na2.hubspot.com/notifications/242303334/banners?hostAppName=setup-guide-ui&amp;completeHostUrl=https%253A%252F%252Fapp-na2.hubspot.com%252Fuser-guide%252F242303334%253Fvia%253Dhome" height="200" width="200" style="height: 0px; width: 100%; z-index: 1211101; display: block;"></iframe></div><div id="hs-global-toolbar-root"><header id="hs-global-toolbar" data-test-id="hs-global-toolbar" class="GlobalToolbarHeader__StyledHeader-sc-1swm89y-0 iJXPJD"><div class="GlobalToolbarSprocket__StyledLogoContainer-sc-13z2axe-0 jViNHQ"><a class="sc-fznZeY jXtZan" data-test-id="home-link" href="/user-guide/242303334?via=home" id="nav-home-link"><svg viewBox="0 0 16 16" height="32px" data-test-id="icon-hubspot-logo" role="img" aria-label="HubSpot logo"><title>HubSpot</title><path d="M11.6127 10.9174C10.4763 10.9174 9.55512 10.0374 9.55512 8.95201C9.55512 7.86645 10.4763 6.98646 11.6127 6.98646C12.749 6.98646 13.6702 7.86645 13.6702 8.95201C13.6702 10.0374 12.749 10.9174 11.6127 10.9174ZM12.2286 5.16801V3.41954C12.7064 3.20397 13.041 2.74229 13.041 2.20648V2.16612C13.041 1.42664 12.4077 0.821619 11.6336 0.821619H11.5915C10.8174 0.821619 10.1841 1.42664 10.1841 2.16612V2.20648C10.1841 2.74229 10.5187 3.20416 10.9965 3.41972V5.16801C10.2852 5.27306 9.63527 5.55332 9.09927 5.96578L4.07384 2.23138C4.107 2.10973 4.1303 1.9845 4.1305 1.85286C4.13129 1.0155 3.42174 0.335606 2.54479 0.334474C1.66822 0.333532 0.956311 1.01154 0.955323 1.84909C0.954337 2.68665 1.66388 3.36654 2.54084 3.36748C2.82651 3.36786 3.09106 3.29035 3.32283 3.16436L8.26614 6.83803C7.84582 7.44418 7.59944 8.17028 7.59944 8.95201C7.59944 9.77033 7.8701 10.5274 8.32734 11.1499L6.82415 12.5861C6.7053 12.5519 6.58211 12.5282 6.45141 12.5282C5.73101 12.5282 5.14684 13.086 5.14684 13.7742C5.14684 14.4626 5.73101 15.0205 6.45141 15.0205C7.17201 15.0205 7.75599 14.4626 7.75599 13.7742C7.75599 13.6498 7.73112 13.5319 7.69538 13.4184L9.18238 11.9978C9.85738 12.4899 10.698 12.7856 11.6127 12.7856C13.8292 12.7856 15.6257 11.0692 15.6257 8.95201C15.6257 7.03531 14.1517 5.45185 12.2286 5.16801Z" fill="#FF7A59"></path></svg></a></div><div class="GlobalToolbar__SearchAndPlusCreateWrapper-g9am2v-0 cECZAX"><div class="Wrappers__SearchInputWrapper-n8c9qp-0 hjBZgR"><div class="StyledSearchContainer-sc-1n441ts-0 kbvtOl"><div class="StyledSearchWrapper-lltq2n-0 hJWohJ"><form id="hs-search-react" class="StyledSearchForm-sc-1kfddlc-0 fMARde"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" viewBox="0 0 31 31" xml:space="preserve" width="14px" display="flex" class="SearchIcon__StyledSVG-r1vdrq-0 dPIjlQ"><g><g transform="translate(-116.000000, -3779.000000)"><path d="M127.7,3799.4c-4.8,0-8.7-3.9-8.7-8.7c0-4.8,3.9-8.7,8.7-8.7c4.8,0,8.7,3.9,8.7,8.7 C136.4,3795.5,132.5,3799.4,127.7,3799.4 M146.1,3806.9l-9.1-9.1c1.5-2,2.4-4.4,2.4-7.1c0-6.4-5.2-11.7-11.7-11.7 c-6.4,0-11.7,5.2-11.7,11.7c0,6.4,5.2,11.7,11.7,11.7c2.7,0,5.2-0.9,7.1-2.4l9.1,9.1c0.3,0.3,0.7,0.4,1.1,0.4 c0.4,0,0.8-0.1,1.1-0.4C146.6,3808.5,146.6,3807.5,146.1,3806.9"></path></g></g></svg><input id="global-search-input" name="global-search-input" type="search" data-test-id="global-search-input-react" aria-label="Search HubSpot" autocomplete="off" minlength="1" maxlength="512" placeholder="Search HubSpot" class="StyledSearchInput-sc-6ejnr9-0 iMSyjH" value=""><div class="StyledSearchControls-f98cjr-0 ipgurF"><span class="StyledKey-sc-1xeg2sw-0 fSwOOT">⌘</span><span class="StyledKey-sc-1xeg2sw-0 fSwOOT">K</span></div></form><div id="search-results" class="StyledIframeWrapper-sc-1nxxeeb-0 kTphYi"></div></div></div></div><div class="GlobalToolbar__PlusCreateWrapper-g9am2v-1 emmfHj"><div data-portal-hook="object-create-menu" data-test-id="object-create-menu" class="ObjectCreateButton__ObjectCreateButtonWrapper-sc-1v18rky-0 iJyyOW"><button class="sc-fznKkj ecEHNW" id="hs-global-toolbar-object-create" aria-haspopup="true" data-test-id="hs-global-toolbar-object-create" data-onboarding-hook="object-create-menu-trigger" aria-label="Create new"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" width="12" height="12" fill="none"><path d="M.8071 6.7687H5.2339V11.2194C5.2339 11.6506 5.5833 12 6.0145 12 6.4458 12 6.7952 11.6506 6.7952 11.2194V6.7925H11.222C11.6533 6.7925 12.0026 6.4432 12.0026 6.0119 12.0026 5.5806 11.6533 5.2313 11.222 5.2313H6.7952V.7806C6.7952.3494 6.4458 0 6.0145 0 5.5833 0 5.2339.3494 5.2339.7806V5.2075H.8071C.3758 5.2075.0264 5.5568.0264 5.9881.0264 6.4194.3758 6.7687.8071 6.7687Z"></path></svg></button></div></div></div><nav class="global-toolbar-items-container" aria-label="Global toolbar"><ul id="hs-global-toolbar-icons" role="menu" aria-orientation="horizontal" data-test-id="hs-global-toolbar-icons" class="GlobalToolbar__StyledToolMenu-g9am2v-2 Yzbql"><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 fnQXtm"><button class="sc-AxjAm bHLmfj" id="hs-global-toolbar-growth-upgrade-button" data-test-id="hs-global-toolbar-growth-upgrade-button" aria-label="Upgrade"><svg data-test-id="hs-upgrade-arrow" viewBox="0 0 12.83 12.83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14px"><mask id="upgradeArrow" height="12.83" maskUnits="userSpaceOnUse" width="12.83" x="0" y="0"><path d="m0 0h12.83v12.83h-12.83z" fill="#fff" fill-rule="evenodd"></path></mask><g mask="url(#upgradeArrow)"><path d="m6.42 0a6.42 6.42 0 1 0 6.41 6.42 6.41 6.41 0 0 0 -6.41-6.42" fill="#e66e50" fill-rule="evenodd"></path></g><g mask="url(#upgradeArrow)"><path d="m10 6.08a.6.6 0 0 1 -1 0l-2-2v6.29c0 .49-.13.69-.68.69s-.69-.12-.69-.69v-6.26l-2 2a.61.61 0 0 1 -1 0 .57.57 0 0 1 0-1l3.22-3.11a.68.68 0 0 1 1 0l3.15 3.11a.59.59 0 0 1 0 1" fill="#fff" fill-rule="evenodd"></path></g></svg><span class="icon-text-key">Upgrade</span></button></li><div id="growth-upgrade-button-render-to"></div><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 dkLoUU"><button aria-label="Calls" data-onboarding="calling-remote" data-selenium-test="call-remote-toggle" id="calling-remote-toggle" class="CallingNavComponentIcon__StyledToggleButton-sc-1jhh0f9-0 cCJdIC"><div width="14px" height="14px" class="CallIconstyles__CallIconWithStatus-dupax9-4 jlHaq"><svg viewBox="0 0 32 32" width="14px" height="14px" display="flex" fill="#DFE3EB"><title>Calling</title><path d="m22.63,29.99c-1.01,0-2.09-.16-3.24-.48-1.11-.31-2.13-.69-3.11-1.16-.03-.02-.06-.03-.1-.05-2.74-1.36-5.18-3.13-7.27-5.26-2.17-2.13-3.94-4.59-5.28-7.31l-.08-.19c-.19-.37-.37-.8-.58-1.37-1.55-4.11-1.23-7.68.87-9.78l1.53-1.53c1.17-1.16,3.19-1.16,4.36,0l4.07,4.07c.58.58.9,1.36.9,2.19s-.32,1.6-.91,2.19l-2.97,2.97c-.1.1-.15.23-.15.36s.05.26.15.36l6.12,6.12c.19.19.53.19.72,0l2.97-2.97c1.17-1.17,3.21-1.17,4.37,0l4.09,4.08c.58.58.91,1.36.91,2.19s-.32,1.6-.9,2.19l-1.54,1.53c-1.23,1.23-2.92,1.86-4.92,1.86Zm-5.36-3.24c.83.39,1.67.7,2.62.96,2.74.77,4.99.45,6.34-.9l1.54-1.53c.23-.23.36-.54.36-.86s-.13-.63-.36-.87l-4.09-4.08c-.46-.46-1.27-.46-1.73,0l-2.97,2.97c-.9.89-2.46.9-3.36,0l-6.12-6.12c-.45-.45-.7-1.04-.7-1.68s.25-1.23.7-1.68l2.97-2.97c.23-.23.36-.54.36-.87s-.13-.64-.36-.87l-4.07-4.07c-.46-.45-1.26-.45-1.72,0l-1.52,1.52h0c-1.56,1.56-1.72,4.4-.44,7.8.19.5.35.88.53,1.23l.09.19c1.23,2.5,2.88,4.79,4.91,6.77,2,2.04,4.34,3.71,6.97,5,.02.01.05.02.07.04ZM4.5,5.06h0,0Z"></path></svg></div></button></li><div><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 dkLoUU"><button class="sc-AxjAm bHLmfj" id="hs-global-toolbar-marketplace-list-item" data-test-id="hs-global-toolbar-marketplace-list-item" aria-expanded="false" aria-label="Marketplace"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__marketplace" width="16px" height="16px" fill="#dfe3eb"><title>Marketplace</title><path d="m12.36,16.23c-1.72,0-2.92-.96-3.66-1.83-.72.78-1.86,1.6-3.63,1.55-1.44-.03-2.2-.66-2.58-1.18-.96-1.31-.49-3.11-.43-3.31L4.47,2.91c.12-.43.51-.73.96-.73h21.24c.46,0,.86.31.97.75l2.32,9.15c.04.14.47,1.71-.39,2.85-.34.46-1.01,1-2.27,1-1.91,0-3.14-.74-3.9-1.48-.63.79-1.66,1.59-3.24,1.59-1.9,0-3.15-.71-3.91-1.52-.79.9-2.06,1.71-3.9,1.71Zm-3.64-4.6h0c.39,0,.75.23.91.59,0,.02.95,2.01,2.73,2.01,2.24,0,2.9-1.77,2.97-1.97.14-.43.55-.7,1.01-.69.45.03.83.34.92.79.04.16.49,1.68,2.91,1.68,1.59,0,2.16-1.68,2.18-1.75.13-.4.5-.68.93-.69.42,0,.81.24.96.64.02.06.72,1.69,3.07,1.69.24,0,.55-.03.67-.2.19-.25.13-.86.06-1.13l-2.14-8.42H6.19l-2.2,7.84c-.07.27-.21,1.14.12,1.58.17.23.51.35,1.01.36.02,0,.04,0,.06,0,1.82,0,2.59-1.66,2.62-1.74.16-.36.52-.59.91-.59Zm18.88,17.2v-10.56c0-.55-.45-1-1-1s-1,.45-1,1v9.56h-8.21v-7.16c0-.55-.45-1-1-1h-5.93c-.55,0-1,.45-1,1v7.16h-3.36v-9.56c0-.55-.45-1-1-1s-1,.45-1,1v10.56c0,.55.45,1,1,1h5.36c.55,0,1-.45,1-1v-7.16h3.93v7.16c0,.55.45,1,1,1h10.21c.55,0,1-.45,1-1Z"></path></svg></button></li><div id="marketplace-nav-menu"></div></div><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 dkLoUU"><div class="GlobalToolbarTooltip__StyledDiv-sc-1jrrqmw-0 hpxNsp"><button class="HelpButton__StyledHelpButton-c6ipto-0 OWWtv" aria-label="Help" aria-haspopup="dialog" aria-owns="in-app-help-iframe" aria-expanded="false" data-test-id="hs-global-toolbar-help-list-item" id="hs-global-toolbar-help-list-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16px" height="16px" fill="#dfe3eb"><title>Help</title><path d="m16,4c6.62,0,12,5.38,12,12s-5.38,12-12,12-12-5.38-12-12,5.38-12,12-12m0-2c-7.73,0-14,6.27-14,14s6.27,14,14,14,14-6.27,14-14S23.73,2,16,2h0Zm-.98,17.33l-.4-3.12c.62-.16,1.18-.34,1.66-.54s.9-.43,1.25-.68c.35-.25.64-.52.88-.81.23-.29.41-.6.53-.94.12-.34.18-.69.18-1.07,0-.55-.13-1.04-.4-1.48-.27-.44-.64-.78-1.12-1.02-.48-.24-1.02-.36-1.62-.36-.7,0-1.38.21-2.03.63s-1.21,1.05-1.7,1.9l-1.29-1.1c.66-.98,1.43-1.75,2.33-2.31.9-.55,1.83-.83,2.8-.83s1.78.2,2.52.61c.74.41,1.33.95,1.77,1.64s.66,1.46.66,2.32c0,.55-.11,1.07-.32,1.58s-.51.98-.9,1.43c-.39.45-.85.84-1.38,1.17-.53.34-1.11.61-1.73.81l-.33,2.16h-1.36Zm-.63,3.61c0-.42.12-.77.35-1.04.23-.27.55-.41.96-.41s.73.13.96.39c.23.26.35.61.35,1.07s-.12.79-.36,1.05c-.24.27-.56.4-.95.4-.42,0-.75-.13-.97-.38-.23-.25-.34-.61-.34-1.08Z"></path></svg></button></div></li><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 cEQcI"><a class="sc-AxirZ FyrUc" id="hs-global-toolbar-settings-list-item" data-test-id="hs-global-toolbar-settings-list-item" href="/user-preferences/242303334?eschref=%2Fuser-guide%2F242303334" aria-label="Settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16px" height="16px" fill="#dfe3eb"><title>Settings</title><path d="m16.45,30.16h-1c-1.65,0-3-1.35-3-3v-1.68c-.23-.08-.46-.18-.68-.28l-1.18,1.17c-.54.57-1.32.9-2.14.9s-1.6-.34-2.16-.92l-.7-.7c-.57-.54-.9-1.32-.9-2.14s.34-1.6.92-2.16l1.16-1.16c-.1-.22-.19-.44-.27-.67h-1.67c-1.65,0-3-1.35-3-3v-1.07c0-1.65,1.35-3,3-3h1.67c.09-.23.18-.46.28-.68l-1.19-1.21c-.56-.53-.9-1.32-.9-2.13s.34-1.6.92-2.16l.67-.67c.54-.57,1.34-.91,2.16-.91s1.62.34,2.18.93l1.16,1.16c.24-.11.49-.21.75-.29v-1.66c0-1.65,1.35-3,3-3h1c1.65,0,3,1.35,3,3v1.69c.23.09.46.18.68.28l1.21-1.19c.53-.56,1.32-.9,2.13-.9s1.58.33,2.15.91l.7.72c.55.52.89,1.31.89,2.12s-.34,1.6-.92,2.16l-1.16,1.16c.11.24.2.49.29.74h1.45c.07-.01.13-.02.2-.02,1.65,0,3,1.35,3,3v1c0,1.65-1.35,3-3,3h-1.68c-.09.23-.18.46-.28.67l1.18,1.19c.57.54.9,1.31.9,2.13s-.33,1.6-.92,2.17l-.7.7c-.54.57-1.32.9-2.14.9s-1.6-.34-2.16-.92l-1.16-1.16c-.24.11-.49.21-.75.29v1.66c0,1.65-1.35,3-3,3Zm-4.87-7.17c.17,0,.34.04.49.13.46.26,1.01.49,1.6.66.43.12.78.54.78.98v2.4c0,.55.45,1,1,1h1c.55,0,1-.45,1-1v-2.4c0-.45.3-.85.74-.96.6-.16,1.14-.37,1.66-.64.05-.04.11-.07.17-.09.45-.19.99-.02,1.25.38l1.53,1.53c.4.42,1.06.4,1.43.02l.74-.74c.21-.2.32-.46.32-.73,0-.35-.16-.58-.3-.7l-1.71-1.72c-.31-.32-.38-.8-.17-1.19.27-.49.5-1.04.66-1.6.12-.43.54-.78.98-.78h2.4c.55,0,1-.45,1-1v-1c0-.5-.37-.92-.85-.99-.04,0-.09,0-.14,0h-2.4c-.45,0-.85-.3-.97-.74-.16-.59-.36-1.12-.63-1.64-.04-.06-.07-.12-.1-.19-.18-.45-.02-.99.38-1.24l1.53-1.53c.21-.2.32-.45.32-.72s-.11-.52-.3-.7l-.72-.75c-.38-.39-1.05-.38-1.41,0l-1.75,1.71c-.32.31-.8.38-1.19.16-.48-.27-1.04-.5-1.61-.66-.43-.12-.78-.54-.78-.98v-2.41c0-.55-.45-1-1-1h-1c-.55,0-1,.45-1,1v2.4c0,.45-.3.85-.74.97-.6.16-1.14.37-1.65.63-.05.04-.11.07-.17.09-.45.18-.99.02-1.25-.38l-1.53-1.53c-.41-.43-1.1-.41-1.47-.02l-.71.71c-.21.2-.32.45-.32.72s.11.52.3.71l1.72,1.74c.31.32.38.8.16,1.19-.27.48-.5,1.04-.66,1.6-.12.43-.54.78-.98.78h-2.39c-.55,0-1,.45-1,1v1.07c0,.56.44,1,1,1h2.4c.45,0,.84.3.96.73.16.56.36,1.06.62,1.58.04.06.08.13.1.2.18.45.01.98-.39,1.24l-1.53,1.53c-.21.2-.32.45-.32.72s.11.52.3.71l.74.74c.4.42,1.06.4,1.43.02l1.71-1.7c.19-.19.45-.29.71-.29Zm4.42-2.05c-2.72,0-4.93-2.21-4.93-4.93s2.21-4.93,4.93-4.93,4.93,2.21,4.93,4.93-2.21,4.93-4.93,4.93Zm0-7.86c-1.62,0-2.93,1.31-2.93,2.93s1.31,2.93,2.93,2.93,2.93-1.31,2.93-2.93-1.31-2.93-2.93-2.93Z"></path></svg></a></li><div class="UnseenIndicator__Container-sc-1ip82z7-0 fQfjzJ"><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 dkLoUU"><button class="sc-AxjAm bHLmfj" id="hs-global-toolbar-notifications-list-item" data-test-id="hs-global-toolbar-notifications-list-item" aria-expanded="false" aria-label="Notifications" data-notifications-button-count-badge="none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16px" height="16px" fill="#dfe3eb"><path d="m15.98,3.84h0c3.42,0,6.21,2.79,6.21,6.21v9.24c0,.57.25,1.12.68,1.5l1.86,1.63H7.23l1.87-1.65c.43-.38.68-.93.68-1.5v-9.23c0-3.42,2.79-6.21,6.21-6.21m0-2h0c-4.53,0-8.21,3.67-8.21,8.21v9.23l-3.75,3.31c-.42.42-.43,1.1,0,1.52.19.19.44.3.71.32h22.56c.59-.03,1.05-.54,1.02-1.13-.01-.27-.13-.52-.32-.71h-.04l-3.75-3.3v-9.24c0-4.53-3.68-8.21-8.21-8.21h0Zm4.29,24.88c.07-.55-.31-1.05-.86-1.12-.55-.07-1.05.31-1.13.86,0,.07-.25,1.7-2.17,1.7-2.06,0-2.36-1.47-2.4-1.77-.06-.54-.57-.94-1.1-.88-.55.06-.95.55-.89,1.1.13,1.23,1.22,3.54,4.39,3.54,2.92,0,3.99-2.25,4.15-3.43Z"></path></svg></button></li></div><div class="GlobalToolbarDivider-k9a7ax-0 hyPwwt"></div><li role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 dkLoUU"><button class="sc-AxjAm dDgtM" id="hs-global-toolbar-copilot-list-item" data-test-id="hs-global-toolbar-copilot-list-item" aria-label="Open Copilot"><svg width="16px" height="16px" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Open Copilot</title><g clip-path="url(#clip0_11552_13649)"><path d="M15.9751 7.51952C12.2738 7.51952 9.18045 4.32283 9.18045 0.491223C9.18045 0.226213 8.96712 0.00537109 8.71112 0.00537109C8.45512 0.00537109 8.24178 0.226213 8.24178 0.491223C8.24178 4.32283 5.14845 7.51952 1.44712 7.51952C1.18578 7.51952 0.977783 7.74036 0.977783 8.00537C0.977783 8.2759 1.18578 8.49122 1.44712 8.49122C5.14845 8.49122 8.24178 11.6879 8.24178 15.5195C8.24178 15.7845 8.45512 16.0054 8.71112 16.0054C8.96712 16.0054 9.18045 15.7845 9.18045 15.5195C9.18045 11.6879 12.2738 8.49122 15.9751 8.49122C16.2365 8.49122 16.4445 8.27038 16.4445 8.00537C16.4445 7.73484 16.2365 7.51952 15.9751 7.51952Z" fill="#FBDBE9"></path></g><defs><clipPath id="clip0_11552_13649"><rect width="16" height="16" fill="white" transform="translate(0.711121)"></rect></clipPath></defs></svg><span class="icon-text-key">Copilot</span></button></li><div class="GlobalToolbarDivider-k9a7ax-0 hyPwwt"></div><li data-portal-hook="account-menu" data-onboarding-hook="opt-out" role="menuitem" class="GlobalToolbarItem__StyledListItem-d26ajz-0 bGTXdd"><button class="sc-fznyAO jMamjQ" id="hs-global-toolbar-accounts" aria-haspopup="true" data-test-id="hs-global-toolbar-accounts" aria-label="View profile and more"><img src="https://api-na2.hubspot.com/userpreferences/v1/avatar/4e94b928bd7feb120235ffbc0226bff0/100" alt="Shivam Goyal"><span>optexity.com </span><svg width="8" height="8" viewBox="0 0 8 8" fill="#dfe3eb"><path d="M0.667621 1.74999H0.6655C0.481236 1.74999 0.314854 1.82546 0.19484 1.94698C0.0742204 2.06973 -3.05176e-05 2.23853 -3.05176e-05 2.42431C-3.05176e-05 2.61009 0.0742204 2.77859 0.195143 2.90164L3.52886 6.28081C3.64887 6.40295 3.81555 6.47841 4.00012 6.47841C4.18469 6.47841 4.35137 6.40264 4.47139 6.28081L7.8051 2.90164C7.92572 2.7789 7.99997 2.61009 7.99997 2.42431C7.99997 2.23853 7.92572 2.06973 7.8048 1.94698C7.68509 1.82546 7.51901 1.7503 7.33505 1.74999H0.667621Z"></path></svg></button></li></ul></nav></header></div></div><div id="hs-vertical-nav-root"><div id="hs-vertical-nav" data-test-id="hs-vertical-nav" class="VerticalNavContainer__VNCMask-jz7a1z-0 bKDAIL"><div data-test-id="hs-vertical-nav-content" data-onboarding-hook="primary-menu" class="VerticalNavContainer__VNCContent-jz7a1z-1 bpQull"><div data-test-id="VNCMain" class="VerticalNavContainer__VNCMain-jz7a1z-2 ZGyAE" data-onboarding-hook="primary-menu-main"><nav class="VerticalNavMenu__StyledNav-dpbye0-1 imBMLm"><ul role="menu" class="VerticalNavMenu__StyledUl-dpbye0-0 kAcRdr primary-nav-menu"><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 dvphjW primary-nav-menu-item"><button id="@@nav-item/bookmarks-group-toggle" data-test-id="@@nav-item/bookmarks-group-toggle" aria-expanded="false" aria-controls="@@nav-item/bookmarks-group-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="@@nav-item/bookmarks-group"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Bookmarks" data-test-id="nav-favorite-icon" class="SvgIconBase__StyledSVGIconBase-tpx5h2-0 klgluf"><title>Bookmarks</title><path d="M25.5,30.5c-.26,0-.52-.1-.71-.3l-8.66-8.78-8.93,8.79c-.29.28-.72.37-1.09.21-.37-.16-.61-.52-.61-.92V2.5c0-.55.45-1,1-1h19c.55,0,1,.45,1,1v26.99c0,.41-.25.77-.62.93-.12.05-.25.07-.38.07ZM7.5,3.5v23.6l7.94-7.82c.39-.39,1.03-.38,1.41.01l7.65,7.76V3.5H7.5Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="workspaces-toggle" data-test-id="workspaces-toggle" aria-expanded="false" aria-controls="workspaces-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="workspaces"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__workspaces"><title>Workspaces</title><path d="m12.75,14.59H3.25c-.96,0-1.75-.79-1.75-1.76V3.26c0-.97.79-1.76,1.75-1.76h9.5c.96,0,1.75.79,1.75,1.76v9.57c0,.97-.79,1.76-1.75,1.76Zm-9.25-2.01h9V3.51H3.5v9.06Zm25.25,2.01h-9.5c-.96,0-1.75-.79-1.75-1.76V3.26c0-.97.79-1.76,1.75-1.76h9.5c.96,0,1.75.79,1.75,1.76v9.57c0,.97-.79,1.76-1.75,1.76Zm-9.25-2.01h9V3.51h-9v9.06Zm-6.75,17.92H3.25c-.96,0-1.75-.79-1.75-1.76v-9.57c0-.97.79-1.76,1.75-1.76h9.5c.96,0,1.75.79,1.75,1.76v9.57c0,.97-.79,1.76-1.75,1.76Zm-9.25-2.01h9v-9.06H3.5v9.06Zm25.25,2.01h-9.5c-.96,0-1.75-.79-1.75-1.76v-9.57c0-.97.79-1.76,1.75-1.76h9.5c.96,0,1.75.79,1.75,1.76v9.57c0,.97-.79,1.76-1.75,1.76Zm-9.25-2.01h9v-9.06h-9v9.06Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="crm-toggle" data-test-id="crm-toggle" aria-expanded="false" aria-controls="crm-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="crm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__crm"><title>CRM</title><path d="m28.08,29.72H6.41c-1.06,0-1.92-.86-1.92-1.92v-3.01c0-.55.45-1,1-1s1,.45,1,1v2.94h21.52V4.27H6.48v2.31c0,.55-.45,1-1,1s-1-.45-1-1v-2.38c0-1.06.86-1.92,1.92-1.92h21.67c1.06,0,1.92.86,1.92,1.92v23.6c0,1.06-.86,1.92-1.92,1.92Zm-4.6-5.96c-.43,0-.82-.27-.96-.7-.05-.15-1.15-3.35-4.4-3.35s-4.36,3.21-4.41,3.35c-.17.53-.74.82-1.27.65-.53-.17-.82-.74-.65-1.27.52-1.64,2.52-4.75,6.33-4.75s5.8,3.11,6.33,4.75c.17.53-.12,1.1-.65,1.27-.1.03-.21.05-.31.05Zm-5.37-14.29c-1.23,0-2.23,1.09-2.23,2.44s1,2.44,2.23,2.44,2.23-1.09,2.23-2.44-1-2.44-2.23-2.44h0Zm0-2.02c2.35,0,4.25,2,4.25,4.46s-1.9,4.46-4.25,4.46-4.25-2-4.25-4.46,1.9-4.46,4.25-4.46h0Zm-9.23,2.66c0-.55-.45-1-1-1H3.17c-.55,0-1,.45-1,1s.45,1,1,1h4.72c.55,0,1-.45,1-1Zm-.17,11.19c0-.55-.45-1-1-1H3c-.55,0-1,.45-1,1s.45,1,1,1h4.72c.55,0,1-.45,1-1Zm-2.19-3.25v-4.41c0-.55-.45-1-1-1s-1,.45-1,1v4.41c0,.55.45,1,1,1s1-.45,1-1Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="marketing-toggle" data-test-id="marketing-toggle" aria-expanded="false" aria-controls="marketing-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="marketing"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__marketing"><title>Marketing</title><path d="m23.18,6.89c.29-.12.53,0,.69.41l3.61,11.63c.1.31-.12.63-.44.65l-10.2.82-8.3.91-2.72.3c-.24.03-.46-.12-.53-.35l-.96-3.03c-.07-.23.02-.47.23-.59M24.17,4.24c-.1,0-.21.02-.31.05-.07.02-.13.05-.19.08L2.52,16.51c-.42.24-.61.74-.47,1.19l1.69,5.33c.13.43.53.71.97.71.04,0,.07,0,.11,0l3.47-.38c.26-.03.49.15.55.41.49,2.32,2.26,3.99,4.2,3.99.13,0,.26,0,.39-.02,2.09-.24,3.62-2.35,3.6-4.86,0-.27.19-.5.46-.52l11.63-.94c.55-.06.95-.55.89-1.11,0-.07-.02-.13-.04-.2l-4.81-15.18c-.14-.43-.54-.7-.96-.7h0Zm-11.19,21.73c-1.11,0-2.12-.9-2.53-2.19-.1-.31.11-.63.43-.66l3.98-.44c.32-.04.59.24.56.56-.11,1.4-1.01,2.55-2.21,2.72-.08,0-.15.01-.23.01h0Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="web-content-toggle" data-test-id="web-content-toggle" aria-expanded="false" aria-controls="web-content-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="web-content"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__content"><title>Content</title><path d="m27.58,30.59H4.42c-1.7,0-3.09-1.38-3.09-3.09V4.34c0-1.7,1.38-3.09,3.09-3.09h23.16c1.7,0,3.09,1.38,3.09,3.09v23.16c0,1.7-1.38,3.09-3.09,3.09ZM4.42,3.25c-.6,0-1.09.49-1.09,1.09v23.16c0,.6.49,1.09,1.09,1.09h23.16c.6,0,1.09-.49,1.09-1.09V4.34c0-.6-.49-1.09-1.09-1.09H4.42Zm20.18,15.71c0-.55-.45-1-1-1h-15.2c-.55,0-1,.45-1,1s.45,1,1,1h15.2c.55,0,1-.45,1-1Zm0,5.41c0-.55-.45-1-1-1h-15.2c-.55,0-1,.45-1,1s.45,1,1,1h15.2c.55,0,1-.45,1-1ZM8.4,6.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5,1.5.67,1.5,1.5,1.5,1.5-.67,1.5-1.5Zm17.33,8.37H6.56c-.41,0-.75-.34-.75-.75,0-1.15.9-2.5,2.4-3.61,1.45-1.07,3.67-2,5.57-1.41.93.29,1.32-.12,2.19-1.14.9-1.06,2.14-2.51,4.67-2.51,5.59,0,5.83,8.3,5.83,8.65,0,.2-.07.4-.21.54-.14.14-.33.23-.54.23Zm-18.18-1.5h17.38c-.18-1.85-.97-6.42-4.28-6.42-1.84,0-2.66.96-3.53,1.98-.87,1.03-1.86,2.19-3.78,1.6-1.13-.35-2.79.12-4.24,1.18-.78.57-1.28,1.16-1.55,1.65Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="commerce-branch-v5-toggle" data-test-id="commerce-branch-v5-toggle" aria-expanded="false" aria-controls="commerce-branch-v5-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="commerce-branch-v5"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__commerce"><title>Commerce</title><path d="m.7,10.41h-.13c0-.12,0-.23.02-.34.01.12.05.24.11.34Z"></path><path d="m29.7,13.97h-1.53v-3.56c0-2.45-1.99-4.44-4.44-4.44H5.01c-.82,0-1.58.22-2.24.62.39-2.19,1.37-2.57,3.45-2.57h17.17c.56,0,1-.45,1-1s-.44-1-1-1H6.21C.97,2.03.57,5.45.57,9.92c0,.05,0,.1.02.15.01.12.05.24.11.34h-.13v15.11c0,2.45,1.99,4.45,4.44,4.45h18.73c2.45,0,4.44-2,4.44-4.45v-3.55h1.53c.95,0,1.73-.78,1.73-1.73v-4.54c0-.95-.78-1.73-1.73-1.73Zm-3.53,11.55c0,1.35-1.09,2.45-2.44,2.45H5.01c-1.35,0-2.44-1.1-2.44-2.45v-15.11c0-1.35,1.09-2.44,2.44-2.44h18.73c1.35,0,2.44,1.09,2.44,2.44v3.56h-3.95c-1.51.06-3.74,1.21-3.74,4.11,0,1.21.37,2.17,1.09,2.87.99.95,2.29,1.02,2.62,1.02h3.98v3.55Zm3.26-5.55h-7.2s-.79.01-1.28-.47c-.31-.31-.47-.78-.47-1.42,0-1.86,1.4-2.09,1.78-2.11h7.17v4Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="automation-toggle" data-test-id="automation-toggle" aria-expanded="false" aria-controls="automation-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="automation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__automations"><title>Automations</title><path d="m12.97,25.01c0-2.42-1.73-4.44-4-4.89v-2.67h14.05v2.67c-2.28.46-4,2.48-4,4.89,0,2.75,2.24,4.99,4.99,4.99s4.99-2.25,4.99-4.99c0-2.42-1.72-4.44-4-4.89v-3.67c0-.55-.45-1-1-1h-6.76v-2.76c2.5-.47,4.4-2.66,4.4-5.29,0-2.98-2.43-5.39-5.39-5.39s-5.39,2.42-5.39,5.39c0,2.64,1.9,4.83,4.4,5.29v2.76h-7.29c-.56,0-1,.45-1,1v3.67c-2.28.46-4,2.48-4,4.89,0,2.75,2.24,4.99,4.99,4.99s4.99-2.25,4.99-4.99Zm-.3-17.61c0-1.99,1.61-3.6,3.6-3.6s3.6,1.61,3.6,3.6-1.62,3.6-3.6,3.6-3.6-1.62-3.6-3.6Zm14.35,17.61c0,1.65-1.35,3-3,3s-3-1.35-3-3,1.34-3,3-3,3,1.34,3,3Zm-22.05,0c0-1.66,1.34-3,3-3s3,1.34,3,3-1.35,3-3,3-3-1.35-3-3Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="reports-toggle" data-test-id="reports-toggle" aria-expanded="false" aria-controls="reports-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="reports"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__reporting-data"><title>Reporting</title><path d="m28,4v24h-3V4h3m-10.5,6.5v17.46h-3V10.5h3m-10.5,6.11v11.35h-3v-11.35h3M29.25,2h-5.5c-.41,0-.75.34-.75.75v27.25h7V2.75c0-.41-.34-.75-.75-.75h0Zm-10.5,6.5h-5.5c-.41,0-.75.33-.75.75v20.72h7V9.25c0-.41-.33-.75-.75-.75h0Zm-10.5,6.11H2.75c-.41,0-.75.33-.75.75v14.61h7v-14.61c0-.41-.33-.75-.75-.75h0Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="data-ops-toggle" data-test-id="data-ops-toggle" aria-expanded="false" aria-controls="data-ops-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="data-ops"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__database"><title>Data Management</title><path d="M15.01 0.880005C8.01 0.880005 0.91 2.72 0.91 6.23V24.86C0.91 28.93 8.17 31.12 15 31.12C21.83 31.12 29.08 28.93 29.08 24.86V6.23C29.08 2.72 22 0.880005 15 0.880005H15.01ZM27.09 24.86C27.09 26.87 21.92 29.12 15.01 29.12C8.1 29.12 2.92 26.87 2.92 24.86V22.07C5.55 23.99 10.38 25 15.01 25C19.64 25 24.47 23.99 27.09 22.07V24.86ZM27.09 18.73C27.09 20.74 21.92 23 15.01 23C8.1 23 2.92 20.74 2.92 18.73V15.35C5.55 17.28 10.38 18.29 15.01 18.29C19.64 18.29 24.47 17.28 27.09 15.35V18.73ZM27.09 12.02C27.09 14.03 21.92 16.29 15.01 16.29C8.1 16.29 2.91 14.03 2.91 12.02V9.12C5.5 10.74 10.27 11.57 15 11.57C19.73 11.57 24.48 10.74 27.08 9.12V12.02H27.09ZM15.01 9.57C7.74 9.57 2.92 7.56 2.92 6.23C2.92 4.9 7.74 2.88 15.01 2.88C22.28 2.88 27.09 4.9 27.09 6.23C27.09 7.56 22.27 9.57 15.01 9.57Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 eMUfbj primary-nav-menu-item"><button id="library-toggle" data-test-id="library-toggle" aria-expanded="false" aria-controls="library-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="library"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__library"><title>Library</title><path d="m11.9,6.5l.73,3.12c.29,1.35,1.69,1.18,3.06,1.18h11.82c.27,0,.48.22.48.48v13.39c0,.46-.37.83-.83.83H4.71c-.39,0-.71-.32-.71-.71v-15.81l.42-2.48h7.48m.72-2H3.88c-.79,0-1.1.23-1.29.81l-.57,3.4s-.02.09-.02.2v17.6c0,.54.44.98.98.98h26.04c.54,0,.98-.44.98-.98V9.78c0-.54-.44-.98-.98-.98h-13.42c-1.06,0-1.14-.55-1.14-.55l-.76-2.94c-.13-.45-.19-.81-1.08-.81h0Z"></path></svg></button></li><li role="none" class="VerticalNavMenuItem__StyledLi-oft1jq-0 dwQlMH primary-nav-menu-item"><button id="breeze-ai-toggle" data-test-id="breeze-ai-toggle" aria-expanded="false" aria-controls="breeze-ai-content" role="menuitem" aria-haspopup="true" data-menu-item-level="primary" data-menu-item-group="breeze-ai"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" data-test-id="vertical-nav-icon__breeze-ai"><title>Breeze</title><path xmlns="http://www.w3.org/2000/svg" d="M31.03,15.54c-3.67,0-6.74-3.04-6.74-6.69,0-.26-.21-.46-.47-.46s-.47.21-.47.46c0,3.68-2.99,6.67-6.7,6.69h-.09V.96c0-.26-.21-.46-.47-.46h0c-.26,0-.46.21-.46.46,0,8.05-6.57,14.58-14.68,14.58-.26,0-.46.21-.46.46h0c0,.26.21.47.47.47,8,0,14.67,6.63,14.67,14.57h0c0,.26.21.46.46.46h.01c.25,0,.46-.21.46-.46v-14.58h.09c3.7.02,6.7,3.01,6.7,6.69,0,.26.21.46.47.46s.47-.21.47-.46c0-3.65,3.07-6.69,6.74-6.69.26,0,.47-.21.47-.46h0c0-.26-.21-.46-.47-.46Z" fill="#dfe3eb"></path></svg></button></li></ul></nav></div><div data-onboarding-hook="primary-menu-footer" class="VerticalNavContainer__VNCFooter-jz7a1z-3 gndjQX"><button class="sc-fzqNJr jsuihJ" aria-hidden="true" tabindex="-1" data-test-id="isPinned-false" data-onboarding-hook="expand-collapse" data-click-action="expanded vertical nav" id="hs-vertical-nav-expand-collapse"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M3.0675 21C3.0675 21 3 20.97 3 20.9325L3 3.06C3 3.06 3.03 2.9925 3.0675 2.9925L20.9325 2.9925C20.9325 2.9925 21 3.0225 21 3.06L21 20.9325C21 20.9325 20.97 21 20.9325 21L3.06 21M3.06 22.5L20.9325 22.5C21.795 22.5 22.5 21.8025 22.5 20.9325L22.5 3.06C22.5 2.1975 21.8025 1.4925 20.9325 1.4925L3.06 1.4925C2.1975 1.4925 1.4925 2.19 1.4925 3.06L1.4925 20.9325C1.4925 21.795 2.19 22.5 3.06 22.5Z" class="ExpandCollapseIcon__Outline-sc-1vxtlu9-1 oFkjW"></path><path d="M9.2325 7.6875L13.845 12.0375L9.315 16.3125C8.94 16.6725 8.9175 17.265 9.2775 17.64C9.63 18.015 10.2225 18.03 10.5975 17.6775L15.8475 12.7275C16.2225 12.3825 16.245 11.7975 15.9 11.4225C15.8925 11.4075 15.885 11.4 15.87 11.385C15.84 11.3475 15.81 11.31 15.7725 11.2725L10.5225 6.3225C10.3425 6.1575 10.11 6.0675 9.8775 6.0675C9.63 6.0675 9.3825 6.1725 9.195 6.3675C8.8425 6.7425 8.8575 7.335 9.2325 7.6875Z" class="ExpandCollapseIcon__InnerArrow-sc-1vxtlu9-0 hDpreX"></path></svg></button><div class="ArrowContainer__StyledDiv-sc-1wu252m-0 kMhBLZ VerticalNavMenuItemTooltip__StyledArrowContainer-sc-1fs9kgh-0 bzKiTQ hs-nav-primary-nav-link-tooltip" aria-hidden="true"><div class="VerticalNavMenuItemTooltip__StyledInnerContainer-sc-1fs9kgh-1 dxZqGc">Expand the navigation</div></div></div></div></div></div><div id="hs-one-nav-root"><div id="nav-object-create-root"></div><div id="hs-global-navigation-alerts-list" class="AlertList__StyledDiv-sc-1qrjeto-0 kBcGDg"></div><iframe frameborder="0" id="calling-remote-app" data-test-id="calling-remote-app" title="calling-remote-app" name="nav-components:calling" class="RenderNavComponent__StyledIframe-sc-1wcnb1k-0 kZwjHC" scrolling="yes" src="https://app-na2.hubspot.com/calling-cross-tab-embed/242303334/calling-remote-app" height="200" width="200" style="position: absolute; z-index: 1111; border-radius: 0px; box-shadow: none; display: none; right: 287.094px; top: 38px;"></iframe><iframe frameborder="0" id="in-app-notifications-tease-iframe" name="nav-components:notifications-tease" class="RenderNavComponent__StyledIframe-sc-1wcnb1k-0 kZwjHC" scrolling="no" src="https://app-na2.hubspot.com/notifications/242303334/tease?hostAppName=setup-guide-ui&amp;completeHostUrl=https%253A%252F%252Fapp-na2.hubspot.com%252Fuser-guide%252F242303334%253Fvia%253Dhome" height="200" width="200" style="z-index: 1211101; position: absolute; top: 20px; right: 15px; display: block; flex-direction: column; align-items: center; height: 0px; width: 0px;"></iframe></div><div class="page quartz-grid-layout copilot-grid-layout with-quartz-sidebar" style="width: calc(100% - var(--global-nav-vertical-nav-width, 236px)); margin-left: auto;"><div class="copilot-app-container quartz-grid-app-container"><div data-application-name="setup-guide-ui"><div aria-hidden="true"></div><div class="SetupGuideLayout__SetupGuideNavLayout-hatnox-0 iViuTd"><div class="SetupGuideLayout__SetupGuideNavContainer-hatnox-1 jnpGuv"><div class="Flex__StyledFlex-n7byta-0 dWbZjJ"><div class="Flex__StyledFlex-n7byta-0 gotobz"><nav aria-label="User Guides" data-test-id="user-guide-nav" class="SideNav__StyledNav-sc-13y3n40-1 dBKVvF"><div class="View__StyledView-m22akf-0 iOGiJl"><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><header role="presentation" data-test-id="app-header" class="Header__Outer-b3xjpv-0 gkkwqj"><div role="banner" class="Header__Inner-b3xjpv-1 flAnDn"><div class="Header__Title-b3xjpv-5 iPvgYZ"><h1 class="Header__Heading-b3xjpv-6 fDJWQf"><i18n-string data-locale-at-render="en-us" data-key="app.tabs.title">User Guides</i18n-string></h1></div></div></header></h5></div><ul class="SideNav__StyledUl-sc-13y3n40-0 gIsfkV"><li><a aria-current="false" aria-disabled="false" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r0:" data-open-complete="false" role="button" tabindex="0" data-product-level="free" data-tab-id="marketing" data-tab-selected="false" data-test-id="user-guide-nav-item-marketing" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 hUfWup"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 jfLfl">Marketing Guide</div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"></div></a></li><li><a aria-current="false" aria-disabled="false" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r1:" data-open-complete="false" role="button" tabindex="0" data-product-level="free" data-tab-id="sales" data-tab-selected="false" data-test-id="user-guide-nav-item-sales" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 hUfWup"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 jfLfl">Sales Guide</div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"></div></a></li><li><a aria-current="false" aria-disabled="false" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r2:" data-open-complete="false" role="button" tabindex="0" data-product-level="free" data-tab-id="service" data-tab-selected="false" data-test-id="user-guide-nav-item-service" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 hUfWup"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 jfLfl">Customer Service Guide</div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"></div></a></li><li><a aria-current="false" aria-disabled="false" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r3:" data-open-complete="false" role="button" tabindex="0" data-product-level="free" data-tab-id="cms" data-tab-selected="false" data-test-id="user-guide-nav-item-cms" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 hUfWup"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 jfLfl">Content Guide</div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"></div></a></li><li><a aria-current="true" aria-disabled="false" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r4:" data-open-complete="false" role="button" tabindex="0" data-product-level="free" data-tab-id="commerce" data-tab-selected="true" data-test-id="user-guide-nav-item-commerce" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 kWnSMJ"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 jfLfl">Commerce Guide</div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"></div></a></li></ul></nav><div class="UISection__ScrollWrapper-y5yj4s-0 hIcYjq is--module namespaced-hack-section"><h5 aria-level="2" class="Heading-dmzuc1-0 H5-sc-1pus9hy-0 bkyaCQ"><i18n-string data-locale-at-render="en-us" data-key="app.integrations.navWidgetTitle">Ready to connect:</i18n-string></h5><div direction="row" wrap="nowrap" class="UIFlex__StyledFlex-sc-1t54w9-0 hchJWu private-flex"><button aria-disabled="false" class="uiButton private-button private-button--tertiary-light private-button--default UIIconButton__Button-sc-1e0gdpy-0 gEwNpc private-button--icon-only m-x-0 p-all-2 private-button--non-responsive private-button--non-link" data-button-use="tertiary-light" tabindex="0" type="button"><div class="UIFittedImage__ImageWrapper-sc-1yhblry-0 ccMHNW"><img alt="Gmail" class="private-image private-image--fitted" src="https://cdn2.hubspot.net/hubfs/521324/App-Icon-1200x1200-gmail.png"></div></button><button aria-disabled="false" class="uiButton private-button private-button--tertiary-light private-button--default UIIconButton__Button-sc-1e0gdpy-0 gEwNpc private-button--icon-only m-x-0 p-all-2 private-button--non-responsive private-button--non-link" data-button-use="tertiary-light" tabindex="0" type="button"><div class="UIFittedImage__ImageWrapper-sc-1yhblry-0 ccMHNW"><img alt="Google Calendar" class="private-image private-image--fitted" src="https://hubspot-integrators-prod.s3.amazonaws.com/listing/35224.png"></div></button><button aria-disabled="false" class="uiButton private-button private-button--tertiary-light private-button--default UIIconButton__Button-sc-1e0gdpy-0 gEwNpc private-button--icon-only m-x-0 p-all-2 private-button--non-responsive private-button--non-link" data-button-use="tertiary-light" tabindex="0" type="button"><div class="UIFittedImage__ImageWrapper-sc-1yhblry-0 ccMHNW"><img alt="Google Meet" class="private-image private-image--fitted" src="https://f.hubspotusercontent20.net/hubfs/521324/__hs-marketplace__/Google%20Meet%20Logo-1.png"></div></button><button aria-disabled="false" class="uiButton private-button private-button--tertiary-light private-button--default UIIconButton__Button-sc-1e0gdpy-0 gEwNpc private-button--icon-only m-x-0 private-button--non-responsive private-button--non-link" data-button-use="tertiary-light" tabindex="0" type="button"><span class="private-icon private-icon__high" data-icon-name="add"><span aria-hidden="true" class="UIIcon__IconContent-rde3y8-0 dWLsgz"></span></span></button></div></div></div><nav aria-label="User Guide links" class="SideNav__StyledNav-sc-13y3n40-1 bNoFZz"><ul class="SideNav__StyledUl-sc-13y3n40-0 gIsfkV"><li><a aria-current="false" aria-disabled="false" href="/account-and-billing/242303334" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r5:" data-open-complete="false" role="link" tabindex="0" data-test-id="products-link" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 hUfWup"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 hqiyjP"><span class="IconHolder__StyledIconHolder-an2nmt-0 gQdkQi"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Product" class="StyledIcon-asizmr-0 bSpJDL"><path d="M29.31 7.47 16.71.2c-.21-.12-.46-.2-.73-.2s-.52.07-.73.2-12.6 7.27-12.6 7.27c-.43.26-.71.72-.71 1.25v14.55c0 .54.29 1 .72 1.26s12.6 7.28 12.6 7.28c.21.12.46.2.73.2s.52-.07.73-.2 12.6-7.27 12.6-7.27c.44-.26.73-.73.73-1.26V8.74c0-.54-.3-1.01-.74-1.26ZM15.99 3.13l9.7 5.59-3.36 1.94-9.5-5.7L16 3.13Zm-1.45 24.89-9.7-5.59V11.25l3.49 2.01 6.21 3.59v11.18Zm1.45-13.7-9.7-5.59 3.64-2.1 9.51 5.7-3.45 2Zm11.14 8.11-9.7 5.59V16.84l3.38-1.94v3.97a1.451 1.451 0 0 0 2.9 0v-5.66l3.38-1.94.02 11.16Z"></path></svg></span></span></div><div class="Flex__StyledFlex-n7byta-0 jfLfl"><i18n-string data-locale-at-render="en-us" data-key="app.tabs.productsLink">View your plan</i18n-string></div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"><div class="Flex__StyledFlex-n7byta-0 hxsrzt"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="ExternalLink" class="StyledIcon-asizmr-0 jkKvpE"><path d="M26.91 5.78c-.07-.16-.16-.3-.28-.41a1.1 1.1 0 0 0-.4-.27c-.14-.06-.3-.09-.47-.09h-7.72c-.7 0-1.26.56-1.27 1.26 0 .7.57 1.27 1.27 1.27h4.64L11.86 18.35a1.272 1.272 0 0 0 1.8 1.8L24.47 9.34v4.64c0 .7.57 1.27 1.27 1.27s1.27-.57 1.27-1.27V6.27c0-.17-.03-.33-.09-.47Zm-4.57 11.91c-.7 0-1.27.57-1.27 1.27v5.15c0 .19-.16.35-.35.35H7.89c-.19 0-.35-.16-.35-.35V11.27c0-.19.16-.35.35-.35h5.15c.7 0 1.27-.57 1.27-1.27s-.57-1.27-1.27-1.27H7.89c-1.59 0-2.88 1.3-2.89 2.89v12.84a2.9 2.9 0 0 0 2.89 2.9h12.86c1.6 0 2.9-1.3 2.9-2.9v-5.14c0-.7-.57-1.27-1.27-1.27h-.03Z"></path></svg></div></div></a></li><li><a aria-current="false" aria-disabled="false" aria-expanded="false" aria-controls="trellis-foundations-disclosure-:r9:" data-open-complete="false" role="button" tabindex="0" data-test-id="side-nav-invite-link" class="SideNavItem__StyledCustomLink-sc-20i7fx-1 hUfWup"><div class="Flex__StyledFlex-n7byta-0 hVffBV"><div class="Flex__StyledFlex-n7byta-0 hqiyjP"><span class="IconHolder__StyledIconHolder-an2nmt-0 gQdkQi"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Lists" class="StyledIcon-asizmr-0 bSpJDL"><path d="M26.96 14.25a4.55 4.55 0 0 0 1.32-3.05 3.103 3.103 0 0 0-3.11-3.09 3.12 3.12 0 0 0-3.03 2.4v.02c1.58.91 2.63 2.59 2.64 4.52v8.8h3.5c.95 0 1.72-.77 1.72-1.72v-4.44a3.44 3.44 0 0 0-3.03-3.42h-.02ZM3.75 23.86h3.51v-8.8c.02-1.93 1.07-3.6 2.62-4.5h.03c-.33-1.41-1.56-2.44-3.04-2.44a3.11 3.11 0 0 0-3.11 3.09c.04 1.19.54 2.26 1.31 3.05-1.73.2-3.07 1.66-3.07 3.43v4.45c0 .95.77 1.72 1.72 1.72zm5.26-8.74v10.49c0 .95.77 1.72 1.72 1.72h10.53c.95 0 1.72-.77 1.72-1.72V15.12c0-1.93-1.57-3.5-3.5-3.5h-1.52c.27-.25.5-.54.7-.84v-.02c.17-.25.33-.53.45-.83v-.04c.24-.51.37-1.1.38-1.72 0-1.94-1.57-3.51-3.5-3.51s-3.5 1.57-3.5 3.5c.01.63.15 1.22.38 1.75v-.03c.13.33.28.62.46.88v-.02c.2.33.44.61.7.86s-1.54 0-1.54 0c-1.93 0-3.5 1.57-3.5 3.5Z"></path></svg></span></span></div><div class="Flex__StyledFlex-n7byta-0 jfLfl"><i18n-string data-locale-at-render="en-us" data-key="app.tabs.inviteLink.text">Invite your team</i18n-string></div></div><div class="Flex__StyledFlex-n7byta-0 kVFYqh"><div class="Flex__StyledFlex-n7byta-0 hxsrzt"><span class="HelpIcon__StyledSpan-sc-15tkzvs-0 bzhzRA"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Info" class="StyledIcon-asizmr-0 giBGYs"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 13.99-6.26 14-13.98V16c0-7.73-6.27-14-14-14m2.39 23.02H13.6v-9.59h4.79zm0-13.24H13.6V7.01h4.79z"></path></svg></span></div></div></a></li></ul></nav></div></div><div aria-hidden="true"></div><main data-group-key="commerce_free_view" data-onboarding-key="free_commerce" data-selected-view="commerce" data-test-id="user-guide-container" class="ConsolidatedUserGuideLayout__StyledContainer-g9v7l-1 hMqVMc"><div data-test-id="consolidated-progress" class="Flex__StyledFlex-n7byta-0 hzjXao"><div class="View__StyledView-m22akf-0 hBJyHH"><div class="View__StyledView-m22akf-0 kEvCFu"><div class="Flex__StyledFlex-n7byta-0 eYzrZo"><p id="Progress-label-1" class="Text__StyledText-sc-63cksg-0 gswoaI"><div class="Flex__StyledFlex-n7byta-0 iwmKeA"><img alt="commerce" src="//static.hsappstatic.net/setup-guide-components/static-1.44854/images/icon/commerce.svg" class="Image__StyledImage-lnn7ev-0 iBbBYI"><h5 class="Text__StyledText-sc-63cksg-0 jkEgnp"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.consolidatedUserGuide.progressIndicator.title.commerce">Your Commerce tools progress</i18n-string></h5></div></p><p class="Text__StyledText-sc-63cksg-0 cTsfZx"></p></div><div class="Progress__ProgressWrapper-sc-1yr4mg5-0 ehMzTC"><div data-value="30" aria-valuemax="100" aria-valuemin="0" aria-valuenow="30" aria-live="polite" role="progressbar" aria-labelledby="Progress-label-1" class="Progress__ProgressBar-sc-1yr4mg5-1 CAXmV" style="width: 30%;"><span class="ScreenReaderOnly__StyledSpan-e6faey-0 esFOnu">30% complete</span></div></div></div></div><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><span>30%</span></h5></div><div data-test-id="crm-template-banner" aria-atomic="true" aria-live="polite" class="alert private-alert private-alert--tip" role="alert"><div class="private-alert__inner"><h5 class="Heading-dmzuc1-0 H5-sc-1pus9hy-0 bkyaCQ private-alert__title" aria-level="2"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.crmTemplateBanner.heading">Explore the other features in your template</i18n-string></h5><div class="private-alert__body has--vertical-spacing"><button aria-disabled="false" class="uiButton private-button private-button__link private-button--default" data-button-use="link" tabindex="0" type="button"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.crmTemplateBanner.cta">See what’s been set up</i18n-string></button></div></div></div><div aria-hidden="true"></div><div data-open-complete="true" class="TwoWayTransition__PlainWrapper-sc-1lewy86-0 jSWlgT AccordionTransition__AccordionTransitionWrapper-sc-1qgkbjy-0 ggRZwt" data-transition-wrapper="true"><div data-card-locator="crm_essentials_group" aria-expanded="true" aria-controls="trellis-foundations-disclosure-:r6:" data-open-complete="true" class="CardWrapper__Outer-sc-1wkp7er-0 cufALf"><div class="Flex__StyledFlex-n7byta-0 gYTxXy"><img src="//static.hsappstatic.net/ui-images/static-2.758/optimized/bolt.svg" alt="bolt illustration" class="Image__StyledImage-sc-1i1xlkj-0 cInsP"><div><h3 class="Text__StyledText-sc-63cksg-0 imanLT">Recommended: All you need to get started</h3></div><div class="View__StyledView-m22akf-0 hkzibd"><div class="View__StyledView-m22akf-0 hcqkuX"><span></span></div></div></div><div class="sc-AxiKw gQJIRF" style="opacity: 1; height: auto;"><div data-group-locator="crm_set_up_the_basics" class="Flex__StyledFlex-n7byta-0 iZuXlN"><div class="Flex__StyledFlex-n7byta-0 kVFYqh"><div class="View__StyledView-m22akf-0 iEONqB"><span class="IconHolder__StyledIconHolder-an2nmt-0 goxQOF"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Blank" class="StyledIcon-asizmr-0 kxAzyj"></svg></span></span></div><div class="Flex__StyledFlex-n7byta-0 iojpES"><div class="View__StyledView-m22akf-0 hcqkuX"><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a data-test-id="task-group-link-crm_set_up_the_basics" role="button" tabindex="0" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa">Set up the basics</a></h5></div><p class="Text__StyledText-sc-63cksg-0 diLEBV">Import your contacts, invite teammates, and understand HubSpot properties</p></div><div class="View__StyledView-m22akf-0 iEONqB"><div class="Flex__StyledFlex-n7byta-0 iOuEeV"><div class="Flex__StyledFlex-n7byta-0 hxsrzt"><div class="View__StyledView-m22akf-0 hplGTD"><div class="Progress__ProgressWrapper-sc-1yr4mg5-0 hRCFjh"><div data-value="50" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" aria-live="polite" role="progressbar" aria-label="[object Object] complete" class="Progress__ProgressBar-sc-1yr4mg5-1 CAXmV" style="width: 50%;"><span class="ScreenReaderOnly__StyledSpan-e6faey-0 esFOnu">50% complete</span></div></div></div><small class="Text__StyledText-sc-63cksg-0 XuSLR"><span>50%</span></small></div><div class="View__StyledView-m22akf-0 cNJEPT"><small class="Text__StyledText-sc-63cksg-0 lhzkoi"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.consolidatedUserGuide.taskViewCard.timeLeft">About 6 minutes left</i18n-string></small></div></div></div></div></div><div data-open-complete="false" class="TwoWayTransition__PlainWrapper-sc-1lewy86-0 jSWlgT AccordionTransition__AccordionTransitionWrapper-sc-1qgkbjy-0 kuEIld" data-transition-wrapper="true"></div></div></div></div><div data-open-complete="true" class="TwoWayTransition__PlainWrapper-sc-1lewy86-0 jSWlgT AccordionTransition__AccordionTransitionWrapper-sc-1qgkbjy-0 ggRZwt" data-transition-wrapper="true"><div data-card-locator="free_commerce_payments_group" aria-expanded="true" aria-controls="trellis-foundations-disclosure-:r7:" data-open-complete="true" class="CardWrapper__Outer-sc-1wkp7er-0 cufALf"><div class="Flex__StyledFlex-n7byta-0 gYTxXy"><img src="//static.hsappstatic.net/ui-images/static-2.758/optimized/payments.svg" alt="payments illustration" class="Image__StyledImage-sc-1i1xlkj-0 cInsP"><div><h3 class="Text__StyledText-sc-63cksg-0 imanLT">Get paid online with Commerce Hub</h3><p class="Text__StyledText-sc-63cksg-0 loyntB">Collect, track, and report on your business revenue with free commerce tools</p></div><div class="View__StyledView-m22akf-0 hkzibd"><div class="View__StyledView-m22akf-0 hcqkuX"><span></span></div></div></div><div class="sc-AxiKw gQJIRF" style="opacity: 1; height: auto;"><div data-group-locator="commerce_free_create_and_accept_payments_online" class="Flex__StyledFlex-n7byta-0 iZuXlN"><div class="Flex__StyledFlex-n7byta-0 kVFYqh"><div class="View__StyledView-m22akf-0 iEONqB"><span class="IconHolder__StyledIconHolder-an2nmt-0 goxQOF"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Blank" class="StyledIcon-asizmr-0 kxAzyj"></svg></span></span></div><div class="Flex__StyledFlex-n7byta-0 iojpES"><div class="View__StyledView-m22akf-0 hcqkuX"><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a data-test-id="task-group-link-commerce_free_create_and_accept_payments_online" role="button" tabindex="0" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa">Set up commerce tools</a></h5></div><p class="Text__StyledText-sc-63cksg-0 diLEBV">Create professional-looking invoices, payment links, and quotes to bill and collect online payments from your customers</p></div><div class="View__StyledView-m22akf-0 iEONqB"><div class="Flex__StyledFlex-n7byta-0 iOuEeV"><div class="Flex__StyledFlex-n7byta-0 hxsrzt"><div class="View__StyledView-m22akf-0 hplGTD"><div class="Progress__ProgressWrapper-sc-1yr4mg5-0 hRCFjh"><div data-value="0" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" aria-live="polite" role="progressbar" aria-label="[object Object] complete" class="Progress__ProgressBar-sc-1yr4mg5-1 CAXmV" style="width: 0%;"><span class="ScreenReaderOnly__StyledSpan-e6faey-0 esFOnu">0% complete</span></div></div></div><small class="Text__StyledText-sc-63cksg-0 XuSLR"><span>0%</span></small></div><div class="View__StyledView-m22akf-0 cNJEPT"><small class="Text__StyledText-sc-63cksg-0 lhzkoi"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.consolidatedUserGuide.taskViewCard.duration">About 7 minutes</i18n-string></small></div></div></div></div><div class="View__StyledView-m22akf-0 iPnqBj"><hr class="HR__StyledHR-tsscl6-0 jpmNSB"></div></div><div data-group-locator="free-commerce-setup-payments-group" class="Flex__StyledFlex-n7byta-0 iZuXlN"><div class="Flex__StyledFlex-n7byta-0 kVFYqh"><div class="View__StyledView-m22akf-0 iEONqB"><span class="IconHolder__StyledIconHolder-an2nmt-0 goxQOF"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Blank" class="StyledIcon-asizmr-0 kxAzyj"></svg></span></span></div><div class="Flex__StyledFlex-n7byta-0 iojpES"><div class="View__StyledView-m22akf-0 hcqkuX"><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a data-test-id="task-group-link-free-commerce-setup-payments-group" role="button" tabindex="0" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa">Set up online payments, accounting and reporting</a></h5></div><p class="Text__StyledText-sc-63cksg-0 diLEBV">Learn how Commerce Hub can help process payments and track revenue</p></div><div class="View__StyledView-m22akf-0 iEONqB"><div class="Flex__StyledFlex-n7byta-0 iOuEeV"><div class="Flex__StyledFlex-n7byta-0 hxsrzt"><div class="View__StyledView-m22akf-0 hplGTD"><div class="Progress__ProgressWrapper-sc-1yr4mg5-0 hRCFjh"><div data-value="0" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" aria-live="polite" role="progressbar" aria-label="[object Object] complete" class="Progress__ProgressBar-sc-1yr4mg5-1 CAXmV" style="width: 0%;"><span class="ScreenReaderOnly__StyledSpan-e6faey-0 esFOnu">0% complete</span></div></div></div><small class="Text__StyledText-sc-63cksg-0 XuSLR"><span>0%</span></small></div><div class="View__StyledView-m22akf-0 cNJEPT"><small class="Text__StyledText-sc-63cksg-0 lhzkoi"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.consolidatedUserGuide.taskViewCard.duration">About 2 minutes</i18n-string></small></div></div></div></div></div><div data-open-complete="false" class="TwoWayTransition__PlainWrapper-sc-1lewy86-0 jSWlgT AccordionTransition__AccordionTransitionWrapper-sc-1qgkbjy-0 kuEIld" data-transition-wrapper="true"></div></div></div></div><div data-card-locator="free_commerce-integrations-card" data-test-id="integrations-card" aria-expanded="true" aria-controls="trellis-foundations-disclosure-:rb:" data-open-complete="true" class="CardWrapper__Outer-sc-1wkp7er-0 RVbay"><div class="sc-AxiKw gQJIRF" style="opacity: 1; height: auto;"><div class="Flex__StyledFlex-n7byta-0 bXLfIY"><img src="//static.hsappstatic.net/ui-images/static-2.758/optimized/integrations.svg" alt="integrations illustration" class="Image__StyledImage-sc-1i1xlkj-0 cnjICd"><h3 class="Text__StyledText-sc-63cksg-0 kmzqXS"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.integrations.sectionHeading">Ready to connect</i18n-string></h3></div></div><div class="sc-AxiKw gQJIRF" style="opacity: 1; height: auto;"><div class="Flex__StyledFlex-n7byta-0 cmjQzt"><div class="View__StyledView-m22akf-0 eFYOII"><span class="IconHolder__StyledIconHolder-an2nmt-0 goxQOF"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Blank" class="StyledIcon-asizmr-0 kxAzyj"></svg></span></span></div><div class="Flex__StyledFlex-n7byta-0 hSyvKu"><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a data-test-id="integrations-card-link" role="button" tabindex="0" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.integrations.title">Connect your favorite tools to HubSpot</i18n-string></a></h5><p class="Text__StyledText-sc-63cksg-0 kTDtHC"><i18n-string data-locale-at-render="en-us" data-key="setup-guide-components.integrations.subtitle">Install the apps you use or explore 1500+ more apps in the HubSpot App Marketplace</i18n-string></p><div class="Flex__StyledFlex-n7byta-0 dmNDJW"><button data-button-use="tertiary-light" tabindex="0" aria-disabled="false" type="button" class="PrivateButton__StyledButton-sc-1qedj5p-0 jQQOep"><span class="PrivateButton__StyledButtonTextContainer-sc-1qedj5p-2 giBIAa"><img alt="Gmail" src="https://cdn2.hubspot.net/hubfs/521324/App-Icon-1200x1200-gmail.png" class="Image__StyledImage-lnn7ev-0 wFhQQ"></span></button><button data-button-use="tertiary-light" tabindex="0" aria-disabled="false" type="button" class="PrivateButton__StyledButton-sc-1qedj5p-0 jQQOep"><span class="PrivateButton__StyledButtonTextContainer-sc-1qedj5p-2 giBIAa"><img alt="Google Calendar" src="https://hubspot-integrators-prod.s3.amazonaws.com/listing/35224.png" class="Image__StyledImage-lnn7ev-0 wFhQQ"></span></button><button data-button-use="tertiary-light" tabindex="0" aria-disabled="false" type="button" class="PrivateButton__StyledButton-sc-1qedj5p-0 jQQOep"><span class="PrivateButton__StyledButtonTextContainer-sc-1qedj5p-2 giBIAa"><img alt="Google Meet" src="https://f.hubspotusercontent20.net/hubfs/521324/__hs-marketplace__/Google%20Meet%20Logo-1.png" class="Image__StyledImage-lnn7ev-0 wFhQQ"></span></button><button data-button-use="tertiary-light" tabindex="0" aria-disabled="false" type="button" class="PrivateButton__StyledButton-sc-1qedj5p-0 jQQOep"><span class="PrivateButton__StyledButtonTextContainer-sc-1qedj5p-2 giBIAa"><img alt="Zoom" src="https://f.hubspotusercontent20.net/hubfs/521324/__hs-marketplace__/Zoom%20-%20Camera-1.png" class="Image__StyledImage-lnn7ev-0 wFhQQ"></span></button></div></div></div></div></div><div data-card-locator="free_commerce-learn-more-card" data-test-id="learn-more-card" aria-expanded="true" aria-controls="trellis-foundations-disclosure-:r8:" data-open-complete="true" class="CardWrapper__Outer-sc-1wkp7er-0 cufALf"><div class="sc-AxiKw dwASZb" style="opacity: 1; height: auto;"><h3 class="Text__StyledText-sc-63cksg-0 kmzqXS"><i18n-string data-locale-at-render="en-us" data-key="commerce.learnMore.description">Learn more about commerce tools</i18n-string></h3></div><div class="sc-AxiKw gQJIRF" style="opacity: 1; height: auto;"><div><div data-test-id="learn-more-card-item" class="Flex__StyledFlex-n7byta-0 kxAiUe"><span class="IconHolder__StyledIconHolder-an2nmt-0 gbWhnh"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Presentation" class="StyledIcon-asizmr-0 bAfKkG"><path d="M4.9 4.7h22.44c.69-.07 1.23-.64 1.23-1.35S28.03 2.07 27.35 2H4.77c-.75 0-1.35.61-1.35 1.35S4.03 4.7 4.77 4.7zm21.38 2.93H5.96c-.82 0-1.49.67-1.49 1.49v13.21c0 .84.67 1.5 1.49 1.5h7.87l-3.91 3.91a1.322 1.322 0 1 0 1.87 1.87l4.8-4.81 4.81 4.81c.24.23.56.38.92.38h.01c.36 0 .69-.14.94-.38.24-.24.39-.57.39-.94s-.15-.7-.39-.94l-3.91-3.91h6.88c.83 0 1.5-.67 1.5-1.5V9.12c0-.81-.65-1.48-1.45-1.5Zm-1.15 13.56H7.11V10.27h18.04v10.92Z"></path></svg></span></span><div><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a href="/commerce/242303334" rel="noopener noreferrer" tabindex="0" target="_blank" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa"><i18n-string data-locale-at-render="en-us" data-key="commerce.learnMore.ctas.overviewTools">Get an overview of commerce tools</i18n-string><span class="Link__StyledIconWrapper-cv8czl-0 dEzoSP"><svg aria-label="Link opens in a new window" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="ExternalLink" class="StyledIcon-asizmr-0 fnafjz"><path d="M26.91 5.78c-.07-.16-.16-.3-.28-.41a1.1 1.1 0 0 0-.4-.27c-.14-.06-.3-.09-.47-.09h-7.72c-.7 0-1.26.56-1.27 1.26 0 .7.57 1.27 1.27 1.27h4.64L11.86 18.35a1.272 1.272 0 0 0 1.8 1.8L24.47 9.34v4.64c0 .7.57 1.27 1.27 1.27s1.27-.57 1.27-1.27V6.27c0-.17-.03-.33-.09-.47Zm-4.57 11.91c-.7 0-1.27.57-1.27 1.27v5.15c0 .19-.16.35-.35.35H7.89c-.19 0-.35-.16-.35-.35V11.27c0-.19.16-.35.35-.35h5.15c.7 0 1.27-.57 1.27-1.27s-.57-1.27-1.27-1.27H7.89c-1.59 0-2.88 1.3-2.89 2.89v12.84a2.9 2.9 0 0 0 2.89 2.9h12.86c1.6 0 2.9-1.3 2.9-2.9v-5.14c0-.7-.57-1.27-1.27-1.27h-.03Z"></path></svg></span></a></h5></div></div><div class="View__StyledView-m22akf-0 iJlrS"><hr class="HR__StyledHR-tsscl6-0 jpmNSB"></div></div><div><div data-test-id="learn-more-card-item" class="Flex__StyledFlex-n7byta-0 kxAiUe"><span class="IconHolder__StyledIconHolder-an2nmt-0 gbWhnh"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Cap" class="StyledIcon-asizmr-0 bAfKkG"><path d="m23.16 17.51-6.51 2.36q-.285.09-.63.09c-.345 0-.44-.03-.65-.1h.02l-.63-.22-3.88-1.43-1.99-.73-.87-.31v3.23c0 1.19.79 2.39 2.34 3.29.1.05.2.09.29.13 1.24.59 2.68 1.01 4.19 1.21h.07c.33.04.72.05 1.11.05s.78-.02 1.16-.05h-.05c1.59-.18 3.04-.59 4.38-1.2l-.09.04c.09-.04.19-.08.29-.13 1.56-.87 2.34-2.09 2.34-3.29v-3.29l-.88.34Zm6.32-5.84-2.82-1.02-2.52-.87-3.28-1.23 1.26.45-3.58-1.3-1.16-.43.27.1-.37-.14-.63-.23q-.285-.09-.63-.09c-.345 0-.44.03-.65.1h.02l-.63.22-1.26.46-3.62 1.3-2.52.87-4.85 1.75c-.69.25-.69.66 0 .87l4.85 1.75 2.52 1.02 3.58 1.3 1.26.46.63.23q.285.09.63.09c.345 0 .44-.03.65-.1h-.02l.63-.22 1.26-.46 2.88-1.04 4.83-1.76v6.65c0 .72.59 1.31 1.31 1.31s1.31-.59 1.31-1.31v-7.62l.63-.23c.71-.24.71-.65.02-.9Zm-12.24 1.17c-.36.19-.79.29-1.24.29s-.88-.11-1.26-.3h.02c-.3-.1-.51-.38-.51-.71s.21-.61.51-.71c.36-.19.79-.3 1.24-.3s.88.11 1.26.3h-.02a.75.75 0 0 1 .02 1.42Z"></path></svg></span></span><div><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a href="/academy/242303334/lessons/1022818/4750" rel="noopener noreferrer" tabindex="0" target="_blank" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa"><i18n-string data-locale-at-render="en-us" data-key="commerce.learnMore.ctas.paymentsLesson">Get started with a lesson on accepting payments with HubSpot</i18n-string><span class="Link__StyledIconWrapper-cv8czl-0 dEzoSP"><svg aria-label="Link opens in a new window" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="ExternalLink" class="StyledIcon-asizmr-0 fnafjz"><path d="M26.91 5.78c-.07-.16-.16-.3-.28-.41a1.1 1.1 0 0 0-.4-.27c-.14-.06-.3-.09-.47-.09h-7.72c-.7 0-1.26.56-1.27 1.26 0 .7.57 1.27 1.27 1.27h4.64L11.86 18.35a1.272 1.272 0 0 0 1.8 1.8L24.47 9.34v4.64c0 .7.57 1.27 1.27 1.27s1.27-.57 1.27-1.27V6.27c0-.17-.03-.33-.09-.47Zm-4.57 11.91c-.7 0-1.27.57-1.27 1.27v5.15c0 .19-.16.35-.35.35H7.89c-.19 0-.35-.16-.35-.35V11.27c0-.19.16-.35.35-.35h5.15c.7 0 1.27-.57 1.27-1.27s-.57-1.27-1.27-1.27H7.89c-1.59 0-2.88 1.3-2.89 2.89v12.84a2.9 2.9 0 0 0 2.89 2.9h12.86c1.6 0 2.9-1.3 2.9-2.9v-5.14c0-.7-.57-1.27-1.27-1.27h-.03Z"></path></svg></span></a></h5></div></div><div class="View__StyledView-m22akf-0 iJlrS"><hr class="HR__StyledHR-tsscl6-0 jpmNSB"></div></div><div><div data-test-id="learn-more-card-item" class="Flex__StyledFlex-n7byta-0 kxAiUe"><span class="IconHolder__StyledIconHolder-an2nmt-0 gbWhnh"><span class="IconHolder__StyledIconWrapper-an2nmt-1 cbgHRf"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="Marketplace" class="StyledIcon-asizmr-0 bAfKkG"><path d="M25.38 16.19c-1.06-.19-1.92-.96-2.31-1.92 0-.1-.1-.1-.19-.1l-.1.1c-.48 1.25-1.73 2.02-2.98 2.02-1.63 0-3.27-.87-3.65-2.02 0-.1-.19-.19-.29 0-.58 1.25-1.92 2.02-3.27 2.02-1.44.1-2.79-.67-3.56-2.02 0-.1-.19-.1-.19 0-.87 1.35-1.35 2.02-3.08 2.02-.38 0-.77 0-1.15-.19v12.6h22.02V16.2c-.38.1-.77.1-1.25 0Zm-9.42 3.27c0-.38.29-.67.67-.67h6.92c.38 0 .67.29.67.67v4.04c0 .38-.29.67-.67.67h-6.92c-.38 0-.67-.29-.67-.67zM7.5 27.83v-7.21c0-.38.29-.67.67-.67h3.65c.38 0 .67.29.67.67v7.31h-5v-.1ZM9.23 3.31l-1.06 9.23c-.29 1.44-1.63 2.5-3.08 2.31-1.73 0-3.27-1.06-3.08-2.31s2.6-9.23 2.6-9.23zm6.44 0v9.23c0 1.35-1.35 2.31-3.08 2.31s-3.08-1.06-3.08-2.31c.1-1.63.77-9.23.77-9.23zm.96 0v9.23c0 1.35 1.35 2.31 3.08 2.31s3.08-1.06 3.08-2.31l-.77-9.23zm6.25 0 .96 9.23c0 1.35 1.35 2.31 3.08 2.31S30 13.79 30 12.54l-2.5-9.23z"></path></svg></span></span><div><h5 class="Text__StyledText-sc-63cksg-0 cTsfZx"><a href="/ecosystem/242303334/marketplace/apps/commerce/payment-gateways/stripedemo" rel="noopener noreferrer" tabindex="0" target="_blank" aria-disabled="false" data-link="true" class="Link__StyledLink-cv8czl-2 eujTMa"><i18n-string data-locale-at-render="en-us" data-key="commerce.learnMore.ctas.connectStripe">Connect a Stripe account to HubSpot</i18n-string><span class="Link__StyledIconWrapper-cv8czl-0 dEzoSP"><svg aria-label="Link opens in a new window" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false" data-icon-name="ExternalLink" class="StyledIcon-asizmr-0 fnafjz"><path d="M26.91 5.78c-.07-.16-.16-.3-.28-.41a1.1 1.1 0 0 0-.4-.27c-.14-.06-.3-.09-.47-.09h-7.72c-.7 0-1.26.56-1.27 1.26 0 .7.57 1.27 1.27 1.27h4.64L11.86 18.35a1.272 1.272 0 0 0 1.8 1.8L24.47 9.34v4.64c0 .7.57 1.27 1.27 1.27s1.27-.57 1.27-1.27V6.27c0-.17-.03-.33-.09-.47Zm-4.57 11.91c-.7 0-1.27.57-1.27 1.27v5.15c0 .19-.16.35-.35.35H7.89c-.19 0-.35-.16-.35-.35V11.27c0-.19.16-.35.35-.35h5.15c.7 0 1.27-.57 1.27-1.27s-.57-1.27-1.27-1.27H7.89c-1.59 0-2.88 1.3-2.89 2.89v12.84a2.9 2.9 0 0 0 2.89 2.9h12.86c1.6 0 2.9-1.3 2.9-2.9v-5.14c0-.7-.57-1.27-1.27-1.27h-.03Z"></path></svg></span></a></h5></div></div></div></div></div><div data-test-id="enrollment-footer-placeholder" class="View__StyledView-m22akf-0 hwPJsd"></div></main></div><div hidden="" aria-hidden="true" data-id-markers="APP_LOAD,USER_GUIDE_OVERVIEW_LOADED,USER_GUIDE_TASK_GROUPS_LOAD_SUCCESS"><mark data-id-marker="APP_LOAD"></mark><mark data-id-marker="USER_GUIDE_OVERVIEW_LOADED"></mark><mark data-id-marker="USER_GUIDE_TASK_GROUPS_LOAD_SUCCESS"></mark></div></div></div><aside class="copilot-sidebar-container quartz-grid-sidebar-container"><iframe frameborder="0" name="nav-components:chatspot-sidebar" class="RenderNavComponent__StyledIframe-sc-1wcnb1k-0 kZwjHC" scrolling="yes" src="https://app-na2.hubspot.com/chatspot-widget-ui/242303334?hostAppName=setup-guide-ui&amp;pathname=%252Fuser-guide%252F242303334" height="200" width="200" style="border-top: 1px solid transparent; border-left: 1px solid transparent; border-bottom: 1px solid transparent; border-right: none; background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255)) padding-box padding-box, linear-gradient(rgb(255, 72, 0), rgb(252, 8, 73), rgb(210, 6, 136)) border-box border-box; box-shadow: none; border-radius: 16px 0px 0px 16px; height: calc(100vh - var(--global-nav-height, 44px)); width: 400px; position: fixed; top: var(--global-nav-height, 44px); right: auto; z-index: 1070; display: none; transition: none; transform: none;"></iframe></aside></div><script>__hsiplt('b',document.currentScript,"//static.hsappstatic.net/hubspot-dlb/static-1.1772/bundle.production.js")</script><script src="//static.hsappstatic.net/hubspot-dlb/static-1.1772/bundle.production.js" type="text/javascript" crossorigin="anonymous" onload="__hsiplt('l',this)" onerror="__hsiplt('e',this)" data-hsiplt=""></script><script>__hsiplt('b',document.currentScript,"//static.hsappstatic.net/setup-guide-ui/static-1.44846/bundles/project.js")</script><script src="//static.hsappstatic.net/setup-guide-ui/static-1.44846/bundles/project.js" type="text/javascript" crossorigin="anonymous" onload="__hsiplt('l',this)" onerror="__hsiplt('e',this)" data-hsiplt=""></script><div data-layer-for="FloatingAlertList"><div class="FloatingAlertList__OuterWrapper-sc-1tl11l3-0 fmXlqP" style="top: 64px;"><div class="FloatingAlertList__Wrapper-sc-1tl11l3-1 iTAVaf"></div></div></div><div class="private-layer" data-layer-for="UIFloatingAlertList" data-test-id="undefined"><div class="private-floating-alert-list" style="top: 64px;"><div class="private-floating-alert-list__child-wrapper"></div></div></div><script async="true" src="//js.hubspot.com/analytics/0/common.js"></script><script async="true" data-hubspot-feedback-portal-id="53" data-hubspot-feedback-customer-portal-id="242303334" data-hubspot-feedback-env="prod" data-hubspot-feedback-hubspot-app="true" data-hubspot-feedback-hubspot-email="shivam.goyal@optexity.com" data-hubspot-feedback-user-lang="en" data-hubspot-feedback-client-load-only="false" src="//js.hubspotfeedback.com/feedbackweb-new.js"></script><div id="hs-vertical-nav-feedback-modal-root"></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 9999; transform: translate(874.906px, 38px);"><div id="help-tooltip" data-test-id="help-tooltip" role="tooltip" aria-live="polite" aria-hidden="false" class="Tooltip__StyledToolTip-u9cqpx-0 fBxGSg" style="left: 0px; top: -7px;"><div id="help-tooltip-arrow" data-test-id="help-tooltip-arrow" class="Tooltip__StyledArrow-u9cqpx-2 ihHkEC"></div><div id="help-tooltip-content" data-test-id="help-tooltip-content" class="Tooltip__StyledContent-u9cqpx-1 kWMUnR"><button class="HelpTooltipCloseButton__StyledCloseButton-sj76c-0 cxEhEX" id="hs-global-toolbar-help-tooltip-close-button" data-test-id="help-tooltip-close-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#99acc2" style="width: 12px;"><path d="M2.71 26.79c.312.314.743.508 1.22.508s.908-.194 1.22-.507L16 15.941l10.86 10.85c.312.312.744.505 1.22.505.953 0 1.725-.772 1.725-1.725 0-.476-.193-.908-.505-1.22l-10.86-10.85 10.85-10.86c.279-.305.45-.713.45-1.16 0-.95-.77-1.72-1.72-1.72-.448 0-.856.171-1.162.452l.001-.001-10.86 10.85L5.139.212c-.316-.344-.767-.56-1.27-.56-.95 0-1.72.77-1.72 1.72 0 .502.215.954.558 1.268l.001.001 10.85 10.86-10.85 10.86c-.311.311-.503.741-.503 1.215s.192.904.503 1.215z"></path></svg></button>Hi there, have any questions? We’re here to help.</div></div></div></body></html>

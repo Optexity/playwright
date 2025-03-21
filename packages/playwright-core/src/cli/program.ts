@@ -592,7 +592,7 @@ async function codegen(options: Options & { target: string, output?: string, tes
     contextOptions,
     device: options.device,
     saveStorage: options.saveStorage,
-    mode: 'recording',
+    mode: 'inspecting',
     testIdAttributeName,
     outputFile: outputFile ? path.resolve(outputFile) : undefined,
     contentDir: contentDir ? path.resolve(contentDir) : undefined,
