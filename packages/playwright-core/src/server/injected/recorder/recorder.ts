@@ -830,6 +830,7 @@ class Overlay {
   private _assertTextToggle: HTMLElement;
   private _assertValuesToggle: HTMLElement;
   private _assertSnapshotToggle: HTMLElement;
+  private _completeRecording: HTMLElement;
   private _offsetX = 0;
   private _dragState: { offsetX: number, dragStart: { x: number, y: number } } | undefined;
   private _measure: { width: number, height: number } = { width: 0, height: 0 };
@@ -881,6 +882,12 @@ class Overlay {
     this._assertSnapshotToggle.appendChild(this._recorder.document.createElement('x-div'));
     toolsListElement.appendChild(this._assertSnapshotToggle);
 
+    this._completeRecording = this._recorder.document.createElement('x-pw-tool-item');
+    this._completeRecording.title = 'Complete recording';
+    this._completeRecording.classList.add('complete');
+    this._completeRecording.appendChild(this._recorder.document.createElement('x-div'));
+    toolsListElement.appendChild(this._completeRecording);
+
     this._updateVisualPosition();
     this._refreshListeners();
   }
@@ -927,6 +934,9 @@ class Overlay {
       addEventListener(this._assertSnapshotToggle, 'click', () => {
         if (!this._assertSnapshotToggle.classList.contains('disabled'))
           this._recorder.setMode(this._recorder.state.mode === 'assertingSnapshot' ? 'recording' : 'assertingSnapshot');
+      }),
+      addEventListener(this._completeRecording, 'click', () => {
+        this._recorder.completeRecording();
       }),
     ];
   }
@@ -1342,6 +1352,14 @@ export class Recorder {
 
   setMode(mode: Mode) {
     void this._delegate.setMode?.(mode);
+  }
+
+  completeRecording() {
+    const completeRecordingAction: actions.CompleteRecordingAction = {
+      name: 'completeRecording',
+      signals: [],
+    };
+    void this._delegate.recordAction?.(completeRecordingAction);
   }
 
   async performAction(action: actions.PerformOnRecordAction) {

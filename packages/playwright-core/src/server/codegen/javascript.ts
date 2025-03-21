@@ -37,6 +37,8 @@ export class JavaScriptLanguageGenerator implements LanguageGenerator {
 
   generateAction(actionInContext: actions.ActionInContext): string {
     const action = actionInContext.action;
+    if (action.name === 'completeRecording')
+      return '';
     if (this._isTest && (action.name === 'openPage' || action.name === 'closePage'))
       return '';
 

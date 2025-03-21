@@ -56,6 +56,8 @@ export class CSharpLanguageGenerator implements LanguageGenerator {
 
   _generateActionInner(actionInContext: actions.ActionInContext): string {
     const action = actionInContext.action;
+    if (action.name === 'completeRecording')
+      return '';
     if (this._mode !== 'library' && (action.name === 'openPage' || action.name === 'closePage'))
       return '';
     let pageAlias = actionInContext.frame.pageAlias;
