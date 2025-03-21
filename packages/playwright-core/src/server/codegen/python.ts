@@ -53,11 +53,16 @@ export class PythonLanguageGenerator implements LanguageGenerator {
     if (this._isPyTest && (action.name === 'openPage' || action.name === 'closePage'))
       return '';
 
+
     const pageAlias = actionInContext.frame.pageAlias;
     const formatter = new PythonFormatter(4);
 
+    const shouldMerge = actionInContext.shouldMerge ? actionInContext.shouldMerge : false;
+    const recording_complete = action.name === 'completeRecording' ? true : false;
+    const comment = ` # {"uuid": "${actionInContext.uuid}" , "merge_with_previous": "${shouldMerge}" , "recording_complete": "${recording_complete}"}`
+
     if (action.name === 'completeRecording') {
-      formatter.add(` # {"uuid": "${actionInContext.uuid}", "recording_complete": "true"}`);
+      formatter.add(comment);
     } else {
       if (action.name === 'openPage') {
         formatter.add(`${pageAlias} = ${this._awaitPrefix}context.new_page()`);
@@ -88,9 +93,7 @@ export class PythonLanguageGenerator implements LanguageGenerator {
         }
         download${signals.download.downloadAlias} = ${this._awaitPrefix}download${signals.download.downloadAlias}_info.value`;
       }
-
-      const shouldMerge = actionInContext.shouldMerge ? actionInContext.shouldMerge : false;
-      code = code + ` # {"uuid": "${actionInContext.uuid}", "merge_with_previous": "${shouldMerge}"}`;
+      code = code + comment;
 
       formatter.add(code);
       // if (actionInContext.uuid && actionInContext.action.name) {
